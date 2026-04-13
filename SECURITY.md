@@ -9,7 +9,7 @@
 
 ## Reportar Vulnerabilidades
 
-Si descubrís una vulnerabilidad de seguridad en `blueprint-v0` (blue-arrow), por favor reportala de la siguiente manera:
+Si descubrís una vulnerabilidad de seguridad en `blue-arrow`, por favor reportala de la siguiente manera:
 
 ### Proceso de Reporte
 

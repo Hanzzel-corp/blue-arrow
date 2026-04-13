@@ -9,7 +9,7 @@ description = "Modular orchestration system with state-driven migration and loca
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
-    {name = "Hanzzel Corp"}
+    {name = "Jose Zamora", email = "hanzzelcorp@gmail.com"}
 ]
 requires-python = ">=3.11"
 dependencies = [

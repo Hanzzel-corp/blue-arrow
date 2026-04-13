@@ -2,7 +2,7 @@
 
 ## Nuestro Compromiso
 
-En el proyecto `blueprint-v0` (blue-arrow), nos comprometemos a mantener un ambiente abierto y acogedor para todos los contribuyentes.
+En el proyecto `blue-arrow`, nos comprometemos a mantener un ambiente abierto y acogedor para todos los contribuyentes.
 
 ## Estándares
 

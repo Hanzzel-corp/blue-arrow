@@ -1,6 +1,6 @@
 # Guía de Contribución
 
-> Cómo contribuir a `blueprint-v0` (blue-arrow)
+> Cómo contribuir a `blue-arrow`
 
 ---
 
