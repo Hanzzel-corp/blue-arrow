@@ -110,10 +110,6 @@
       "to": "phase.engine.main:signal.in"
     },
     {
-      "from": "approval.main:signal.out",
-      "to": "phase.engine.main:signal.in"
-    },
-    {
       "from": "phase.engine.main:signal.out",
       "to": "planner.main:command.in"
     },
@@ -239,7 +235,7 @@
     },
     {
       "from": "worker.python.terminal:event.out",
-      "to": "ui.state.main:context.in"
+      "to": "ui.state.main:event.in"
     },
     {
       "from": "worker.python.terminal:event.out",

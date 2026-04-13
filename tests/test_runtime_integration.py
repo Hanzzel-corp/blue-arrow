@@ -60,7 +60,7 @@ def module_entry_path(module_id: str) -> Path:
 def assert_js_key(testcase, source: str, key: str, msg: str):
     testcase.assertRegex(
         source,
-        rf'(?:"{re.escape(key)}"|{re.escape(key)})\s*:',
+        rf'(?:"{re.escape(key)}"\s*:|\b{re.escape(key)}\b\s*:|\b{re.escape(key)}\b\s*[,}])',
         msg,
     )
 
@@ -329,7 +329,11 @@ console.log(JSON.stringify({
                 timeout=10
             )
             
-            self.assertEqual(result.returncode, 0, "Runtime startup test should pass")
+            self.assertEqual(
+    result.returncode,
+    0,
+    f"Runtime startup test should pass\nSTDERR:\n{result.stderr}\nSTDOUT:\n{result.stdout}"
+)
             
             output = json.loads(result.stdout.strip())
             self.assertTrue(output["blueprintLoaded"], "Blueprint should load successfully")

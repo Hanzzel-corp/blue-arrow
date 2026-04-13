@@ -8,7 +8,6 @@
     "event.out",
     "approved.plan.out",
     "rejected.result.out",
-    "ui.response.out",
-    "signal.out"
+    "ui.response.out"
   ]
 }
