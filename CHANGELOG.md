@@ -13,7 +13,7 @@ El formato está basado en [Keep a Changelog](https://keepachangelog.com/en/1.0.
 - Código de conducta
 - Política de seguridad
 
-## [1.0.0] - 2024
+## [1.0.0] - 2026-04-13
 
 ### Added
 - Arquitectura modular con 30 módulos

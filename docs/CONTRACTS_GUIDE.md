@@ -15,7 +15,7 @@ Todo mensaje que envíe un módulo debe seguir este shape:
   "trace_id": "abc-123",
   "meta": {
     "source": "cli",
-    "timestamp": "2024-01-01T00:00:00Z",
+    "timestamp": "2026-01-01T00:00:00Z",
     "chat_id": 123
   },
   "payload": {

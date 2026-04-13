@@ -145,7 +145,7 @@ const v2Message = {
   trace_id: "gen-1234567890",  // Generado si falta
   meta: {
     source: "unknown",         // Default si falta
-    timestamp: "2024-01-15T10:30:00Z"
+    timestamp: "2026-01-15T10:30:00Z"
   }
 };
 ```

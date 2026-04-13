@@ -15,7 +15,7 @@ Todos los mensajes entre módulos siguen este formato base (contrato v2):
   "trace_id": "abc-123",
   "meta": {
     "source": "cli|telegram|internal",
-    "timestamp": "2024-01-01T00:00:00Z",
+    "timestamp": "2026-01-01T00:00:00Z",
     "chat_id": 123456789
   },
   "payload": { /* port-specific data */ }
@@ -206,7 +206,7 @@ Todos los mensajes entre módulos siguen este formato base (contrato v2):
     "plan_id": "plan_1234567890",
     "reason": "Safety check passed"
   },
-  "timestamp": "2024-01-01T00:00:00Z"
+  "timestamp": "2026-01-01T00:00:00Z"
 }
 ```
 
@@ -252,10 +252,10 @@ Todos los mensajes entre módulos siguen este formato base (contrato v2):
   "query_type": "last_command",
   "data": {
     "command": "abrir chrome",
-    "timestamp": "2024-01-01T00:00:00Z",
+    "timestamp": "2026-01-01T00:00:00Z",
     "source": "cli"
   },
-  "timestamp": "2024-01-01T00:00:00Z"
+  "timestamp": "2026-01-01T00:00:00Z"
 }
 ```
 
@@ -365,7 +365,7 @@ Todos los mensajes entre módulos siguen este formato base (contrato v2):
     {
       "task_id": "task_122",
       "status": "success",
-      "timestamp": "2024-01-01T00:00:00Z"
+      "timestamp": "2026-01-01T00:00:00Z"
     }
   ]
 }
@@ -415,7 +415,7 @@ Todos los mensajes entre módulos siguen este formato base (contrato v2):
   "app_name": "chrome",
   "window_id": 12345,
   "process_id": 67890,
-  "opened_at": "2024-01-01T00:00:00Z",
+  "opened_at": "2026-01-01T00:00:00Z",
   "last_action": "open_application",
   "meta": {
     "url": "https://example.com",

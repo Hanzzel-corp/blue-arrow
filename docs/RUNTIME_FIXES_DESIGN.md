@@ -834,7 +834,7 @@ function handleResult(payload) {
 
 // Ejemplo de task en taskLifecycle
 {
-  "task_20240406_194530_123": {
+  "task_20260413_194530_123": {
     "status": "completed",
     "created_at": "2026-04-06T19:45:30.200Z",
     "updated_at": "2026-04-06T19:45:35.456Z",

@@ -302,8 +302,8 @@ agent reenvía: task_id "abc-123" (mismo ID)
   "task_id": "abc-123",
   "action": "send_message",
   "fingerprint": "a1b2c3d4...",
-  "original_timestamp": "2024-01-01T00:00:00Z",
-  "duplicate_timestamp": "2024-01-01T00:00:02Z",
+  "original_timestamp": "2026-01-01T00:00:00Z",
+  "duplicate_timestamp": "2026-01-01T00:00:02Z",
   "module": "worker.python.desktop"
 }
 ```

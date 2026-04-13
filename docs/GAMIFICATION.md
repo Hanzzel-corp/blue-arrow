@@ -248,7 +248,7 @@ Estructura:
     "total_xp": 2450,
     "achievements": ["first_command", "app_opener"],
     "stats": {...},
-    "created_at": "2024-04-06T12:00:00"
+    "created_at": "2026-04-13T12:00:00"
   }
 }
 ```
@@ -373,5 +373,5 @@ Para problemas con gamificación:
 ---
 
 **Versión**: 1.0.0  
-**Fecha**: 2024-04-06  
+**Fecha**: 2026-04-13  
 **Estado**: ✅ Operativo
