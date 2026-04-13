@@ -137,18 +137,18 @@ class TestModuleIntegration(unittest.TestCase):
         self.assertIn('system.action.out', router_content, "Router should emit system.action.out")
         self.assertIn('browser.action.out', router_content, "Router should emit browser.action.out")
         
-        # Check worker inputs exist (using actual directory names)
+        # Check worker inputs exist (using manifest-based discovery)
         workers = [
-            ("worker-python/main.py", "worker.python.desktop"),
-            ("worker-system/main.py", "worker.python.system"),
-            ("worker-browser/main.py", "worker.python.browser")
+            ("worker.python.desktop", "worker.python.desktop"),
+            ("worker.python.system", "worker.python.system"),
+            ("worker.python.browser", "worker.python.browser"),
         ]
 
-        for worker_path_str, worker_id in workers:
-            worker_path = self.project_root / "modules" / worker_path_str
+        for worker_module_id, worker_id in workers:
+            worker_path = module_entry_path(worker_module_id)
             self.assertTrue(worker_path.exists(), f"Worker {worker_id} should exist at {worker_path}")
 
-            worker_content = worker_path.read_text()
+            worker_content = worker_path.read_text(encoding="utf-8")
             self.assertIn('action.in', worker_content, f"{worker_id} should handle action.in")
 
     def test_workers_to_memory_flow(self):
@@ -162,14 +162,14 @@ class TestModuleIntegration(unittest.TestCase):
         
         # Check workers emit results
         workers = [
-            ("worker-python/main.py", "worker.python.desktop"),
-            ("worker-system/main.py", "worker.python.system"),
-            ("worker-browser/main.py", "worker.python.browser")
+            ("worker.python.desktop", "worker.python.desktop"),
+            ("worker.python.system", "worker.python.system"),
+            ("worker.python.browser", "worker.python.browser"),
         ]
 
-        for worker_path_str, worker_id in workers:
-            worker_path = self.project_root / "modules" / worker_path_str
-            worker_content = worker_path.read_text()
+        for worker_module_id, worker_id in workers:
+            worker_path = module_entry_path(worker_module_id)
+            worker_content = worker_path.read_text(encoding="utf-8")
             self.assertIn('result.out', worker_content, f"{worker_id} should emit result.out")
 
     def test_message_schema_consistency(self):
