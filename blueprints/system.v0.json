@@ -115,7 +115,7 @@
     },
     {
       "from": "phase.engine.main:signal.out",
-      "to": "planner.main:signal.in"
+      "to": "planner.main:command.in"
     },
     {
       "from": "phase.engine.main:command.out",
