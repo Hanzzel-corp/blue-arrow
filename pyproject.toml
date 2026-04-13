@@ -2,6 +2,26 @@
 requires = ["setuptools>=45", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[project]
+name = "blueprint-v0"
+version = "1.0.0"
+description = "Modular orchestration system with state-driven migration and local AI integration"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "Hanzzel Corp"}
+]
+requires-python = ">=3.11"
+dependencies = [
+    "playwright>=1.40.0",
+    "psutil>=5.9.0",
+    "numpy>=1.24.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/Hanzzel-corp/blue-arrow"
+Documentation = "https://github.com/Hanzzel-corp/blue-arrow/tree/main/docs"
+
 [tool.black]
 line-length = 88
 target-version = ['py311']
