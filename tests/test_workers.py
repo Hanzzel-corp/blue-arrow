@@ -43,10 +43,29 @@ def _run_worker_line(main_py: Path, line: str):
     r = subprocess.run(
         [_python_exe(), str(main_py)],
         input=line + "\n",
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
         text=True,
-        capture_output=True,
+        cwd=main_py.parent,
+        timeout=25,
     )
-    return r
+
+    messages: list[dict] = []
+    for raw in (r.stdout or "").splitlines():
+        raw = raw.strip()
+        if not raw:
+            continue
+        try:
+            messages.append(json.loads(raw))
+        except json.JSONDecodeError:
+            continue
+
+    if r.returncode != 0 and not messages:
+        raise AssertionError(
+            f"Worker failed: returncode={r.returncode}\nSTDERR:\n{r.stderr}\nSTDOUT:\n{r.stdout}"
+        )
+
+    return messages
 
 
 def _find_result(messages: list[dict]) -> dict | None:

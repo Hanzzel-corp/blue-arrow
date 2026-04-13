@@ -5,6 +5,7 @@ Tests message flow between connected modules.
 """
 
 import json
+import re
 import subprocess
 import sys
 import tempfile
@@ -12,6 +13,22 @@ import time
 import unittest
 from pathlib import Path
 from unittest.mock import patch, MagicMock
+
+
+def assert_js_key(testcase, source: str, key: str, msg: str):
+    testcase.assertRegex(
+        source,
+        rf'(?:"{re.escape(key)}"|{re.escape(key)})\s*:',
+        msg,
+    )
+
+
+def module_entry_path(module_id: str) -> Path:
+    if module_id not in MODULE_INDEX:
+        raise AssertionError(f"Module not found in manifests: {module_id}")
+    entry_name = MODULE_INDEX[module_id]["data"].get("entry", "main.js")
+    return MODULE_INDEX[module_id]["dir"] / entry_name
+
 
 # Add project root to path for imports
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -176,21 +193,9 @@ class TestModuleIntegration(unittest.TestCase):
                 # Check for emit patterns
                 if 'emit(' in content or 'process.stdout.write' in content:
                     # Should include required fields
-                    self.assertIn(
-                        '"module"',
-                        content,
-                        f"{main_file.name} should include module field"
-                    )
-                    self.assertIn(
-                        '"port"',
-                        content,
-                        f"{main_file.name} should include port field"
-                    )
-                    self.assertIn(
-                        '"payload"',
-                        content,
-                        f"{main_file.name} should include payload field"
-                    )
+                    assert_js_key(self, content, "module", f"{main_file.name} should include module field")
+                    assert_js_key(self, content, "port", f"{main_file.name} should include port field")
+                    assert_js_key(self, content, "payload", f"{main_file.name} should include payload field")
 
     def _module_id_to_path(self, module_id: str) -> Path:
         """Convert module ID to filesystem path."""
@@ -261,21 +266,21 @@ class TestModuleIntegration(unittest.TestCase):
             )
 
             # Check source emits the port
-            from_main = from_module_path / f"main.{'js' if from_module.startswith('interface') or from_module in ['agent', 'planner', 'router', 'safety-guard', 'approval', 'supervisor'] else 'py'}"
+            from_main = module_entry_path(from_module)
             if from_main.exists():
-                from_content = from_main.read_text()
+                from_content = from_main.read_text(encoding="utf-8")
                 self.assertIn(
-                    f'"{from_port}"',
+                    from_port,
                     from_content,
                     f"{from_module} should emit {from_port}"
                 )
 
             # Check target handles the port
-            to_main = to_module_path / f"main.{'js' if to_module.startswith('interface') or to_module in ['agent', 'planner', 'router', 'safety-guard', 'approval', 'supervisor'] else 'py'}"
+            to_main = module_entry_path(to_module)
             if to_main.exists():
-                to_content = to_main.read_text()
+                to_content = to_main.read_text(encoding="utf-8")
                 self.assertIn(
-                    f'"{to_port}"',
+                    to_port,
                     to_content,
                     f"{to_module} should handle {to_port}"
                 )
