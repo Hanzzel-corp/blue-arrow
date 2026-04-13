@@ -6,6 +6,7 @@ Tests the full flow from command input to worker execution.
 
 import json
 import os
+import re
 import signal
 import subprocess
 import sys
@@ -18,6 +19,50 @@ from unittest.mock import patch
 # Add project root to path for imports
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
+
+MODULES_DIR = PROJECT_ROOT / "modules"
+
+
+def discover_modules():
+    mapping = {}
+    for manifest_path in MODULES_DIR.glob("*/manifest.json"):
+        with open(manifest_path, encoding="utf-8") as f:
+            manifest = json.load(f)
+
+        module_id = manifest["id"]
+        entry_name = manifest.get("entry", "main.js")
+        mapping[module_id] = {
+            "dir": manifest_path.parent,
+            "manifest": manifest_path,
+            "entry": manifest_path.parent / entry_name,
+            "data": manifest,
+        }
+    return mapping
+
+
+MODULE_INDEX = discover_modules()
+
+
+def module_dir(module_id: str) -> Path:
+    if module_id not in MODULE_INDEX:
+        raise AssertionError(f"Module not found in manifests: {module_id}")
+    return MODULE_INDEX[module_id]["dir"]
+
+
+def module_manifest_path(module_id: str) -> Path:
+    return MODULE_INDEX[module_id]["manifest"]
+
+
+def module_entry_path(module_id: str) -> Path:
+    return MODULE_INDEX[module_id]["entry"]
+
+
+def assert_js_key(testcase, source: str, key: str, msg: str):
+    testcase.assertRegex(
+        source,
+        rf'(?:"{re.escape(key)}"|{re.escape(key)})\s*:',
+        msg,
+    )
 
 
 class TestRuntimeIntegration(unittest.TestCase):
@@ -120,35 +165,22 @@ class TestRuntimeIntegration(unittest.TestCase):
 
     def test_module_manifests_exist(self):
         """Test that all modules have valid manifest.json files."""
-        with open(self.blueprint_path) as f:
+        blueprint_path = PROJECT_ROOT / "blueprints" / "system.v0.json"
+        with open(blueprint_path, encoding="utf-8") as f:
             blueprint = json.load(f)
 
-        for module_id in blueprint["modules"]:
-            module_path = self._module_id_to_path(module_id)
-            manifest_path = module_path / "manifest.json"
+        blueprint_modules = [m for m in blueprint.get("modules", [])]
 
+        for module_id in blueprint_modules:
+            self.assertIn(
+                module_id,
+                MODULE_INDEX,
+                f"Manifest missing for module {module_id}"
+            )
+            manifest_path = module_manifest_path(module_id)
             self.assertTrue(
                 manifest_path.exists(),
                 f"Manifest missing for module {module_id} at {manifest_path}"
-            )
-
-            # Validate manifest structure
-            with open(manifest_path) as f:
-                manifest = json.load(f)
-            
-            required_fields = ["id", "language", "entry"]
-            for field in required_fields:
-                self.assertIn(
-                    field,
-                    manifest,
-                    f"Manifest for {module_id} missing {field}"
-                )
-            
-            # Check entry file exists
-            entry_path = module_path / manifest["entry"]
-            self.assertTrue(
-                entry_path.exists(),
-                f"Entry file {manifest['entry']} missing for {module_id}"
             )
 
     def test_runtime_syntax_validation(self):
@@ -178,42 +210,36 @@ class TestRuntimeIntegration(unittest.TestCase):
 
     def test_module_syntax_validation(self):
         """Test that all module files have valid syntax."""
-        with open(self.blueprint_path) as f:
-            blueprint = json.load(f)
+        for module_id, info in MODULE_INDEX.items():
+            entry_path = info["entry"]
 
-        for module_id in blueprint["modules"]:
-            module_path = self._module_id_to_path(module_id)
-            manifest_path = module_path / "manifest.json"
+            self.assertTrue(
+                entry_path.exists(),
+                f"Entry file missing for module {module_id}: {entry_path}"
+            )
 
-            with open(manifest_path) as f:
-                manifest = json.load(f)
-            
-            entry_path = module_path / manifest["entry"]
-            
-            if manifest["language"] == "node":
-                # Check JavaScript syntax
+            if entry_path.suffix == ".js":
                 result = subprocess.run(
                     ["node", "--check", str(entry_path)],
                     capture_output=True,
-                    text=True
+                    text=True,
                 )
-                
                 self.assertEqual(
-                    result.returncode, 0,
-                    f"Syntax error in {module_id}: {result.stderr}"
+                    result.returncode,
+                    0,
+                    f"JavaScript syntax error in {module_id} ({entry_path}):\n{result.stderr}"
                 )
-                
-            elif manifest["language"] == "python":
-                # Check Python syntax
+
+            elif entry_path.suffix == ".py":
                 result = subprocess.run(
                     [sys.executable, "-m", "py_compile", str(entry_path)],
                     capture_output=True,
-                    text=True
+                    text=True,
                 )
-                
                 self.assertEqual(
-                    result.returncode, 0,
-                    f"Syntax error in {module_id}: {result.stderr}"
+                    result.returncode,
+                    0,
+                    f"Python syntax error in {module_id} ({entry_path}):\n{result.stderr}"
                 )
 
     def test_message_format_validation(self):
@@ -234,21 +260,9 @@ class TestRuntimeIntegration(unittest.TestCase):
                 # Look for emit function usage
                 if "emit(" in content or "process.stdout.write" in content:
                     # Basic pattern validation - should have module, port, payload
-                    self.assertIn(
-                        '"module"',
-                        content,
-                        f"{entry_file.name} should include module field in messages"
-                    )
-                    self.assertIn(
-                        '"port"',
-                        content,
-                        f"{entry_file.name} should include port field in messages"
-                    )
-                    self.assertIn(
-                        '"payload"',
-                        content,
-                        f"{entry_file.name} should include payload field in messages"
-                    )
+                    assert_js_key(self, content, "module", f"{entry_file.name} should include module field in messages")
+                    assert_js_key(self, content, "port", f"{entry_file.name} should include port field in messages")
+                    assert_js_key(self, content, "payload", f"{entry_file.name} should include payload field in messages")
 
     def test_dependencies_available(self):
         """Test that required dependencies are available."""

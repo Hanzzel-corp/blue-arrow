@@ -17,6 +17,26 @@ from unittest.mock import patch, MagicMock
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
+MODULES_DIR = PROJECT_ROOT / "modules"
+
+
+def discover_modules():
+    mapping = {}
+    for manifest_path in MODULES_DIR.glob("*/manifest.json"):
+        with open(manifest_path, encoding="utf-8") as f:
+            manifest = json.load(f)
+
+        module_id = manifest["id"]
+        mapping[module_id] = {
+            "dir": manifest_path.parent,
+            "manifest": manifest_path,
+            "data": manifest,
+        }
+    return mapping
+
+
+MODULE_INDEX = discover_modules()
+
 
 class TestModuleIntegration(unittest.TestCase):
     """Test module integration and communication."""
@@ -217,14 +237,24 @@ class TestModuleIntegration(unittest.TestCase):
             to_module, to_port = conn["to"].split(":")
 
             # Check source module exists
-            from_module_path = self._module_id_to_path(from_module)
+            self.assertIn(
+                from_module,
+                MODULE_INDEX,
+                f"Source module {from_module} should exist"
+            )
+            from_module_path = MODULE_INDEX[from_module]["dir"]
             self.assertTrue(
                 from_module_path.exists(),
                 f"Source module {from_module} should exist at {from_module_path}"
             )
 
             # Check target module exists
-            to_module_path = self._module_id_to_path(to_module)
+            self.assertIn(
+                to_module,
+                MODULE_INDEX,
+                f"Target module {to_module} should exist"
+            )
+            to_module_path = MODULE_INDEX[to_module]["dir"]
             self.assertTrue(
                 to_module_path.exists(),
                 f"Target module {to_module} should exist at {to_module_path}"
