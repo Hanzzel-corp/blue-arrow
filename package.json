@@ -35,6 +35,6 @@
     "verify": "npm run check:node && npm run check:py && npm run health",
     "status": "npm run health",
     "logs": "tail -f logs/blueprint.log",
-    "clean": "rm -rf __pycache__ logs/*.log logs/*.json modules/**/__pycache__ .pytest_cache"
+    "clean": "rm -rf __pycache__ logs/*.log modules/**/__pycache__ .pytest_cache"
   }
 }
