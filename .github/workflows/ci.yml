@@ -19,17 +19,18 @@ jobs:
       - run: npm install
       - run: npm run test:node
 
-  test-python:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+test-python:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
 
-      - run: pip install -r requirements.txt
-      - run: python3 -m unittest discover -s tests -p 'test_*.py' -v
+    - run: pip install -r requirements.txt
+    - run: python -m playwright install chromium
+    - run: python3 -m unittest discover -s tests -p 'test_*.py' -v
 
   check-node:
     runs-on: ubuntu-latest
