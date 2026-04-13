@@ -10,9 +10,10 @@
 2. **Clona** tu fork: `git clone https://github.com/TU-USUARIO/blue-arrow.git`
 3. **Crea** una rama: `git checkout -b feature/nombre-de-tu-feature`
 4. **Haz** tus cambios
-5. **Commit**: `git commit -am "Descripción clara del cambio"`
-6. **Push**: `git push origin feature/nombre-de-tu-feature`
-7. **Abre** un Pull Request
+5. **Agrega** los archivos modificados: `git add .`
+6. **Commit**: `git commit -m "Descripción clara del cambio"`
+7. **Push**: `git push origin feature/nombre-de-tu-feature`
+8. **Abre** un Pull Request
 
 ---
 
@@ -74,6 +75,7 @@ Ver `docs/DEVELOPMENT.md` para más detalles.
 - Abre un **Issue** para bugs o features
 - Discute cambios grandes antes de implementar
 - Respeta el código de conducta
+- **No abras issues públicos para vulnerabilidades de seguridad**; ver `SECURITY.md`
 
 ---
 

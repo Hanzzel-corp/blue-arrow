@@ -1,3 +1,6 @@
+# Dependencias runtime base para instalación directa
+# Mantener sincronizado con [project.dependencies] en pyproject.toml
+
 playwright>=1.40.0
 psutil>=5.9.0
 numpy>=1.24.0

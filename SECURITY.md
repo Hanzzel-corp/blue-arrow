@@ -13,16 +13,22 @@ Si descubrís una vulnerabilidad de seguridad en `blueprint-v0` (blue-arrow), po
 
 ### Proceso de Reporte
 
-1. **No abras un issue público** - Las vulnerabilidades deben reportarse de forma privada
-2. **Enviar email a los mantenedores** con:
+1. **No abras un issue público** - Las vulnerabilidades deben reportarse de forma privada.
+
+2. **Enviar email a:** `hanzzelcorp@gmail.com` 
+
+   Incluir:
    - Descripción del problema
    - Pasos para reproducir
    - Impacto potencial
    - Sugerencias de mitigación (si las tenés)
 
-3. **Esperar respuesta** - Intentaremos responder dentro de 5 días hábiles
+3. **Esperar respuesta** - Intentaremos responder dentro de 5 días hábiles.
 
-4. **Divulgación coordinada** - Una vez solucionado, publicaremos un advisory con crédito al reportero
+4. **Si no recibís respuesta en ese plazo**, podés reenviar el reporte al mismo correo con el asunto:
+   `FOLLOW-UP SECURITY REPORT - blueprint-v0` 
+
+5. **Divulgación coordinada** - Una vez solucionado, publicaremos un advisory con crédito al reportero (si así lo desea).
 
 ### Alcance
 
@@ -45,6 +51,11 @@ Vulnerabilidades relevantes incluyen:
 - Usar `.env` para configuración sensible
 - Revisar aprobaciones antes de confirmar acciones
 - Mantener dependencias actualizadas
+
+## Contacto de Seguridad
+
+- **Canal de reporte:** `hanzzelcorp@gmail.com` 
+- **Idioma:** Español o inglés
 
 ---
 

@@ -33,7 +33,11 @@ Este código aplica a:
 
 ## Aplicación
 
-Casos de comportamiento inaceptable pueden reportarse a los mantenedores del proyecto.
+Casos de comportamiento inaceptable pueden reportarse de forma privada a:
+
+- **Email de contacto:** `hanzzelcorp@gmail.com` 
+
+Los mantenedores revisarán cada caso, evaluarán el contexto y podrán tomar acciones proporcionales, incluyendo advertencias, moderación de interacciones o restricción de participación según la gravedad.
 
 ## Atribución
 
