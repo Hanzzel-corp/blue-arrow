@@ -1,0 +1,98 @@
+
+================================================================================
+🔬 COHERENCE DIAGNOSTIC - 3 Planes de Realidad
+================================================================================
+
+📋 Plano FÍSICO:    Archivos, carpetas, disco
+📋 Plano LÓGICO:    Módulos, roles, blueprint
+📋 Plano OPERATIVO: Procesos, mensajes, salud
+================================================================================
+
+✓ Blueprint cargado: 30 módulos definidos
+✓ Ontología cargada: 37 entidades canónicas
+
+📊 ANALIZANDO COHERENCIA POR ENTIDAD:
+
+✓ agent.main                     Score: 100/100
+✓ ai-assistant.main              Score: 100/100
+✓ ai-intent.main                 Score: 100/100
+✓ ai-learning-engine.main        Score: 100/100
+✓ ai-memory-semantic.main        Score: 100/100
+✓ ai-self-audit.main             Score: 100/100
+✓ approval.main                  Score: 100/100
+✓ apps-menu.main                 Score: 100/100
+✓ apps-session.main              Score: 100/100
+✗ chaos.tester                   Score:  40/100 [EXTRA]
+   → Entity exists physically but not in blueprint (orphan)
+✗ coherence.analyzer             Score:  40/100 [EXTRA]
+   → Entity exists physically but not in blueprint (orphan)
+✗ diagnostic.main                Score:  40/100 [EXTRA]
+   → Entity exists physically but not in blueprint (orphan)
+✓ gamification.main              Score: 100/100
+✓ guide.main                     Score: 100/100
+✓ interface.main                 Score: 100/100
+✓ interface.telegram             Score: 100/100
+✓ memory-menu.main               Score: 100/100
+✓ memory.log.main                Score: 100/100
+✓ phase.engine.main              Score: 100/100
+✗ plan.runner.main               Score:  40/100 [EXTRA]
+   → Entity exists physically but not in blueprint (orphan)
+✗ planner                        Score:  35/100 [EXTRA]
+✓ planner.main                   Score: 100/100
+✓ project-audit.main             Score: 100/100
+✓ router.main                    Score: 100/100
+✓ safety-guard.main              Score: 100/100
+✓ supervisor.main                Score: 100/100
+✓ system-menu.main               Score: 100/100
+✓ telegram-hud.main              Score: 100/100
+✓ telegram-menu.main             Score: 100/100
+✗ telegram.main                  Score:  40/100 [EXTRA]
+   → Entity exists physically but not in blueprint (orphan)
+✓ ui.state.main                  Score: 100/100
+✓ verifier.engine.main           Score: 100/100
+✗ verifier.main                  Score:  40/100 [EXTRA]
+   → Entity exists physically but not in blueprint (orphan)
+✓ worker.python.browser          Score: 100/100
+✓ worker.python.desktop          Score: 100/100
+✓ worker.python.system           Score: 100/100
+✓ worker.python.terminal         Score: 100/100
+
+--------------------------------------------------------------------------------
+
+🔍 BUSCANDO HUÉRFANOS:
+
+✓ No hay huérfanos físicos
+✓ No hay huérfanos lógicos
+
+================================================================================
+📊 MÉTRICAS DE COHERENCIA GLOBAL (Sistema Core)
+================================================================================
+   Analizando 30 entidades del blueprint
+   (7 entidades extra excluidas del score global)
+
+Coherencia ALTA (80-100):    30 entidades
+Coherencia MEDIA (60-79):     0 entidades
+Coherencia BAJA (0-59):       0 entidades
+
+PROMEDIO DE COHERENCIA:     100.0/100
+
+🏆 GRADO DE COHERENCIA: A (EXCELENTE)
+
+📋 Análisis de Contratos:
+   Puertos reservados (futuro):  86
+   Puertos obsoletos:            0
+   Puertos mal definidos:        0
+
+📋 Problemas detectados:
+   Plano físico:     1 issues
+   Plano lógico:     7 issues
+   Plano operativo:  0 issues
+   Cross-plane:      6 inconsistencias
+
+💡 RECOMENDACIONES:
+   • 7 entidades extra analizadas pero no incluidas en score global
+   • Sistema completamente coherente - todos los planos alineados
+================================================================================
+
+💾 Reporte completo guardado en: /home/jarvis0001/blueprint-v0/logs/coherence_report_20260409_205926.json
+

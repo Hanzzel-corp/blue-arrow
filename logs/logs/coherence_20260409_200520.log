@@ -1,0 +1,98 @@
+
+================================================================================
+🔬 COHERENCE DIAGNOSTIC - 3 Planes de Realidad
+================================================================================
+
+📋 Plano FÍSICO:    Archivos, carpetas, disco
+📋 Plano LÓGICO:    Módulos, roles, blueprint
+📋 Plano OPERATIVO: Procesos, mensajes, salud
+================================================================================
+
+✓ Blueprint cargado: 30 módulos definidos
+✓ Ontología cargada: 29 entidades canónicas
+
+📊 ANALIZANDO COHERENCIA POR ENTIDAD:
+
+✗ agent.main                     Score:   0/100  Tier: core
+   → Core entity not operational (critical)
+✗ ai-assistant.main              Score:  20/100  Tier: satellite
+✗ ai-intent.main                 Score:  20/100  Tier: satellite
+✗ ai-learning-engine.main        Score:  20/100  Tier: satellite
+✗ ai-memory-semantic.main        Score:  20/100  Tier: satellite
+✗ ai-self-audit.main             Score:  20/100  Tier: satellite
+✗ approval.main                  Score:   0/100  Tier: core
+   → Core entity not operational (critical)
+✗ apps-menu.main                 Score:  20/100  Tier: satellite
+✗ apps-session.main              Score:  20/100  Tier: satellite
+✗ chaos.tester                   Score:  20/100  Tier: satellite
+✗ diagnostic.main                Score:  20/100  Tier: satellite
+✗ gamification.main              Score:  35/100  Tier: satellite
+✗ guide.main                     Score:  35/100  Tier: satellite
+✗ interface.main                 Score:  35/100  Tier: satellite
+✗ memory-menu.main               Score:  20/100  Tier: satellite
+✗ planner.main                   Score:   0/100  Tier: core
+   → Core entity not operational (critical)
+✗ project-audit.main             Score:  20/100  Tier: satellite
+✗ router.main                    Score:   0/100  Tier: core
+   → Core entity not operational (critical)
+✗ safety-guard.main              Score:   0/100  Tier: core
+   → Core entity not operational (critical)
+✗ supervisor.main                Score:   0/100  Tier: core
+   → Core entity not operational (critical)
+✗ system-menu.main               Score:  20/100  Tier: satellite
+✗ telegram-hud.main              Score:  20/100  Tier: satellite
+✗ telegram-menu.main             Score:  20/100  Tier: satellite
+✗ telegram.main                  Score:  20/100  Tier: satellite
+✗ verifier.main                  Score:  20/100  Tier: satellite
+✗ worker.browser                 Score:  35/100  Tier: satellite
+✗ worker.desktop                 Score:  20/100  Tier: satellite
+⚠ worker.python.terminal         Score:  75/100  Tier: satellite
+✗ worker.system                  Score:  35/100  Tier: satellite
+
+--------------------------------------------------------------------------------
+
+🔍 BUSCANDO HUÉRFANOS:
+
+⚠ Huérfanos FÍSICOS (29):
+   • worker-python - Directory exists but not in ontology
+   • ai-memory-semantic - Directory exists but not in ontology
+   • planner - Directory exists but not in ontology
+   • apps-session - Directory exists but not in ontology
+   • telegram-menu - Directory exists but not in ontology
+
+⚠ Huérfanos LÓGICOS (21):
+   • worker.python.desktop - In blueprint but not in ontology
+   • memory.log.main - In blueprint but not in ontology
+   • interface.telegram - In blueprint but not in ontology
+   • worker.python.system - In blueprint but not in ontology
+   • worker.python.browser - In blueprint but not in ontology
+
+================================================================================
+📊 MÉTRICAS DE COHERENCIA GLOBAL:
+================================================================================
+
+Coherencia ALTA (80-100):     0 entidades
+Coherencia MEDIA (60-79):     1 entidades
+Coherencia BAJA (0-59):      28 entidades
+
+PROMEDIO DE COHERENCIA:      20.3/100
+
+🏆 GRADO DE COHERENCIA: F (CRÍTICO)
+
+📋 Problemas detectados:
+   Plano físico:     28 issues
+   Plano lógico:     36 issues
+   Plano operativo:  6 issues
+   Cross-plane:      6 inconsistencias
+
+💡 RECOMENDACIONES:
+   • 29 directorios de módulos no están en la ontología
+     → Agregar a ontology.py o eliminar si obsoletos
+   • 21 módulos en blueprint no tienen definición ontológica
+     → Agregar entidad canónica a ontology.py
+   • 28 entidades con coherencia baja (<60)
+     → Revisar inconsistencias entre físico/lógico/operativo
+================================================================================
+
+💾 Reporte completo guardado en: /home/jarvis0001/blueprint-v0/logs/coherence_report_20260409_200520.json
+

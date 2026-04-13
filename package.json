@@ -1,0 +1,40 @@
+{
+  "name": "blueprint-v0",
+  "version": "1.0.0",
+  "description": "Modular orchestration system with state-driven migration, local AI integration, and execution verification",
+  "type": "module",
+  "author": "Hanzzel Corp",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hanzzel-corp/blue-arrow.git"
+  },
+  "keywords": [
+    "automation",
+    "orchestration",
+    "modular-architecture",
+    "llama",
+    "ollama",
+    "telegram-bot",
+    "state-machine",
+    "gamification"
+  ],
+  "scripts": {
+    "start": "node runtime/main.js",
+    "start:debug": "DEBUG=1 node runtime/main.js",
+    "explain": "python3 project_explainer.py",
+    "health": "python3 health_check.py",
+    "health:watch": "python3 health_check.py --watch 5",
+    "check:node": "node --check runtime/main.js runtime/bus.js runtime/registry.js runtime/transforms.js runtime/logger.js runtime/config.js runtime/metrics.js runtime/schema_validator.js",
+    "check:py": "python3 -m py_compile config.py logger.py metrics.py project_explainer.py health_check.py",
+    "test:node": "npm run check:node && sh -c 'for f in modules/*/main.js; do node --check \"$f\" || exit 1; done'",
+    "test:py": "python3 -m unittest discover -s tests -p 'test_*.py' -v",
+    "smoke": "python3 tests/smoke_runtime.py",
+    "test:all": "npm run test:node && npm run test:py && npm run smoke && npm run health",
+    "setup": "python3 setup.py",
+    "verify": "npm run check:node && npm run check:py && npm run health",
+    "status": "npm run health",
+    "logs": "tail -f logs/blueprint.log",
+    "clean": "rm -rf __pycache__ logs/*.log logs/*.json modules/**/__pycache__ .pytest_cache"
+  }
+}

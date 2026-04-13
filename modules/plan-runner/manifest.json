@@ -1,0 +1,7 @@
+{
+  "id": "plan.runner.main",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": ["plan.in", "result.in", "memory.in", "event.in"],
+  "outputs": ["command.out", "memory.query.out", "event.out", "ui.response.out"]
+}

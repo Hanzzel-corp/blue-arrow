@@ -1,0 +1,76 @@
+{
+  "runtime": {
+    "debug": false,
+    "message_validation": true,
+    "startup_timeout": 15000
+  },
+  "logging": {
+    "level": "warn",
+    "console": false,
+    "file": true,
+    "structured": true
+  },
+  "safety": {
+    "auto_approve_safe_actions": false,
+    "timeout": 600,
+    "max_plan_steps": 5
+  },
+  "approval": {
+    "timeout": 600,
+    "notification_channels": ["telegram"]
+  },
+  "workers": {
+    "desktop": {
+      "timeout": 60000,
+      "retry_attempts": 3
+    },
+    "browser": {
+      "headless": true,
+      "timeout": 60000
+    }
+  },
+  "memory": {
+    "persist_to_disk": true,
+    "compression": true,
+    "retention_days": 90
+  },
+  "supervisor": {
+    "health_check_interval": 30000,
+    "task_timeout": 600000,
+    "max_concurrent_tasks": 3,
+    "auto_restart_failed": true
+  },
+  "ui": {
+    "telegram_hud": {
+      "enabled": true,
+      "update_interval": 10000
+    },
+    "cli": {
+      "enabled": false
+    }
+  },
+  "monitoring": {
+    "enabled": true,
+    "metrics_port": 9090,
+    "health_check_port": 8080,
+    "prometheus": {
+      "enabled": true
+    }
+  },
+  "security": {
+    "rate_limiting": {
+      "enabled": true,
+      "requests_per_minute": 50
+    },
+    "encryption": {
+      "enabled": true
+    }
+  },
+  "development": {
+    "hot_reload": false,
+    "debug_mode": false,
+    "verbose_logging": false,
+    "mock_workers": false,
+    "test_mode": false
+  }
+}

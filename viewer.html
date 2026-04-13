@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blueprint 3D Viewer - Static</title>
+  <style>
+    :root {
+      --bg: #020617;
+      --panel: rgba(15, 23, 42, 0.86);
+      --panel-2: rgba(15, 23, 42, 0.96);
+      --border: rgba(148, 163, 184, 0.18);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #67e8f9;
+      --accent-2: #a78bfa;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.38);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background:
+        radial-gradient(circle at top, rgba(34, 211, 238, 0.16), transparent 24%),
+        radial-gradient(circle at bottom, rgba(167, 139, 250, 0.14), transparent 28%),
+        linear-gradient(180deg, #020617 0%, #0f172a 100%);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow: hidden;
+    }
+
+    body {
+      display: grid;
+      grid-template-columns: 380px minmax(0, 1fr) 380px;
+      gap: 16px;
+      padding: 16px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .panel-inner {
+      padding: 18px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 0;
+    }
+
+    h1, h2, h3, p { margin: 0; }
+    h1 { font-size: 1.2rem; font-weight: 700; }
+    h2 { font-size: 0.96rem; font-weight: 700; }
+    .muted { color: var(--muted); }
+    .small { font-size: 0.84rem; }
+    .tiny { font-size: 0.76rem; }
+
+    .toolbar, .chips, .row, .stats { display: flex; flex-wrap: wrap; gap: 8px; }
+    .stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+
+    .stat-card, .block, .list-item {
+      border: 1px solid var(--border);
+      background: var(--panel-2);
+      border-radius: 20px;
+    }
+
+    .stat-card { padding: 12px; }
+    .stat-card .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+    .stat-card .value { margin-top: 6px; font-size: 1.5rem; font-weight: 800; }
+
+    textarea, input, select, button {
+      font: inherit;
+      color: var(--text);
+      outline: none;
+    }
+
+    textarea, input, select {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(2, 6, 23, 0.9);
+      padding: 12px 14px;
+    }
+
+    textarea {
+      min-height: 300px;
+      resize: vertical;
+      font-family: "JetBrains Mono", Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    button, .chip {
+      border: 1px solid var(--border);
+      background: rgba(2, 6, 23, 0.86);
+      border-radius: 18px;
+      padding: 10px 14px;
+      cursor: pointer;
+      transition: 0.18s ease;
+      color: var(--text);
+    }
+
+    button:hover, .chip:hover {
+      border-color: rgba(103, 232, 249, 0.5);
+      transform: translateY(-1px);
+    }
+
+    button.active, .chip.active {
+      background: linear-gradient(135deg, rgba(103, 232, 249, 0.95), rgba(167, 139, 250, 0.9));
+      color: #020617;
+      border-color: transparent;
+      font-weight: 700;
+    }
+
+    .main-view {
+      position: relative;
+      min-height: 0;
+    }
+
+    #graph {
+      width: 100%;
+      height: 100%;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      pointer-events: none;
+    }
+
+    .overlay-card {
+      pointer-events: auto;
+      border: 1px solid var(--border);
+      background: rgba(2, 6, 23, 0.74);
+      border-radius: 20px;
+      padding: 12px 14px;
+      max-width: 420px;
+      backdrop-filter: blur(18px);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.76rem;
+      border: 1px solid var(--border);
+      background: rgba(2, 6, 23, 0.92);
+    }
+
+    .badge-strong {
+      background: linear-gradient(135deg, rgba(103, 232, 249, 0.95), rgba(167, 139, 250, 0.9));
+      color: #020617;
+      border-color: transparent;
+      font-weight: 700;
+    }
+
+    .block {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      overflow: auto;
+      min-height: 0;
+      max-height: 220px;
+      padding-right: 2px;
+    }
+
+    .list-item { padding: 10px 12px; }
+    .list-item .title { font-size: 0.9rem; font-weight: 600; }
+    .list-item .sub { margin-top: 2px; font-size: 0.78rem; color: var(--muted); word-break: break-word; }
+    .top-list button { width: 100%; text-align: left; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .empty { font-size: 0.85rem; color: var(--muted); padding: 8px 0; }
+    .section-title { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .right-scroll { overflow: auto; min-height: 0; }
+    .path-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    @media (max-width: 1500px) {
+      body { grid-template-columns: 340px minmax(0, 1fr) 340px; }
+    }
+
+    @media (max-width: 1180px) {
+      body {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto minmax(520px, 1fr) auto;
+        overflow: auto;
+        height: auto;
+        min-height: 100%;
+      }
+      .panel, .main-view { min-height: 520px; }
+      textarea { min-height: 220px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="panel">
+    <div class="panel-inner">
+      <div>
+        <h1>Blueprint 3D Viewer</h1>
+        <p class="muted small">Versión estática: sin animación automática. Vos controlás qué parte de la arquitectura querés ver.</p>
+      </div>
+
+      <div class="stats">
+        <div class="stat-card"><div class="label">Módulos</div><div class="value" id="statNodes">0</div></div>
+        <div class="stat-card"><div class="label">Conexiones</div><div class="value" id="statLinks">0</div></div>
+        <div class="stat-card"><div class="label">Categorías</div><div class="value" id="statCategories">0</div></div>
+      </div>
+
+      <div class="toolbar">
+        <button id="loadDemoBtn">Cargar diagrama</button>
+        <button id="applyBtn" class="active">Aplicar Mermaid</button>
+        <button id="resetCameraBtn">Reset cámara</button>
+      </div>
+
+      <div class="toolbar">
+        <button id="fullModeBtn" class="active">Red completa</button>
+        <button id="routeOnlyBtn">Ruta pura</button>
+        <button id="routeContextBtn">Ruta + contexto</button>
+      </div>
+
+      <div>
+        <div class="section-title" style="margin-bottom:8px;">
+          <h2>Fuente Mermaid</h2>
+          <span class="badge">sin animación</span>
+        </div>
+        <textarea id="mermaidInput"></textarea>
+      </div>
+
+      <div>
+        <h2 style="margin-bottom:8px;">Buscar módulo</h2>
+        <input id="searchInput" type="text" placeholder="Buscar por id, label o grupo" />
+      </div>
+
+      <div>
+        <div class="section-title" style="margin-bottom:8px;">
+          <h2>Filtro por tipo de flujo</h2>
+          <span class="muted tiny">clic para aislar señales</span>
+        </div>
+        <div class="chips" id="categoryChips"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel main-view">
+    <div id="graph"></div>
+    <div class="overlay">
+      <div class="overlay-card">
+        <div class="section-title">
+          <div>
+            <div class="tiny muted">Nodo seleccionado</div>
+            <div id="selectedTitle" style="font-weight:700; font-size:1rem;">—</div>
+          </div>
+          <div id="selectedGroup" class="badge">—</div>
+        </div>
+      </div>
+      <div class="overlay-card">
+        <div class="tiny muted">Estado visual</div>
+        <div class="row" style="margin-top:8px; align-items:center;">
+          <span id="currentCategoryBadge" class="badge badge-strong">all</span>
+          <span id="pathBadge" class="badge">ruta 0</span>
+          <span id="modeBadge" class="badge">red</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel right-panel">
+    <div class="panel-inner right-scroll">
+      <div class="block">
+        <div class="section-title">
+          <h2>Ruta visual</h2>
+          <span class="muted tiny">camino dirigido</span>
+        </div>
+        <select id="pathFromSelect"></select>
+        <select id="pathToSelect"></select>
+        <div class="path-wrap" id="pathList"></div>
+      </div>
+
+      <div class="block">
+        <div class="section-title">
+          <h2>Inspector del módulo</h2>
+          <span class="badge" id="moduleDegreeBadge">grado 0</span>
+        </div>
+        <div class="stats">
+          <div class="stat-card"><div class="label">Entradas</div><div class="value" id="selectedIn">0</div></div>
+          <div class="stat-card"><div class="label">Salidas</div><div class="value" id="selectedOut">0</div></div>
+          <div class="stat-card"><div class="label">Total</div><div class="value" id="selectedDegree">0</div></div>
+        </div>
+      </div>
+
+      <div class="block"><h2>Entradas</h2><div class="list" id="inboundList"></div></div>
+      <div class="block"><h2>Salidas</h2><div class="list" id="outboundList"></div></div>
+
+      <div class="block top-list">
+        <div class="section-title">
+          <h2>Nodos más conectados</h2>
+          <span class="muted tiny">centralidad simple</span>
+        </div>
+        <div class="list" id="topNodesList"></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+  <script src="https://unpkg.com/3d-force-graph@1.77.0/dist/3d-force-graph.min.js"></script>
+  <script src="https://unpkg.com/three-spritetext@1.8.0/dist/three-spritetext.min.js"></script>
+  <script>
+    const DEFAULT_MERMAID = String.raw`flowchart TB
+    subgraph Interfaces["🖥️ Interfaces de Entrada"]
+        direction TB
+        IF_MAIN["interface.main"]
+        IF_TEL["interface.telegram"]
+    end
+
+    subgraph AI_Layer["🧠 Capa de IA"]
+        direction TB
+        AI_INTENT["ai.intent.main"]
+        AI_ASST["ai.assistant.main"]
+        AI_MEM["ai.memory.semantic.main"]
+        AI_LEARN["ai.learning.engine.main"]
+        AI_AUDIT["ai.self.audit.main"]
+    end
+
+    subgraph Planning["📋 Planificación & Control"]
+        direction TB
+        PLANNER["planner.main"]
+        GUIDE["guide.main"]
+        AGENT["agent.main"]
+        SUPERVISOR["supervisor.main"]
+        PHASE["phase.engine.main"]
+    end
+
+    subgraph Safety["🛡️ Seguridad & Aprobación"]
+        direction TB
+        SAFETY["safety.guard.main"]
+        APPROVAL["approval.main"]
+    end
+
+    subgraph Routing["🔄 Enrutamiento"]
+        direction TB
+        ROUTER["router.main"]
+    end
+
+    subgraph Workers["⚙️ Workers de Ejecución"]
+        direction TB
+        WK_Desktop["worker.python.desktop"]
+        WK_Terminal["worker.python.terminal"]
+        WK_System["worker.python.system"]
+        WK_Browser["worker.python.browser"]
+    end
+
+    subgraph Verifier["✅ Verificación"]
+        direction TB
+        VERIFIER["verifier.engine.main"]
+    end
+
+    subgraph Memory["💾 Memoria & Estado"]
+        direction TB
+        MEM_LOG["memory.log.main"]
+        UI_STATE["ui.state.main"]
+        APPS_SESSION["apps.session.main"]
+    end
+
+    subgraph Telegram_UI["📱 UI Telegram"]
+        direction TB
+        TEL_MENU["telegram.menu.main"]
+        SYS_MENU["system.menu.main"]
+        MEM_MENU["memory.menu.main"]
+        APPS_MENU["apps.menu.main"]
+        TEL_HUD["telegram.hud.main"]
+    end
+
+    subgraph Project["📊 Proyecto & Office"]
+        direction TB
+        PROJ_AUDIT["project.audit.main"]
+        OFFICE["office.writer.main"]
+    end
+
+    subgraph Gamification["🎮 Gamificación"]
+        GAMIF["gamification.main"]
+    end
+
+    IF_MAIN -->|command.out| PLANNER
+    IF_TEL -->|command.out| PLANNER
+    IF_MAIN -->|command.out| MEM_LOG
+    IF_TEL -->|command.out| MEM_LOG
+    IF_MAIN -->|command.out| AI_INTENT
+    IF_TEL -->|command.out| AI_INTENT
+
+    AI_INTENT -->|event.out| MEM_LOG
+    AI_INTENT -->|analysis.out| GUIDE
+    AI_ASST -->|result.out| SUPERVISOR
+    AI_ASST -->|result.out| OFFICE
+    AI_ASST -->|result.out| IF_TEL
+    AI_ASST -->|event.out| MEM_LOG
+    AI_ASST -->|event.out| IF_MAIN
+    AI_ASST -->|event.out| IF_TEL
+    AI_ASST -->|event.out| GUIDE
+    AI_MEM -->|event.out| MEM_LOG
+    AI_LEARN -->|event.out| MEM_LOG
+    AI_AUDIT -->|event.out| MEM_LOG
+
+    PLANNER -->|command.out| GUIDE
+    PLANNER -->|event.out| MEM_LOG
+    PLANNER -->|plan.out| SUPERVISOR
+    PLANNER -->|plan.out| SAFETY
+    PLANNER -->|signal.out| PHASE
+
+    GUIDE -->|command.out| AGENT
+    GUIDE -->|response.out| IF_MAIN
+    GUIDE -->|response.out| IF_TEL
+    GUIDE -->|event.out| MEM_LOG
+    GUIDE -->|event.out| UI_STATE
+
+    AGENT -->|event.out| MEM_LOG
+    AGENT -->|memory.query.out| MEM_LOG
+    AGENT -->|plan.out| SUPERVISOR
+    AGENT -->|plan.out| SAFETY
+    AGENT -->|approval.command.out| APPROVAL
+    AGENT -->|signal.out| PHASE
+    AGENT -->|audit.request.out| PROJ_AUDIT
+
+    PHASE -->|signal.out| PLANNER
+    PHASE -->|command.out| ROUTER
+    PHASE -->|state.out| UI_STATE
+    PHASE -->|event.out| MEM_LOG
+
+    SAFETY -->|signal.out| PHASE
+    SAFETY -->|approved.plan.out| ROUTER
+    SAFETY -->|blocked.plan.out| APPROVAL
+    SAFETY -->|event.out| MEM_LOG
+    SAFETY -->|event.out| UI_STATE
+
+    APPROVAL -->|signal.out| PHASE
+    APPROVAL -->|approved.plan.out| ROUTER
+    APPROVAL -->|event.out| MEM_LOG
+    APPROVAL -->|event.out| SUPERVISOR
+    APPROVAL -->|event.out| UI_STATE
+    APPROVAL -->|response.out| IF_MAIN
+    APPROVAL -->|response.out| IF_TEL
+    APPROVAL -->|rejected.result.out| SUPERVISOR
+    APPROVAL -->|ui.response.out| IF_TEL
+
+    ROUTER -->|desktop.action.out| WK_Desktop
+    ROUTER -->|terminal.action.out| WK_Terminal
+    ROUTER -->|system.action.out| WK_System
+    ROUTER -->|browser.action.out| WK_Browser
+    ROUTER -->|ai.action.out| AI_ASST
+    ROUTER -->|office.action.out| OFFICE
+    ROUTER -->|native.action.out| MEM_LOG
+    ROUTER -->|event.out| MEM_LOG
+    ROUTER -->|event.out| SUPERVISOR
+    ROUTER -->|event.out| GUIDE
+
+    WK_Desktop -->|result.out| VERIFIER
+    WK_Terminal -->|result.out| VERIFIER
+    WK_System -->|result.out| VERIFIER
+    WK_Browser -->|result.out| VERIFIER
+    WK_Desktop -->|result.out| OFFICE
+
+    WK_Desktop -->|event.out| MEM_LOG
+    WK_Terminal -->|event.out| MEM_LOG
+    WK_Terminal -->|event.out| UI_STATE
+    WK_Terminal -->|event.out| GUIDE
+    WK_System -->|event.out| MEM_LOG
+    WK_Browser -->|event.out| MEM_LOG
+
+    VERIFIER -->|result.out| SUPERVISOR
+    VERIFIER -->|event.out| MEM_LOG
+    VERIFIER -->|event.out| GUIDE
+    VERIFIER -->|verification.out| MEM_LOG
+
+    MEM_LOG -->|memory.out| IF_MAIN
+    MEM_LOG -->|memory.out| IF_TEL
+
+    SUPERVISOR -->|event.out| MEM_LOG
+    SUPERVISOR -->|event.out| UI_STATE
+    SUPERVISOR -->|event.out| GUIDE
+    SUPERVISOR -->|event.out| IF_MAIN
+    SUPERVISOR -->|event.out| IF_TEL
+    SUPERVISOR -->|event.out| APPS_SESSION
+    SUPERVISOR -->|result.out| IF_TEL
+
+    UI_STATE -->|event.out| MEM_LOG
+    UI_STATE -->|event.out| IF_TEL
+    UI_STATE -->|ui.state.out| TEL_HUD
+    UI_STATE -->|ui.render.request.out| TEL_HUD
+    UI_STATE -->|event.out| GUIDE
+    UI_STATE -->|callback.in| IF_TEL
+
+    IF_TEL -->|callback.out| TEL_MENU
+    IF_TEL -->|callback.out| SYS_MENU
+    IF_TEL -->|callback.out| MEM_MENU
+    IF_TEL -->|callback.out| APPS_MENU
+    IF_TEL -->|callback.out| UI_STATE
+    IF_TEL -->|callback.out| APPROVAL
+    IF_TEL -->|event.out| MEM_LOG
+    IF_TEL -->|event.out| GUIDE
+    IF_TEL -->|action.out| MEM_LOG
+
+    TEL_MENU -->|ui.response.out| IF_TEL
+    TEL_MENU -->|command.out| AGENT
+    TEL_MENU -->|command.out| MEM_LOG
+    TEL_MENU -->|approval.request.out| APPROVAL
+    TEL_MENU -->|approval.callback.out| APPROVAL
+
+    SYS_MENU -->|ui.response.out| IF_TEL
+    SYS_MENU -->|command.out| AGENT
+    SYS_MENU -->|command.out| MEM_LOG
+
+    MEM_MENU -->|ui.response.out| IF_TEL
+    MEM_MENU -->|memory.query.out| MEM_LOG
+
+    APPS_MENU -->|ui.response.out| IF_TEL
+    APPS_MENU -->|command.out| AGENT
+    APPS_MENU -->|command.out| MEM_LOG
+
+    TEL_HUD -->|ui.response.out| IF_TEL
+
+    APPS_SESSION -->|app.context.out| UI_STATE
+    APPS_SESSION -->|event.out| MEM_LOG
+    APPS_SESSION -->|event.out| IF_TEL
+    APPS_SESSION -->|memory.sync.out| MEM_LOG
+    APPS_SESSION -->|memory.sync.out| IF_TEL
+    APPS_SESSION -->|event.out| GUIDE
+
+    PROJ_AUDIT -->|event.out| MEM_LOG
+    PROJ_AUDIT -->|response.out| IF_MAIN
+    PROJ_AUDIT -->|response.out| IF_TEL
+
+    OFFICE -->|desktop.action.out| WK_Desktop
+    OFFICE -->|ai.action.out| AI_ASST
+    OFFICE -->|event.out| MEM_LOG
+    OFFICE -->|event.out| GUIDE
+    OFFICE -->|result.out| SUPERVISOR
+    OFFICE -->|ui.response.out| IF_TEL
+
+    GAMIF -->|event.out| MEM_LOG`;
+
+    const el = {
+      mermaidInput: document.getElementById('mermaidInput'),
+      searchInput: document.getElementById('searchInput'),
+      statNodes: document.getElementById('statNodes'),
+      statLinks: document.getElementById('statLinks'),
+      statCategories: document.getElementById('statCategories'),
+      categoryChips: document.getElementById('categoryChips'),
+      loadDemoBtn: document.getElementById('loadDemoBtn'),
+      applyBtn: document.getElementById('applyBtn'),
+      resetCameraBtn: document.getElementById('resetCameraBtn'),
+      fullModeBtn: document.getElementById('fullModeBtn'),
+      routeOnlyBtn: document.getElementById('routeOnlyBtn'),
+      routeContextBtn: document.getElementById('routeContextBtn'),
+      selectedTitle: document.getElementById('selectedTitle'),
+      selectedGroup: document.getElementById('selectedGroup'),
+      currentCategoryBadge: document.getElementById('currentCategoryBadge'),
+      pathBadge: document.getElementById('pathBadge'),
+      modeBadge: document.getElementById('modeBadge'),
+      pathFromSelect: document.getElementById('pathFromSelect'),
+      pathToSelect: document.getElementById('pathToSelect'),
+      pathList: document.getElementById('pathList'),
+      selectedIn: document.getElementById('selectedIn'),
+      selectedOut: document.getElementById('selectedOut'),
+      selectedDegree: document.getElementById('selectedDegree'),
+      moduleDegreeBadge: document.getElementById('moduleDegreeBadge'),
+      inboundList: document.getElementById('inboundList'),
+      outboundList: document.getElementById('outboundList'),
+      topNodesList: document.getElementById('topNodesList')
+    };
+
+    const state = {
+      graph: { nodes: [], links: [], categories: [], neighbors: new Map(), groups: [] },
+      selectedNodeId: null,
+      pathFrom: null,
+      pathTo: null,
+      activeCategory: 'all',
+      activePathStep: 0,
+      routeViewMode: 'full',
+      showOnlyNeighborhood: false,
+      search: '',
+      fg: null
+    };
+
+    function cleanLabel(value) {
+      return String(value || '').replace(/^['"`]+|['"`]+$/g, '').trim();
+    }
+
+    function getCategory(port) {
+      const raw = String(port || '').trim();
+      if (!raw) return 'other';
+      if (raw.includes('.')) return raw.split('.')[0];
+      return raw;
+    }
+
+    function stableColor(input) {
+      const text = input || 'default';
+      let hash = 0;
+      for (let i = 0; i < text.length; i += 1) {
+        hash = text.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      const hue = Math.abs(hash) % 360;
+      return `hsl(${hue}, 72%, 58%)`;
+    }
+
+    function linkSourceId(link) {
+      return typeof link.source === 'object' ? link.source.id : link.source;
+    }
+
+    function linkTargetId(link) {
+      return typeof link.target === 'object' ? link.target.id : link.target;
+    }
+
+    function parseMermaidArchitecture(source) {
+      const nodeMap = new Map();
+      const links = [];
+      const groups = new Map();
+      const lines = String(source || '').split(/\r?\n/);
+      let currentGroup = 'Sin grupo';
+
+      function ensureNode(id, partial = {}) {
+        if (!nodeMap.has(id)) {
+          nodeMap.set(id, {
+            id,
+            label: partial.label || id,
+            group: partial.group || currentGroup
+          });
+        } else {
+          const current = nodeMap.get(id);
+          nodeMap.set(id, {
+            ...current,
+            ...partial,
+            label: partial.label || current.label,
+            group: partial.group || current.group || currentGroup
+          });
+        }
+      }
+
+      for (const rawLine of lines) {
+        const line = rawLine.trim();
+        if (!line || line.startsWith('%%') || line.startsWith('class ') || line.startsWith('classDef')) continue;
+
+        const subgraphMatch = line.match(/^subgraph\s+[A-Za-z0-9_]+\[(.+)\]$/);
+        if (subgraphMatch) {
+          currentGroup = cleanLabel(subgraphMatch[1]);
+          groups.set(currentGroup, true);
+          continue;
+        }
+
+        if (line === 'end') {
+          currentGroup = 'Sin grupo';
+          continue;
+        }
+
+        const nodeMatch = line.match(/^([A-Za-z0-9_]+)\[(.+)\]$/);
+        if (nodeMatch) {
+          const [, id, label] = nodeMatch;
+          ensureNode(id, { label: cleanLabel(label), group: currentGroup });
+          continue;
+        }
+
+        const edgeMatch = line.match(/^([A-Za-z0-9_]+)\s+-->\|([^|]+)\|\s+([A-Za-z0-9_]+)$/);
+        if (edgeMatch) {
+          const [, sourceId, port, targetId] = edgeMatch;
+          ensureNode(sourceId);
+          ensureNode(targetId);
+          links.push({
+            source: sourceId,
+            target: targetId,
+            port: port.trim(),
+            category: getCategory(port)
+          });
+        }
+      }
+
+      const inbound = new Map();
+      const outbound = new Map();
+      const neighbors = new Map();
+
+      for (const node of nodeMap.values()) {
+        inbound.set(node.id, 0);
+        outbound.set(node.id, 0);
+        neighbors.set(node.id, new Set());
+      }
+
+      for (const link of links) {
+        outbound.set(link.source, (outbound.get(link.source) || 0) + 1);
+        inbound.set(link.target, (inbound.get(link.target) || 0) + 1);
+        neighbors.get(link.source)?.add(link.target);
+        neighbors.get(link.target)?.add(link.source);
+      }
+
+      const nodes = Array.from(nodeMap.values()).map((node) => {
+        const inDegree = inbound.get(node.id) || 0;
+        const outDegree = outbound.get(node.id) || 0;
+        return {
+          ...node,
+          inDegree,
+          outDegree,
+          degree: inDegree + outDegree,
+          color: stableColor(node.group),
+          val: Math.max(6, 6 + Math.sqrt(Math.max(1, inDegree + outDegree)) * 2.8)
+        };
+      });
+
+      return {
+        nodes,
+        links,
+        categories: Array.from(new Set(links.map((link) => link.category))).sort(),
+        neighbors,
+        groups: Array.from(groups.keys())
+      };
+    }
+
+    function getShortestPath(graph, fromId, toId) {
+      if (!fromId || !toId) return [];
+      if (fromId === toId) return [fromId];
+
+      const queue = [[fromId]];
+      const visited = new Set([fromId]);
+      const adjacency = new Map();
+
+      graph.nodes.forEach((node) => adjacency.set(node.id, []));
+      graph.links.forEach((link) => adjacency.get(link.source)?.push(link.target));
+
+      while (queue.length) {
+        const path = queue.shift();
+        const last = path[path.length - 1];
+        for (const next of adjacency.get(last) || []) {
+          if (visited.has(next)) continue;
+          const candidate = [...path, next];
+          if (next === toId) return candidate;
+          visited.add(next);
+          queue.push(candidate);
+        }
+      }
+
+      return [];
+    }
+
+    function getActivePath() {
+      return getShortestPath(state.graph, state.pathFrom, state.pathTo);
+    }
+
+    function getPathPairs(path) {
+      const set = new Set();
+      for (let i = 0; i < path.length - 1; i += 1) {
+        set.add(`${path[i]}->${path[i + 1]}`);
+      }
+      return set;
+    }
+
+    function getEffectiveRouteMode() {
+      const path = getActivePath();
+      if (state.routeViewMode !== 'full' && path.length <= 1) return 'full';
+      return state.routeViewMode;
+    }
+
+    function getNeighborhoodSet() {
+      if (!state.selectedNodeId) return new Set();
+      const set = new Set([state.selectedNodeId]);
+      state.graph.neighbors.get(state.selectedNodeId)?.forEach((id) => set.add(id));
+      return set;
+    }
+
+    function getVisibleNodeIds() {
+      const path = getActivePath();
+      const selectedNeighborhood = getNeighborhoodSet();
+      const term = state.search.trim().toLowerCase();
+      const ids = new Set();
+      const mode = getEffectiveRouteMode();
+
+      if (mode === 'full') {
+        state.graph.nodes.forEach((node) => ids.add(node.id));
+      } else if (mode === 'route') {
+        path.forEach((id) => ids.add(id));
+      } else {
+        path.forEach((id) => {
+          ids.add(id);
+          state.graph.neighbors.get(id)?.forEach((neighborId) => ids.add(neighborId));
+        });
+      }
+
+      return new Set([...ids].filter((id) => {
+        const node = state.graph.nodes.find((n) => n.id === id);
+        if (!node) return false;
+
+        const matchSearch =
+          !term ||
+          node.label.toLowerCase().includes(term) ||
+          node.id.toLowerCase().includes(term) ||
+          node.group.toLowerCase().includes(term);
+
+        const matchNeighborhood = !state.showOnlyNeighborhood || selectedNeighborhood.has(id);
+        return matchSearch && matchNeighborhood;
+      }));
+    }
+
+    function getVisibleNodes() {
+      const ids = getVisibleNodeIds();
+      return state.graph.nodes.filter((node) => ids.has(node.id));
+    }
+
+    function getVisibleLinks(visibleNodeIds) {
+      const path = getActivePath();
+      const pathPairs = getPathPairs(path);
+      const mode = getEffectiveRouteMode();
+
+      return state.graph.links
+        .map((link) => ({
+          ...link,
+          source: linkSourceId(link),
+          target: linkTargetId(link)
+        }))
+        .filter((link) => {
+          const matchCategory = state.activeCategory === 'all' || link.category === state.activeCategory;
+          const endpointsVisible = visibleNodeIds.has(link.source) && visibleNodeIds.has(link.target);
+          if (!matchCategory || !endpointsVisible) return false;
+          if (mode === 'route' && path.length > 1) {
+            return pathPairs.has(`${link.source}->${link.target}`);
+          }
+          return true;
+        });
+    }
+
+    function createNodeObject(node) {
+      const path = getActivePath();
+      const pathSet = new Set(path);
+      const inPath = pathSet.has(node.id);
+      const isSelected = node.id === state.selectedNodeId;
+      const mode = getEffectiveRouteMode();
+      const deemphasize = mode !== 'full' && path.length > 1 && !inPath;
+      const radius = Math.max(6, node.val * 0.42) + (isSelected ? 2.4 : inPath ? 1.6 : 0);
+      const effectiveRadius = deemphasize ? radius * 0.72 : radius;
+
+      const group = new THREE.Group();
+
+      const sphere = new THREE.Mesh(
+        new THREE.SphereGeometry(effectiveRadius, 30, 30),
+        new THREE.MeshStandardMaterial({
+          color: inPath ? '#f8fafc' : node.color,
+          transparent: true,
+          opacity: deemphasize ? 0.26 : 0.98,
+          emissive: isSelected ? new THREE.Color('#ffffff') : new THREE.Color(inPath ? '#67e8f9' : node.color),
+          emissiveIntensity: isSelected ? 1 : inPath ? 0.72 : 0.16,
+          metalness: 0.18,
+          roughness: 0.24
+        })
+      );
+      group.add(sphere);
+
+      const halo = new THREE.Mesh(
+        new THREE.SphereGeometry(effectiveRadius * (inPath ? 1.42 : 1.22), 24, 24),
+        new THREE.MeshBasicMaterial({
+          color: inPath ? '#67e8f9' : node.color,
+          transparent: true,
+          opacity: deemphasize ? 0.03 : (isSelected ? 0.24 : inPath ? 0.18 : 0.08)
+        })
+      );
+      group.add(halo);
+
+      const label = new SpriteText(node.label);
+      label.color = '#ffffff';
+      label.textHeight = deemphasize ? 5 : (isSelected ? 12 : inPath ? 10 : 7.4);
+      label.position.set(0, effectiveRadius + 11, 0);
+      group.add(label);
+
+      return group;
+    }
+
+    function focusPath(path) {
+      if (!state.fg || !path.length) return;
+      const nodes = path.map((id) => state.graph.nodes.find((n) => n.id === id)).filter(Boolean);
+      if (!nodes.length) return;
+
+      const center = nodes.reduce((acc, node) => {
+        acc.x += node.x || 0;
+        acc.y += node.y || 0;
+        acc.z += node.z || 0;
+        return acc;
+      }, { x: 0, y: 0, z: 0 });
+
+      center.x /= nodes.length;
+      center.y /= nodes.length;
+      center.z /= nodes.length;
+
+      const spread = nodes.reduce((max, node) => {
+        const dx = (node.x || 0) - center.x;
+        const dy = (node.y || 0) - center.y;
+        const dz = (node.z || 0) - center.z;
+        return Math.max(max, Math.sqrt(dx * dx + dy * dy + dz * dz));
+      }, 100);
+
+      state.fg.cameraPosition(
+        { x: center.x, y: center.y, z: center.z + Math.max(260, spread * 2.2) },
+        center,
+        800
+      );
+    }
+
+    function focusNode(nodeId) {
+      const node = state.graph.nodes.find((n) => n.id === nodeId);
+      if (!node || !state.fg) return;
+
+      state.fg.cameraPosition(
+        { x: node.x || 0, y: node.y || 0, z: (node.z || 0) + 180 },
+        { x: node.x || 0, y: node.y || 0, z: node.z || 0 },
+        650
+      );
+    }
+
+    function resetCamera() {
+      const path = getActivePath();
+      const mode = getEffectiveRouteMode();
+      if (mode !== 'full' && path.length > 1) {
+        focusPath(path);
+        return;
+      }
+      state.fg.cameraPosition({ x: 0, y: 0, z: 540 }, undefined, 800);
+    }
+
+    function renderEmptyList(container, text) {
+      container.innerHTML = `<div class="empty">${text}</div>`;
+    }
+
+    function updateStats() {
+      el.statNodes.textContent = state.graph.nodes.length;
+      el.statLinks.textContent = state.graph.links.length;
+      el.statCategories.textContent = state.graph.categories.length;
+    }
+
+    function updateHeaderBadges() {
+      const path = getActivePath();
+      const mode = getEffectiveRouteMode();
+      el.currentCategoryBadge.textContent = state.activeCategory;
+      el.pathBadge.textContent = `ruta ${path.length}`;
+      if (state.routeViewMode !== 'full' && path.length <= 1) {
+        el.modeBadge.textContent = 'sin ruta';
+      } else {
+        el.modeBadge.textContent = mode === 'full' ? 'red' : mode === 'route' ? 'ruta pura' : 'ruta + contexto';
+      }
+    }
+
+    function updateSelectedPanel() {
+      const node = state.graph.nodes.find((n) => n.id === state.selectedNodeId);
+
+      if (!node) {
+        el.selectedTitle.textContent = '—';
+        el.selectedGroup.textContent = '—';
+        el.selectedIn.textContent = '0';
+        el.selectedOut.textContent = '0';
+        el.selectedDegree.textContent = '0';
+        el.moduleDegreeBadge.textContent = 'grado 0';
+        renderEmptyList(el.inboundList, 'Sin nodo seleccionado.');
+        renderEmptyList(el.outboundList, 'Sin nodo seleccionado.');
+        return;
+      }
+
+      el.selectedTitle.textContent = node.label;
+      el.selectedGroup.textContent = node.group;
+      el.selectedGroup.style.background = node.color;
+      el.selectedGroup.style.color = '#020617';
+      el.selectedIn.textContent = node.inDegree;
+      el.selectedOut.textContent = node.outDegree;
+      el.selectedDegree.textContent = node.degree;
+      el.moduleDegreeBadge.textContent = `grado ${node.degree}`;
+
+      const inbound = state.graph.links.filter((link) => linkTargetId(link) === node.id);
+      const outbound = state.graph.links.filter((link) => linkSourceId(link) === node.id);
+
+      if (!inbound.length) {
+        renderEmptyList(el.inboundList, 'Sin entradas registradas.');
+      } else {
+        el.inboundList.innerHTML = '';
+        inbound.forEach((link) => {
+          const fromId = linkSourceId(link);
+          const from = state.graph.nodes.find((n) => n.id === fromId);
+          const item = document.createElement('div');
+          item.className = 'list-item';
+          item.innerHTML = `<div class="title">${from ? from.label : fromId}</div><div class="sub">${link.port}</div>`;
+          el.inboundList.appendChild(item);
+        });
+      }
+
+      if (!outbound.length) {
+        renderEmptyList(el.outboundList, 'Sin salidas registradas.');
+      } else {
+        el.outboundList.innerHTML = '';
+        outbound.forEach((link) => {
+          const toId = linkTargetId(link);
+          const to = state.graph.nodes.find((n) => n.id === toId);
+          const item = document.createElement('div');
+          item.className = 'list-item';
+          item.innerHTML = `<div class="title">${to ? to.label : toId}</div><div class="sub">${link.port}</div>`;
+          el.outboundList.appendChild(item);
+        });
+      }
+    }
+
+    function updateTopNodes() {
+      el.topNodesList.innerHTML = '';
+      state.graph.nodes
+        .slice()
+        .sort((a, b) => b.degree - a.degree)
+        .slice(0, 8)
+        .forEach((node) => {
+          const button = document.createElement('button');
+          button.className = 'list-item';
+          button.innerHTML = `<span class="title">${node.label}</span><span class="badge">${node.degree}</span>`;
+          button.addEventListener('click', () => {
+            state.selectedNodeId = node.id;
+            updateSelectedPanel();
+            refreshGraph();
+            focusNode(node.id);
+          });
+          el.topNodesList.appendChild(button);
+        });
+    }
+
+    function fillPathSelectors() {
+      const options = state.graph.nodes.slice().sort((a, b) => a.label.localeCompare(b.label));
+      [el.pathFromSelect, el.pathToSelect].forEach((select) => {
+        select.innerHTML = '';
+        options.forEach((node) => {
+          const option = document.createElement('option');
+          option.value = node.id;
+          option.textContent = node.label;
+          select.appendChild(option);
+        });
+      });
+
+      if (!options.some((node) => node.id === state.pathFrom) && options[0]) {
+        state.pathFrom = options[0].id;
+      }
+      if (!options.some((node) => node.id === state.pathTo) && options[0]) {
+        state.pathTo = options[options.length - 1].id;
+      }
+
+      el.pathFromSelect.value = state.pathFrom || '';
+      el.pathToSelect.value = state.pathTo || '';
+    }
+
+    function updatePathPanel() {
+      const path = getActivePath();
+      el.pathList.innerHTML = '';
+
+      if (!path.length) {
+        if (!state.selectedNodeId && state.graph.nodes.length) {
+          state.selectedNodeId = state.graph.nodes[0].id;
+        }
+        el.pathList.innerHTML = '<div class="empty">No hay camino dirigido con la selección actual. Se muestra la red completa temporalmente.</div>';
+        updateSelectedPanel();
+        updateHeaderBadges();
+        return;
+      }
+
+      if (state.activePathStep >= path.length) state.activePathStep = 0;
+      state.selectedNodeId = path[state.activePathStep];
+
+      path.forEach((id, index) => {
+        const node = state.graph.nodes.find((n) => n.id === id);
+        const badge = document.createElement('div');
+        badge.className = `badge ${index === state.activePathStep ? 'badge-strong' : ''}`;
+        badge.textContent = node ? node.label : id;
+        badge.addEventListener('click', () => {
+          state.activePathStep = index;
+          state.selectedNodeId = id;
+          updateSelectedPanel();
+          updatePathPanel();
+          refreshGraph();
+          if (getEffectiveRouteMode() !== 'full') {
+            focusPath(path);
+          }
+        });
+        el.pathList.appendChild(badge);
+      });
+
+      updateSelectedPanel();
+      updateHeaderBadges();
+    }
+
+    function syncModeButtons() {
+      el.fullModeBtn.classList.toggle('active', state.routeViewMode === 'full');
+      el.routeOnlyBtn.classList.toggle('active', state.routeViewMode === 'route');
+      el.routeContextBtn.classList.toggle('active', state.routeViewMode === 'context');
+    }
+
+    function buildCategoryChips() {
+      el.categoryChips.innerHTML = '';
+      const counts = new Map();
+      state.graph.links.forEach((link) => counts.set(link.category, (counts.get(link.category) || 0) + 1));
+
+      ['all', ...state.graph.categories].forEach((category) => {
+        const chip = document.createElement('button');
+        chip.className = 'chip' + (state.activeCategory === category ? ' active' : '');
+        chip.textContent = category === 'all' ? 'all' : `${category} · ${counts.get(category) || 0}`;
+        chip.addEventListener('click', () => {
+          state.activeCategory = category;
+          buildCategoryChips();
+          updateHeaderBadges();
+          refreshGraph();
+        });
+        el.categoryChips.appendChild(chip);
+      });
+    }
+
+    function refreshGraph() {
+      if (!state.fg) return;
+
+      const visibleNodes = getVisibleNodes();
+      const visibleNodeIds = new Set(visibleNodes.map((node) => node.id));
+      const visibleLinks = getVisibleLinks(visibleNodeIds);
+      const path = getActivePath();
+      const pathPairs = getPathPairs(path);
+      const pathSet = new Set(path);
+      const mode = getEffectiveRouteMode();
+
+      state.fg
+        .graphData({ nodes: visibleNodes, links: visibleLinks })
+        .nodeThreeObject(createNodeObject)
+        .nodeLabel((node) => `${node.label}\nGrupo: ${node.group}\nEntradas: ${node.inDegree}\nSalidas: ${node.outDegree}`)
+        .linkLabel((link) => `${link.port} · ${link.category}`)
+        .linkWidth((link) => {
+          const sourceId = linkSourceId(link);
+          const targetId = linkTargetId(link);
+          const pairKey = `${sourceId}->${targetId}`;
+          if (pathPairs.has(pairKey)) return 12;
+          if (mode === 'route' && path.length > 1) return 0;
+          if (mode === 'context' && path.length > 1 && !(pathSet.has(sourceId) || pathSet.has(targetId))) return 1;
+          if (state.selectedNodeId && (sourceId === state.selectedNodeId || targetId === state.selectedNodeId)) return 4.4;
+          return 2.6;
+        })
+        .linkColor((link) => {
+          const sourceId = linkSourceId(link);
+          const targetId = linkTargetId(link);
+          const pairKey = `${sourceId}->${targetId}`;
+          if (pathPairs.has(pairKey)) return 'rgba(255,255,255,0.98)';
+          if (mode === 'route' && path.length > 1) return 'rgba(71,85,105,0.02)';
+          if (mode === 'context' && path.length > 1 && !(pathSet.has(sourceId) || pathSet.has(targetId))) return 'rgba(71,85,105,0.16)';
+          if (state.selectedNodeId && (sourceId === state.selectedNodeId || targetId === state.selectedNodeId)) return 'rgba(34,211,238,0.95)';
+          return state.activeCategory === 'all' ? 'rgba(148,163,184,0.62)' : 'rgba(103,232,249,0.86)';
+        })
+        .linkDirectionalParticles((link) => {
+          const sourceId = linkSourceId(link);
+          const targetId = linkTargetId(link);
+          const pairKey = `${sourceId}->${targetId}`;
+          if (pathPairs.has(pairKey)) return 10;
+          if (mode !== 'full' && path.length > 1 && !(pathSet.has(sourceId) && pathSet.has(targetId))) return 0;
+          return 0;
+        })
+        .linkDirectionalParticleSpeed((link) => {
+          const sourceId = linkSourceId(link);
+          const targetId = linkTargetId(link);
+          const pairKey = `${sourceId}->${targetId}`;
+          if (pathPairs.has(pairKey)) return 0.038;
+          return link.category === 'event' ? 0.006 : 0.012;
+        });
+
+      if (mode !== 'full' && path.length > 1) {
+        requestAnimationFrame(() => requestAnimationFrame(() => focusPath(path)));
+      }
+    }
+
+    function refreshUI() {
+      updateStats();
+      buildCategoryChips();
+      fillPathSelectors();
+      updatePathPanel();
+      updateSelectedPanel();
+      updateTopNodes();
+      updateHeaderBadges();
+      syncModeButtons();
+    }
+
+    function applyMermaidSource(newSource) {
+      const parsed = parseMermaidArchitecture(newSource);
+      const groups = parsed.groups.length ? parsed.groups : Array.from(new Set(parsed.nodes.map((node) => node.group)));
+      const centers = new Map();
+      const ringRadius = Math.max(180, groups.length * 36);
+
+      groups.forEach((groupName, index) => {
+        const angle = (index / Math.max(1, groups.length)) * Math.PI * 2;
+        centers.set(groupName, {
+          x: Math.cos(angle) * ringRadius,
+          y: ((index % 3) - 1) * 110,
+          z: Math.sin(angle) * ringRadius
+        });
+      });
+
+      const bucketCount = new Map();
+      parsed.nodes = parsed.nodes.map((node) => {
+        const localIndex = bucketCount.get(node.group) || 0;
+        bucketCount.set(node.group, localIndex + 1);
+        const center = centers.get(node.group) || { x: 0, y: 0, z: 0 };
+        const orbit = 42 + (localIndex % 5) * 18;
+        const angle = localIndex * 0.95;
+        return {
+          ...node,
+          x: center.x + Math.cos(angle) * orbit,
+          y: center.y + ((localIndex % 5) - 2) * 28,
+          z: center.z + Math.sin(angle) * orbit
+        };
+      });
+
+      state.graph = parsed;
+
+      if (!state.pathFrom || !parsed.nodes.some((node) => node.id === state.pathFrom)) {
+        state.pathFrom = parsed.nodes.find((node) => node.id === 'IF_TEL')?.id || parsed.nodes[0]?.id || null;
+      }
+      if (!state.pathTo || !parsed.nodes.some((node) => node.id === state.pathTo)) {
+        state.pathTo = parsed.nodes.find((node) => node.id === 'SUPERVISOR')?.id || parsed.nodes[parsed.nodes.length - 1]?.id || null;
+      }
+
+      const initialPath = getShortestPath(parsed, state.pathFrom, state.pathTo);
+      state.activePathStep = 0;
+      state.selectedNodeId = initialPath.length ? initialPath[0] : parsed.nodes[0]?.id || null;
+
+      refreshUI();
+      refreshGraph();
+      setTimeout(() => resetCamera(), 420);
+    }
+
+    function initializeGraph() {
+      const Graph = ForceGraph3D();
+      state.fg = Graph(document.getElementById('graph'))
+        .backgroundColor('rgba(0,0,0,0)')
+        .showNavInfo(false)
+        .enableNodeDrag(true)
+        .nodeOpacity(0.98)
+        .cooldownTicks(180)
+        .d3AlphaDecay(0.02)
+        .d3VelocityDecay(0.22)
+        .onNodeClick((node) => {
+          const path = getActivePath();
+          const indexInPath = path.indexOf(node.id);
+          state.selectedNodeId = node.id;
+          if (indexInPath >= 0) state.activePathStep = indexInPath;
+          updateSelectedPanel();
+          updatePathPanel();
+          refreshGraph();
+          focusNode(node.id);
+        });
+
+      state.fg.d3Force('charge').strength(-620);
+      state.fg.d3Force('link').distance((link) => {
+        const category = link.category || 'other';
+        if (category === 'event') return 95;
+        if (category === 'result') return 115;
+        if (category === 'command') return 130;
+        if (category === 'ui') return 105;
+        return 110;
+      });
+
+      const scene = state.fg.scene();
+      scene.add(new THREE.AmbientLight(0xffffff, 1.35));
+      const dir = new THREE.DirectionalLight(0xffffff, 1.55);
+      dir.position.set(160, 180, 220);
+      scene.add(dir);
+      const dir2 = new THREE.DirectionalLight(0x67e8f9, 0.5);
+      dir2.position.set(-180, -80, -100);
+      scene.add(dir2);
+
+      applyMermaidSource(el.mermaidInput.value);
+    }
+
+    function bindEvents() {
+      el.loadDemoBtn.addEventListener('click', () => {
+        el.mermaidInput.value = DEFAULT_MERMAID;
+        applyMermaidSource(DEFAULT_MERMAID);
+      });
+
+      el.applyBtn.addEventListener('click', () => applyMermaidSource(el.mermaidInput.value));
+      el.resetCameraBtn.addEventListener('click', resetCamera);
+
+      el.fullModeBtn.addEventListener('click', () => {
+        state.routeViewMode = 'full';
+        syncModeButtons();
+        refreshUI();
+        refreshGraph();
+      });
+
+      el.routeOnlyBtn.addEventListener('click', () => {
+        state.routeViewMode = 'route';
+        state.activePathStep = 0;
+        syncModeButtons();
+        refreshUI();
+      });
+
+      el.routeContextBtn.addEventListener('click', () => {
+        state.routeViewMode = 'context';
+        state.activePathStep = 0;
+        syncModeButtons();
+        refreshUI();
+      });
+
+      el.searchInput.addEventListener('input', (event) => {
+        state.search = event.target.value || '';
+        refreshGraph();
+      });
+
+      el.pathFromSelect.addEventListener('change', (event) => {
+        state.pathFrom = event.target.value;
+        state.activePathStep = 0;
+        updatePathPanel();
+        refreshGraph();
+      });
+
+      el.pathToSelect.addEventListener('change', (event) => {
+        state.pathTo = event.target.value;
+        state.activePathStep = 0;
+        updatePathPanel();
+        refreshGraph();
+      });
+
+      window.addEventListener('resize', () => {
+        if (!state.fg) return;
+        setTimeout(() => {
+          state.fg.width(document.getElementById('graph').clientWidth)
+            .height(document.getElementById('graph').clientHeight);
+        }, 50);
+      });
+    }
+
+    function boot() {
+      el.mermaidInput.value = DEFAULT_MERMAID;
+      bindEvents();
+      initializeGraph();
+    }
+
+    boot();
+  </script>
+</body>
+</html>

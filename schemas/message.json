@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Blueprint Message Schema",
+  "description": "Schema for all messages exchanged between modules in the blueprint system",
+  "type": "object",
+  "required": ["module", "port", "payload", "trace_id", "meta"],
+  "properties": {
+    "module": {
+      "type": "string",
+      "description": "Identifier of the sending module",
+      "pattern": "^[a-z][a-z0-9-]*\\.[a-z][a-z0-9-]*$"
+    },
+    "port": {
+      "type": "string",
+      "description": "Port identifier for the message",
+      "pattern": "^[a-z][a-z0-9-_]*\\.(in|out)$"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Message payload",
+      "additionalProperties": true
+    },
+    "trace_id": {
+      "type": "string",
+      "description": "OBLIGATORIO: Identificador único de traza para seguimiento end-to-end",
+      "pattern": "^[a-zA-Z0-9_-]+$"
+    },
+    "meta": {
+      "type": "object",
+      "description": "OBLIGATORIO: Metadatos de contexto que deben propagarse",
+      "required": ["source"],
+      "properties": {
+        "source": {
+          "type": "string",
+          "description": "Origen del comando (cli, telegram, internal)",
+          "enum": ["cli", "telegram", "internal", "system"]
+        },
+        "chat_id": {
+          "type": ["string", "number"],
+          "description": "ID de chat para contexto de Telegram"
+        },
+        "task_id": {
+          "type": "string",
+          "description": "ID de tarea asociada"
+        },
+        "parent_span": {
+          "type": "string",
+          "description": "ID del span padre para tracing distribuido"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp ISO 8601"
+        },
+        "port_type": {
+          "type": "string",
+          "description": "Tipo semántico del puerto",
+          "enum": ["execution", "observation", "ui", "persistence", "control"]
+        }
+      },
+      "additionalProperties": true
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp del mensaje (legacy, preferir meta.timestamp)"
+    },
+    "message_id": {
+      "type": "string",
+      "description": "Unique message identifier (legacy, preferir trace_id)",
+      "pattern": "^[a-zA-Z0-9_-]+$"
+    }
+  },
+  "additionalProperties": false
+}

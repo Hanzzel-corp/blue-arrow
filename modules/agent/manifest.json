@@ -1,0 +1,17 @@
+{
+  "id": "agent.main",
+  "tier": "core",
+  "priority": "critical",
+  "restart_policy": "immediate",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": ["command.in"],
+  "outputs": [
+    "plan.out",
+    "event.out",
+    "memory.query.out",
+    "audit.request.out",
+    "approval.command.out",
+    "signal.out"
+  ]
+}

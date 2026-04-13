@@ -1,0 +1,31 @@
+{
+  "id": "verifier.engine.main",
+  "name": "Execution Verifier Engine",
+  "version": "1.0.0",
+  "description": "Módulo de verificación post-ejecución que calcula confidence scores y clasifica resultados",
+  "language": "python",
+  "entry": "main.py",
+  "ports": {
+    "result.in": {
+      "description": "Resultados enriquecidos desde workers para verificación"
+    },
+    "result.out": {
+      "description": "Resultados verificados hacia supervisor"
+    },
+    "verification.out": {
+      "description": "Eventos de verificación detallados"
+    },
+    "event.out": {
+      "description": "Eventos de ciclo de vida del verificador"
+    }
+  },
+  "config": {
+    "min_confidence_threshold": 0.75,
+    "verification_timeout_ms": 5000,
+    "emit_detailed_signals": true
+  },
+  "inputs": ["result.in"],
+  "outputs": ["result.out", "verification.out", "event.out"],
+  "dependencies": [],
+  "requires": []
+}

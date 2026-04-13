@@ -1,0 +1,7 @@
+{
+  "id": "supervisor.main",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": ["plan.in", "event.in", "result.in"],
+  "outputs": ["event.out", "result.out"]
+}

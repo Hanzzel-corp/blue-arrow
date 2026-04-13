@@ -1,0 +1,7 @@
+{
+  "id": "system.menu.main",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": ["callback.in"],
+  "outputs": ["ui.response.out", "command.out"]
+}

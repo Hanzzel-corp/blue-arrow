@@ -1,0 +1,35 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Port Schema: action.in",
+  "description": "Schema para puertos de entrada de acciones (ej: worker.*:action.in)",
+  "type": "object",
+  "required": ["task_id", "action", "params", "meta"],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "description": "ID único de la tarea"
+    },
+    "action": {
+      "type": "string",
+      "description": "Nombre de la acción a ejecutar",
+      "minLength": 1
+    },
+    "params": {
+      "type": "object",
+      "description": "Parámetros de la acción",
+      "additionalProperties": true
+    },
+    "meta": {
+      "type": "object",
+      "description": "Metadatos obligatorios",
+      "required": ["source", "trace_id"],
+      "properties": {
+        "source": { "type": "string" },
+        "trace_id": { "type": "string" },
+        "chat_id": { "type": ["string", "number"] },
+        "timeout_ms": { "type": "number", "description": "Timeout para esta acción" }
+      }
+    }
+  },
+  "additionalProperties": false
+}

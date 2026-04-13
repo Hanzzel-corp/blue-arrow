@@ -1,0 +1,24 @@
+{
+  "id": "coherence.analyzer",
+  "name": "Coherence Analyzer",
+  "description": "Analiza coherencia entre planos físico, lógico y operativo. Mide alineación, no cantidades.",
+  "version": "1.0.0",
+  "language": "python",
+  "entry": "main.py",
+  "tier": "satellite",
+  "priority": "low",
+  "restartPolicy": "on_demand",
+  "inputs": [
+    "command.in",
+    "signal.in"
+  ],
+  "outputs": [
+    "event.out",
+    "result.out",
+    "report.out"
+  ],
+  "config": {
+    "auto_run_on_startup": false,
+    "report_interval_seconds": 300
+  }
+}

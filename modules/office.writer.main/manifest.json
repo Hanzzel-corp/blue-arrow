@@ -1,0 +1,28 @@
+{
+  "id": "office.writer.main",
+  "name": "Office Writer",
+  "version": "1.0.0",
+  "description": "Orquesta Writer: abrir documento, redactar con IA y escribir texto en LibreOffice Writer",
+  "tier": "satellite",
+  "priority": "medium",
+  "restart_policy": "lazy",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": [
+    "action.in",
+    "result.in",
+    "context.in",
+    "callback.in"
+  ],
+  "outputs": [
+    "desktop.action.out",
+    "ai.action.out",
+    "event.out",
+    "result.out",
+    "ui.response.out"
+  ],
+  "config": {
+    "default_writer_command": "libreoffice --writer",
+    "max_generated_chars": 6000
+  }
+}

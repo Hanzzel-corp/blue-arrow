@@ -1,0 +1,7 @@
+{
+  "id": "apps.session.main",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": ["result.in", "query.in"],
+  "outputs": ["app.context.out", "memory.sync.out", "event.out"]
+}

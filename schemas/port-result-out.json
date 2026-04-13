@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Port Schema: result.out",
+  "description": "Schema para puertos de salida de resultados (ej: worker.*:result.out)",
+  "type": "object",
+  "required": ["task_id", "status", "meta"],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "description": "ID de la tarea (mismo que el action.in recibido)"
+    },
+    "status": {
+      "type": "string",
+      "description": "Estado final de la ejecución",
+      "enum": ["success", "error", "timeout", "cancelled"]
+    },
+    "result": {
+      "type": ["object", "string", "number", "boolean", "array"],
+      "description": "Datos del resultado (solo si status=success)"
+    },
+    "error": {
+      "type": "object",
+      "description": "Detalles del error (solo si status=error)",
+      "properties": {
+        "code": { "type": "string" },
+        "message": { "type": "string" },
+        "details": { "type": "object" }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "description": "Metadatos propagados del action.in",
+      "required": ["source", "trace_id"],
+      "properties": {
+        "source": { "type": "string" },
+        "trace_id": { "type": "string" },
+        "chat_id": { "type": ["string", "number"] },
+        "execution_time_ms": { "type": "number" }
+      }
+    }
+  },
+  "additionalProperties": false
+}

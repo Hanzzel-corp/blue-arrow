@@ -1,0 +1,259 @@
+{
+  "schema_version": "1.0",
+  "description": "Perfiles de ejecución para blueprint-v0",
+  "last_updated": "2026-04-09",
+  "profiles": {
+    "minimal": {
+      "name": "minimal",
+      "description": "Core esencial únicamente. Para headless/scripting sin UI.",
+      "use_cases": [
+        "Scripts automatizados",
+        "Servicios headless",
+        "CI/CD pipelines",
+        "Recuperación de emergencia"
+      ],
+      "modules": [
+        "interface.main",
+        "planner.main",
+        "agent.main",
+        "safety.guard.main",
+        "approval.main",
+        "router.main",
+        "supervisor.main",
+        "worker.python.desktop",
+        "worker.python.system",
+        "memory.log.main"
+      ],
+      "excluded_categories": [
+        "satellite",
+        "ai",
+        "gamification",
+        "telegram",
+        "menu"
+      ],
+      "startup_order": {
+        "phase_1_critical_core": [
+          "supervisor.main",
+          "router.main"
+        ],
+        "phase_2_core": [
+          "agent.main",
+          "planner.main",
+          "safety.guard.main",
+          "approval.main"
+        ],
+        "phase_3_workers": [
+          "worker.python.desktop",
+          "worker.python.system"
+        ],
+        "phase_4_interface": [
+          "interface.main"
+        ]
+      },
+      "health_check": {
+        "critical_modules": ["supervisor.main", "router.main", "agent.main"],
+        "optional_modules": ["interface.main"]
+      },
+      "resource_limits": {
+        "max_memory_mb": 512,
+        "max_cpu_percent": 50
+      }
+    },
+    "standard": {
+      "name": "standard",
+      "description": "Core completo + interfaces + persistencia. Uso diario sin IA.",
+      "use_cases": [
+        "Uso interactivo diario",
+        "Automatización con UI",
+        "Sistema sin dependencias de IA",
+        "Recursos limitados"
+      ],
+      "modules": [
+        "interface.main",
+        "interface.telegram",
+        "telegram.hud.main",
+        "telegram.menu.main",
+        "planner.main",
+        "agent.main",
+        "safety.guard.main",
+        "approval.main",
+        "router.main",
+        "supervisor.main",
+        "worker.python.desktop",
+        "worker.python.terminal",
+        "worker.python.system",
+        "worker.python.browser",
+        "memory.log.main",
+        "ui.state.main",
+        "guide.main",
+        "apps.session.main",
+        "verifier.engine.main"
+      ],
+      "excluded_categories": [
+        "ai",
+        "gamification"
+      ],
+      "startup_order": {
+        "phase_1_critical_core": [
+          "supervisor.main",
+          "router.main"
+        ],
+        "phase_2_core": [
+          "agent.main",
+          "planner.main",
+          "safety.guard.main",
+          "approval.main",
+          "memory.log.main",
+          "ui.state.main"
+        ],
+        "phase_3_workers": [
+          "worker.python.desktop",
+          "worker.python.terminal",
+          "worker.python.system",
+          "worker.python.browser",
+          "verifier.engine.main"
+        ],
+        "phase_4_interface": [
+          "interface.main",
+          "interface.telegram"
+        ],
+        "phase_5_menus": [
+          "telegram.hud.main",
+          "telegram.menu.main",
+          "guide.main",
+          "apps.session.main"
+        ]
+      },
+      "health_check": {
+        "critical_modules": [
+          "supervisor.main",
+          "router.main",
+          "agent.main",
+          "planner.main"
+        ],
+        "optional_modules": [
+          "interface.telegram",
+          "telegram.menu.main",
+          "guide.main"
+        ]
+      },
+      "resource_limits": {
+        "max_memory_mb": 1024,
+        "max_cpu_percent": 70
+      }
+    },
+    "full": {
+      "name": "full",
+      "description": "Todos los módulos incluyendo IA y gamificación",
+      "use_cases": [
+        "Desarrollo y testing",
+        "Demo completa",
+        "Sistema con IA asistida",
+        "Gamification activa"
+      ],
+      "modules": null,
+      "included_categories": ["all"],
+      "excluded_categories": [],
+      "startup_order": {
+        "phase_1_critical_core": [
+          "supervisor.main",
+          "router.main",
+          "memory.log.main"
+        ],
+        "phase_2_core": [
+          "agent.main",
+          "planner.main",
+          "safety.guard.main",
+          "approval.main",
+          "ui.state.main"
+        ],
+        "phase_3_workers": [
+          "worker.python.desktop",
+          "worker.python.terminal",
+          "worker.python.system",
+          "worker.python.browser",
+          "verifier.engine.main"
+        ],
+        "phase_4_interface": [
+          "interface.main",
+          "interface.telegram",
+          "telegram.hud.main"
+        ],
+        "phase_5_menus": [
+          "telegram.menu.main",
+          "system.menu.main",
+          "apps.menu.main",
+          "memory.menu.main",
+          "guide.main",
+          "apps.session.main"
+        ],
+        "phase_6_satellites_lazy": [
+          "ai.assistant.main",
+          "ai.intent.main",
+          "ai.learning.engine.main",
+          "ai.memory.semantic.main",
+          "ai.self.audit.main",
+          "gamification.main",
+          "project.audit.main"
+        ]
+      },
+      "health_check": {
+        "critical_modules": [
+          "supervisor.main",
+          "router.main",
+          "agent.main",
+          "planner.main"
+        ],
+        "optional_modules": [
+          "ai.assistant.main",
+          "ai.learning.engine.main",
+          "gamification.main",
+          "telegram.menu.main",
+          "system.menu.main",
+          "apps.menu.main"
+        ]
+      },
+      "resource_limits": {
+        "max_memory_mb": 2048,
+        "max_cpu_percent": 90
+      }
+    }
+  },
+  "common_settings": {
+    "restart_policies": {
+      "critical_core": {
+        "policy": "immediate",
+        "delay_ms": 1000,
+        "max_restarts": 5
+      },
+      "core": {
+        "policy": "immediate",
+        "delay_ms": 3000,
+        "max_restarts": 3
+      },
+      "satellite": {
+        "policy": "lazy",
+        "delay_ms": 10000,
+        "max_restarts": 2
+      },
+      "optional": {
+        "policy": "on_demand",
+        "delay_ms": -1,
+        "max_restarts": 0
+      }
+    },
+    "health_check_interval_ms": 30000,
+    "startup_timeout_ms": {
+      "critical_core": 5000,
+      "core": 10000,
+      "satellite": 30000
+    }
+  },
+  "environment_mapping": {
+    "development": "full",
+    "staging": "standard",
+    "production": "standard",
+    "ci": "minimal",
+    "recovery": "minimal"
+  }
+}

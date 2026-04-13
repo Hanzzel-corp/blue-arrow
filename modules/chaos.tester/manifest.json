@@ -1,0 +1,25 @@
+{
+  "id": "chaos.tester",
+  "name": "Chaos Engineering & Active Tester",
+  "description": "Ejecuta acciones reales en módulos, detecta código duplicado, benchmark de funciones",
+  "version": "1.0.0",
+  "language": "python",
+  "entry": "main.py",
+  "tier": "satellite",
+  "priority": "low",
+  "restartPolicy": "on_demand",
+  "inputs": [
+    "command.in",
+    "signal.in"
+  ],
+  "outputs": [
+    "event.out",
+    "result.out",
+    "command.out"
+  ],
+  "config": {
+    "auto_start": false,
+    "test_on_startup": false,
+    "chaos_mode": false
+  }
+}

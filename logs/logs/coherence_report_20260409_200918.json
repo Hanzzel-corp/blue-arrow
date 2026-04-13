@@ -1,0 +1,2004 @@
+{
+  "timestamp": "2026-04-09T20:09:18.626154",
+  "summary": {
+    "total_entities": 36,
+    "avg_coherence": 29.7,
+    "grade": "F",
+    "status": "CR\u00cdTICO",
+    "high_coherence": 0,
+    "medium_coherence": 7,
+    "low_coherence": 29,
+    "physical_orphans": 5,
+    "logical_orphans": 16,
+    "issues": {
+      "physical": 29,
+      "logical": 45,
+      "operational": 34,
+      "cross_plane": 6
+    }
+  },
+  "entities": [
+    {
+      "canonical_id": "agent.main",
+      "coherence_score": 0,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/agent-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: agent-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 12,
+          "used_inputs": [
+            "command.in"
+          ],
+          "used_outputs": [
+            "event.out",
+            "plan.out",
+            "audit.request.out",
+            "memory.query.out",
+            "approval.command.out",
+            "signal.out"
+          ],
+          "unused_inputs": [
+            "memory.in",
+            "intent.in"
+          ],
+          "unused_outputs": [
+            "memory.out",
+            "command.out"
+          ]
+        },
+        "issues": [
+          "Unused outputs: {'memory.out', 'command.out'}",
+          "Unused inputs: {'memory.in', 'intent.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "mismatch",
+        "details": {
+          "syntax_valid": false,
+          "can_execute": false,
+          "health_check": "unhealthy"
+        },
+        "issues": [
+          "Syntax error: No manifest",
+          "Module cannot execute (missing dependencies or entry point)",
+          "Core module has syntax errors (critical)"
+        ]
+      },
+      "cross_plane_issues": [
+        "Core entity has syntax errors (critical)"
+      ]
+    },
+    {
+      "canonical_id": "ai-assistant.main",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/ai-assistant",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'ai.assistant.main', ontology says 'ai-assistant.main'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ai-intent.main",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/ai-intent",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'ai.intent.main', ontology says 'ai-intent.main'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ai-learning-engine.main",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/ai-learning-engine",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'ai.learning.engine.main', ontology says 'ai-learning-engine.main'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ai-memory-semantic.main",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/ai-memory-semantic",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'ai.memory.semantic.main', ontology says 'ai-memory-semantic.main'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ai-self-audit.main",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/ai-self-audit",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'ai.self.audit.main', ontology says 'ai-self-audit.main'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "approval.main",
+      "coherence_score": 0,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/approval-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: approval-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 13,
+          "used_inputs": [
+            "command.in",
+            "request.in",
+            "callback.in",
+            "blocked.plan.in"
+          ],
+          "used_outputs": [
+            "event.out",
+            "approved.plan.out",
+            "rejected.result.out",
+            "response.out",
+            "ui.response.out",
+            "signal.out"
+          ],
+          "unused_inputs": [
+            "signal.in",
+            "ui.response.in"
+          ],
+          "unused_outputs": [
+            "ui.request.out"
+          ]
+        },
+        "issues": [
+          "Unused outputs: {'ui.request.out'}",
+          "Unused inputs: {'signal.in', 'ui.response.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "mismatch",
+        "details": {
+          "syntax_valid": false,
+          "can_execute": false,
+          "health_check": "unhealthy"
+        },
+        "issues": [
+          "Syntax error: No manifest",
+          "Module cannot execute (missing dependencies or entry point)",
+          "Core module has syntax errors (critical)"
+        ]
+      },
+      "cross_plane_issues": [
+        "Core entity has syntax errors (critical)"
+      ]
+    },
+    {
+      "canonical_id": "apps-menu.main",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/apps-menu",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'apps.menu.main', ontology says 'apps-menu.main'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "apps-session.main",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/apps-session",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'apps.session.main', ontology says 'apps-session.main'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "chaos.tester",
+      "coherence_score": 0,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/chaos-tester",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: chaos-tester"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "mismatch",
+        "details": {
+          "syntax_valid": false,
+          "can_execute": false,
+          "health_check": "unknown"
+        },
+        "issues": [
+          "Syntax error: No manifest",
+          "Module cannot execute (missing dependencies or entry point)"
+        ]
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "coherence.analyzer",
+      "coherence_score": 0,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/coherence-analyzer",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: coherence-analyzer"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "mismatch",
+        "details": {
+          "syntax_valid": false,
+          "can_execute": false,
+          "health_check": "unknown"
+        },
+        "issues": [
+          "Syntax error: No manifest",
+          "Module cannot execute (missing dependencies or entry point)"
+        ]
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "diagnostic.main",
+      "coherence_score": 0,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/diagnostic-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: diagnostic-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "mismatch",
+        "details": {
+          "syntax_valid": false,
+          "can_execute": false,
+          "health_check": "unknown"
+        },
+        "issues": [
+          "Syntax error: No manifest",
+          "Module cannot execute (missing dependencies or entry point)"
+        ]
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "gamification.main",
+      "coherence_score": 75,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/gamification",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "event.out",
+            "result.out"
+          ],
+          "unused_inputs": [
+            "achievement.in",
+            "event.in"
+          ],
+          "unused_outputs": [
+            "badge.out",
+            "reward.out"
+          ]
+        },
+        "issues": [
+          "Unused outputs: {'badge.out', 'reward.out'}",
+          "Unused inputs: {'achievement.in', 'event.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "guide.main",
+      "coherence_score": 75,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/guide",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 16,
+          "used_inputs": [
+            "context.in",
+            "command.in"
+          ],
+          "used_outputs": [
+            "response.out",
+            "command.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "query.in"
+          ],
+          "unused_outputs": [
+            "ui.request.out"
+          ]
+        },
+        "issues": [
+          "Unused outputs: {'ui.request.out'}",
+          "Unused inputs: {'query.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "interface.main",
+      "coherence_score": 75,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/interface",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 10,
+          "used_inputs": [
+            "response.in"
+          ],
+          "used_outputs": [
+            "command.out"
+          ],
+          "unused_inputs": [
+            "input.in"
+          ],
+          "unused_outputs": [
+            "output.out"
+          ]
+        },
+        "issues": [
+          "Unused outputs: {'output.out'}",
+          "Unused inputs: {'input.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "interface.telegram",
+      "coherence_score": 10,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/telegram",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: telegram"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 29,
+          "used_inputs": [
+            "event.in",
+            "app.session.in",
+            "response.in",
+            "ui.response.in"
+          ],
+          "used_outputs": [
+            "action.out",
+            "command.out",
+            "callback.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "command.in"
+          ],
+          "unused_outputs": [
+            "ui.request.out",
+            "intent.out"
+          ]
+        },
+        "issues": [
+          "Unused outputs: {'ui.request.out', 'intent.out'}",
+          "Unused inputs: {'command.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "mismatch",
+        "details": {
+          "syntax_valid": false,
+          "can_execute": false,
+          "health_check": "unknown"
+        },
+        "issues": [
+          "Syntax error: No manifest",
+          "Module cannot execute (missing dependencies or entry point)"
+        ]
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "memory-menu.main",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/memory-menu",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'memory.menu.main', ontology says 'memory-menu.main'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "memory.log.main",
+      "coherence_score": 10,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/memory-log-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: memory-log-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 41,
+          "used_inputs": [
+            "command.in",
+            "app.session.in",
+            "query.in",
+            "event.in"
+          ],
+          "used_outputs": [
+            "memory.out"
+          ],
+          "unused_inputs": [
+            "log.in"
+          ],
+          "unused_outputs": [
+            "log.out",
+            "event.out"
+          ]
+        },
+        "issues": [
+          "Unused outputs: {'log.out', 'event.out'}",
+          "Unused inputs: {'log.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "mismatch",
+        "details": {
+          "syntax_valid": false,
+          "can_execute": false,
+          "health_check": "unknown"
+        },
+        "issues": [
+          "Syntax error: No manifest",
+          "Module cannot execute (missing dependencies or entry point)"
+        ]
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "planner",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/planner",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'planner.main', ontology says 'planner'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "core"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "healthy"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "planner.main",
+      "coherence_score": 0,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/planner-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: planner-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 8,
+          "used_inputs": [
+            "command.in",
+            "signal.in"
+          ],
+          "used_outputs": [
+            "command.out",
+            "signal.out",
+            "event.out",
+            "plan.out"
+          ],
+          "unused_inputs": [
+            "context.in",
+            "intent.in"
+          ],
+          "unused_outputs": []
+        },
+        "issues": [
+          "Unused inputs: {'context.in', 'intent.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "mismatch",
+        "details": {
+          "syntax_valid": false,
+          "can_execute": false,
+          "health_check": "unhealthy"
+        },
+        "issues": [
+          "Syntax error: No manifest",
+          "Module cannot execute (missing dependencies or entry point)",
+          "Core module has syntax errors (critical)"
+        ]
+      },
+      "cross_plane_issues": [
+        "Core entity has syntax errors (critical)"
+      ]
+    },
+    {
+      "canonical_id": "project-audit.main",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/project-audit",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'project.audit.main', ontology says 'project-audit.main'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "router.main",
+      "coherence_score": 0,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/router-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: router-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 12,
+          "used_inputs": [
+            "plan.in"
+          ],
+          "used_outputs": [
+            "event.out",
+            "system.action.out",
+            "ai.action.out",
+            "browser.action.out",
+            "desktop.action.out",
+            "terminal.action.out",
+            "native.action.out"
+          ],
+          "unused_inputs": [
+            "event.in",
+            "command.in",
+            "result.in"
+          ],
+          "unused_outputs": [
+            "command.out",
+            "plan.out",
+            "result.out"
+          ]
+        },
+        "issues": [
+          "Unused outputs: {'command.out', 'plan.out', 'result.out'}",
+          "Unused inputs: {'event.in', 'command.in', 'result.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "mismatch",
+        "details": {
+          "syntax_valid": false,
+          "can_execute": false,
+          "health_check": "unhealthy"
+        },
+        "issues": [
+          "Syntax error: No manifest",
+          "Module cannot execute (missing dependencies or entry point)",
+          "Core module has syntax errors (critical)"
+        ]
+      },
+      "cross_plane_issues": [
+        "Core entity has syntax errors (critical)"
+      ]
+    },
+    {
+      "canonical_id": "safety-guard.main",
+      "coherence_score": 0,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/safety-guard-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: safety-guard-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "core"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "mismatch",
+        "details": {
+          "syntax_valid": false,
+          "can_execute": false,
+          "health_check": "unhealthy"
+        },
+        "issues": [
+          "Syntax error: No manifest",
+          "Module cannot execute (missing dependencies or entry point)",
+          "Core module has syntax errors (critical)"
+        ]
+      },
+      "cross_plane_issues": [
+        "Core entity has syntax errors (critical)"
+      ]
+    },
+    {
+      "canonical_id": "supervisor.main",
+      "coherence_score": 0,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/supervisor-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: supervisor-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 18,
+          "used_inputs": [
+            "event.in",
+            "result.in",
+            "plan.in"
+          ],
+          "used_outputs": [
+            "event.out",
+            "result.out"
+          ],
+          "unused_inputs": [
+            "approval.in"
+          ],
+          "unused_outputs": [
+            "command.out",
+            "status.out"
+          ]
+        },
+        "issues": [
+          "Unused outputs: {'command.out', 'status.out'}",
+          "Unused inputs: {'approval.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "mismatch",
+        "details": {
+          "syntax_valid": false,
+          "can_execute": false,
+          "health_check": "unhealthy"
+        },
+        "issues": [
+          "Syntax error: No manifest",
+          "Module cannot execute (missing dependencies or entry point)",
+          "Core module has syntax errors (critical)"
+        ]
+      },
+      "cross_plane_issues": [
+        "Core entity has syntax errors (critical)"
+      ]
+    },
+    {
+      "canonical_id": "system-menu.main",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/system-menu",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'system.menu.main', ontology says 'system-menu.main'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "telegram-hud.main",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/telegram-hud",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'telegram.hud.main', ontology says 'telegram-hud.main'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "telegram-menu.main",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/telegram-menu",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'telegram.menu.main', ontology says 'telegram-menu.main'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "telegram.main",
+      "coherence_score": 0,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/telegram",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: telegram"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "mismatch",
+        "details": {
+          "syntax_valid": false,
+          "can_execute": false,
+          "health_check": "unknown"
+        },
+        "issues": [
+          "Syntax error: No manifest",
+          "Module cannot execute (missing dependencies or entry point)"
+        ]
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "verifier.main",
+      "coherence_score": 0,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/verifier",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: verifier"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "mismatch",
+        "details": {
+          "syntax_valid": false,
+          "can_execute": false,
+          "health_check": "unknown"
+        },
+        "issues": [
+          "Syntax error: No manifest",
+          "Module cannot execute (missing dependencies or entry point)"
+        ]
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "worker.browser",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/worker-browser",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'worker.python.browser', ontology says 'worker.browser'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "worker.desktop",
+      "coherence_score": 0,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/worker-desktop",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: worker-desktop"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "mismatch",
+        "details": {
+          "syntax_valid": false,
+          "can_execute": false,
+          "health_check": "unknown"
+        },
+        "issues": [
+          "Syntax error: No manifest",
+          "Module cannot execute (missing dependencies or entry point)"
+        ]
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "worker.python.browser",
+      "coherence_score": 75,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/worker-browser",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "event.out",
+            "result.out"
+          ],
+          "unused_inputs": [
+            "command.in"
+          ],
+          "unused_outputs": []
+        },
+        "issues": [
+          "Unused inputs: {'command.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "worker.python.desktop",
+      "coherence_score": 75,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/worker-python",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "event.out",
+            "result.out"
+          ],
+          "unused_inputs": [
+            "command.in"
+          ],
+          "unused_outputs": []
+        },
+        "issues": [
+          "Unused inputs: {'command.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "worker.python.system",
+      "coherence_score": 75,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/worker-system",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "event.out",
+            "result.out"
+          ],
+          "unused_inputs": [
+            "command.in"
+          ],
+          "unused_outputs": []
+        },
+        "issues": [
+          "Unused inputs: {'command.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "worker.python.terminal",
+      "coherence_score": 75,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/worker.python.terminal",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 5,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "event.out",
+            "result.out"
+          ],
+          "unused_inputs": [
+            "command.in"
+          ],
+          "unused_outputs": []
+        },
+        "issues": [
+          "Unused inputs: {'command.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "worker.system",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/worker-system",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'worker.python.system', ontology says 'worker.system'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    }
+  ],
+  "orphans": {
+    "physical": [
+      {
+        "directory": "telegram-interface",
+        "manifest_id": "interface.telegram",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "ui-state",
+        "manifest_id": "ui.state.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "plan-runner",
+        "manifest_id": "plan.runner.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "verifier-engine",
+        "manifest_id": "verifier.engine.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "phase-engine",
+        "manifest_id": "phase.engine.main",
+        "issue": "Directory exists but not in ontology"
+      }
+    ],
+    "logical": [
+      {
+        "module_id": "ai.intent.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "safety.guard.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "project.audit.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "telegram.menu.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "system.menu.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "memory.menu.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "apps.menu.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "ui.state.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "telegram.hud.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "apps.session.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "ai.assistant.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "ai.memory.semantic.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "ai.self.audit.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "ai.learning.engine.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "verifier.engine.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "phase.engine.main",
+        "issue": "In blueprint but not in ontology"
+      }
+    ]
+  }
+}

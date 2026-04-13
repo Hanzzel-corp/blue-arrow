@@ -1,0 +1,32 @@
+{
+  "id": "gamification.main",
+  "name": "Gamification System",
+  "version": "1.0.0",
+  "description": "Sistema de gamificación RPG con niveles, XP, logros y progreso",
+  "tier": "satellite",
+  "priority": "low",
+  "restart_policy": "lazy",
+  "language": "python",
+  "entry": "main.py",
+  "ports": {
+    "action.in": {
+      "description": "Acciones: game.track, game.profile, game.xp, game.leaderboard, game.achievements, game.stats, game.update_username"
+    },
+    "result.out": {
+      "description": "Resultados de gamificación"
+    },
+    "query.in": {
+      "description": "Queries de estado de gamificación"
+    },
+    "event.out": {
+      "description": "Eventos de gamificación: ready, level_up, achievement_unlocked, errores"
+    }
+  },
+  "config": {
+    "xp_base": 10,
+    "level_formula": "sqrt(xp / 100)",
+    "max_level": 100
+  },
+  "inputs": ["action.in", "query.in"],
+  "outputs": ["result.out", "event.out"]
+}

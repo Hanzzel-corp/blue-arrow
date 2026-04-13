@@ -1,0 +1,596 @@
+{
+  "modules": [
+    "interface.main",
+    "agent.main",
+    "worker.python.desktop",
+    "worker.python.terminal",
+    "memory.log.main",
+    "interface.telegram",
+    "router.main",
+    "worker.python.system",
+    "worker.python.browser",
+    "supervisor.main",
+    "ai.intent.main",
+    "safety.guard.main",
+    "approval.main",
+    "project.audit.main",
+    "telegram.menu.main",
+    "system.menu.main",
+    "memory.menu.main",
+    "apps.menu.main",
+    "ui.state.main",
+    "telegram.hud.main",
+    "apps.session.main",
+    "planner.main",
+    "guide.main",
+    "ai.assistant.main",
+    "ai.memory.semantic.main",
+    "ai.self.audit.main",
+    "ai.learning.engine.main",
+    "gamification.main",
+    "verifier.engine.main",
+    "phase.engine.main"
+  ],
+  "connections": [
+    {
+      "from": "interface.main:command.out",
+      "to": "planner.main:command.in"
+    },
+    {
+      "from": "interface.telegram:command.out",
+      "to": "planner.main:command.in"
+    },
+    {
+      "from": "interface.main:command.out",
+      "to": "memory.log.main:command.in"
+    },
+    {
+      "from": "interface.telegram:command.out",
+      "to": "memory.log.main:command.in"
+    },
+    {
+      "from": "planner.main:command.out",
+      "to": "guide.main:command.in"
+    },
+    {
+      "from": "guide.main:command.out",
+      "to": "agent.main:command.in"
+    },
+    {
+      "from": "planner.main:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "guide.main:response.out",
+      "to": "interface.main:response.in"
+    },
+    {
+      "from": "guide.main:response.out",
+      "to": "interface.telegram:response.in"
+    },
+    {
+      "from": "guide.main:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "guide.main:event.out",
+      "to": "ui.state.main:event.in"
+    },
+    {
+      "from": "agent.main:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "agent.main:memory.query.out",
+      "to": "memory.log.main:query.in"
+    },
+    {
+      "from": "agent.main:plan.out",
+      "to": "supervisor.main:plan.in"
+    },
+    {
+      "from": "agent.main:plan.out",
+      "to": "safety.guard.main:plan.in"
+    },
+    {
+      "from": "agent.main:approval.command.out",
+      "to": "approval.main:command.in"
+    },
+    {
+      "from": "agent.main:signal.out",
+      "to": "phase.engine.main:signal.in"
+    },
+    {
+      "from": "planner.main:signal.out",
+      "to": "phase.engine.main:signal.in"
+    },
+    {
+      "from": "safety.guard.main:signal.out",
+      "to": "phase.engine.main:signal.in"
+    },
+    {
+      "from": "approval.main:signal.out",
+      "to": "phase.engine.main:signal.in"
+    },
+    {
+      "from": "phase.engine.main:signal.out",
+      "to": "planner.main:signal.in"
+    },
+    {
+      "from": "phase.engine.main:command.out",
+      "to": "router.main:plan.in"
+    },
+    {
+      "from": "phase.engine.main:state.out",
+      "to": "ui.state.main:state.in"
+    },
+    {
+      "from": "phase.engine.main:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "safety.guard.main:approved.plan.out",
+      "to": "router.main:plan.in"
+    },
+    {
+      "from": "safety.guard.main:blocked.plan.out",
+      "to": "approval.main:blocked.plan.in"
+    },
+    {
+      "from": "safety.guard.main:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "safety.guard.main:event.out",
+      "to": "ui.state.main:event.in"
+    },
+    {
+      "from": "approval.main:approved.plan.out",
+      "to": "router.main:plan.in"
+    },
+    {
+      "from": "approval.main:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "approval.main:event.out",
+      "to": "supervisor.main:event.in"
+    },
+    {
+      "from": "approval.main:event.out",
+      "to": "ui.state.main:event.in"
+    },
+    {
+      "from": "approval.main:response.out",
+      "to": "interface.main:response.in"
+    },
+    {
+      "from": "approval.main:response.out",
+      "to": "interface.telegram:response.in"
+    },
+    {
+      "from": "approval.main:rejected.result.out",
+      "to": "supervisor.main:result.in"
+    },
+    {
+      "from": "approval.main:ui.response.out",
+      "to": "interface.telegram:ui.response.in"
+    },
+    {
+      "from": "router.main:desktop.action.out",
+      "to": "worker.python.desktop:action.in"
+    },
+    {
+      "from": "router.main:terminal.action.out",
+      "to": "worker.python.terminal:action.in"
+    },
+    {
+      "from": "router.main:system.action.out",
+      "to": "worker.python.system:action.in"
+    },
+    {
+      "from": "router.main:browser.action.out",
+      "to": "worker.python.browser:action.in"
+    },
+    {
+      "from": "router.main:ai.action.out",
+      "to": "ai.assistant.main:ai.action.in"
+    },
+    {
+      "from": "router.main:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "router.main:event.out",
+      "to": "supervisor.main:event.in"
+    },
+    {
+      "from": "router.main:event.out",
+      "to": "guide.main:context.in"
+    },
+    {
+      "from": "worker.python.desktop:result.out",
+      "to": "verifier.engine.main:result.in"
+    },
+    {
+      "from": "worker.python.terminal:result.out",
+      "to": "verifier.engine.main:result.in"
+    },
+    {
+      "from": "worker.python.system:result.out",
+      "to": "verifier.engine.main:result.in"
+    },
+    {
+      "from": "worker.python.browser:result.out",
+      "to": "verifier.engine.main:result.in"
+    },
+    {
+      "from": "worker.python.desktop:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "worker.python.terminal:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "worker.python.system:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "worker.python.browser:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "worker.python.desktop:result.out",
+      "to": "interface.main:response.in"
+    },
+    {
+      "from": "worker.python.desktop:result.out",
+      "to": "interface.telegram:response.in"
+    },
+    {
+      "from": "worker.python.terminal:result.out",
+      "to": "interface.main:response.in"
+    },
+    {
+      "from": "worker.python.terminal:result.out",
+      "to": "interface.telegram:response.in"
+    },
+    {
+      "from": "worker.python.system:result.out",
+      "to": "interface.main:response.in"
+    },
+    {
+      "from": "worker.python.system:result.out",
+      "to": "interface.telegram:response.in"
+    },
+    {
+      "from": "worker.python.browser:result.out",
+      "to": "interface.main:response.in"
+    },
+    {
+      "from": "worker.python.browser:result.out",
+      "to": "interface.telegram:response.in"
+    },
+    {
+      "from": "worker.python.desktop:result.out",
+      "to": "ui.state.main:result.in"
+    },
+    {
+      "from": "worker.python.terminal:result.out",
+      "to": "ui.state.main:result.in"
+    },
+    {
+      "from": "worker.python.system:result.out",
+      "to": "ui.state.main:result.in"
+    },
+    {
+      "from": "worker.python.browser:result.out",
+      "to": "ui.state.main:result.in"
+    },
+    {
+      "from": "worker.python.desktop:result.out",
+      "to": "apps.session.main:result.in"
+    },
+    {
+      "from": "worker.python.terminal:result.out",
+      "to": "apps.session.main:result.in"
+    },
+    {
+      "from": "worker.python.browser:result.out",
+      "to": "apps.session.main:result.in"
+    },
+    {
+      "from": "worker.python.desktop:result.out",
+      "to": "ai.learning.engine.main:action.in"
+    },
+    {
+      "from": "worker.python.terminal:result.out",
+      "to": "ai.learning.engine.main:action.in"
+    },
+    {
+      "from": "worker.python.desktop:result.out",
+      "to": "gamification.main:action.in"
+    },
+    {
+      "from": "worker.python.terminal:result.out",
+      "to": "gamification.main:action.in"
+    },
+    {
+      "from": "worker.python.system:result.out",
+      "to": "gamification.main:action.in"
+    },
+    {
+      "from": "worker.python.browser:result.out",
+      "to": "gamification.main:action.in"
+    },
+    {
+      "from": "worker.python.desktop:result.out",
+      "to": "guide.main:result.in"
+    },
+    {
+      "from": "worker.python.terminal:result.out",
+      "to": "guide.main:result.in"
+    },
+    {
+      "from": "worker.python.system:result.out",
+      "to": "guide.main:result.in"
+    },
+    {
+      "from": "worker.python.browser:result.out",
+      "to": "guide.main:result.in"
+    },
+    {
+      "from": "worker.python.terminal:event.out",
+      "to": "ui.state.main:context.in"
+    },
+    {
+      "from": "worker.python.terminal:event.out",
+      "to": "guide.main:context.in"
+    },
+    {
+      "from": "verifier.engine.main:result.out",
+      "to": "supervisor.main:result.in"
+    },
+    {
+      "from": "verifier.engine.main:result.out",
+      "to": "memory.log.main:result.in"
+    },
+    {
+      "from": "verifier.engine.main:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "verifier.engine.main:event.out",
+      "to": "guide.main:context.in"
+    },
+    {
+      "from": "verifier.engine.main:result.out",
+      "to": "guide.main:result.in"
+    },
+    {
+      "from": "ai.assistant.main:result.out",
+      "to": "memory.log.main:result.in"
+    },
+    {
+      "from": "ai.assistant.main:result.out",
+      "to": "interface.main:response.in"
+    },
+    {
+      "from": "ai.assistant.main:result.out",
+      "to": "interface.telegram:response.in"
+    },
+    {
+      "from": "ai.assistant.main:result.out",
+      "to": "supervisor.main:result.in"
+    },
+    {
+      "from": "ai.assistant.main:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "ai.assistant.main:result.out",
+      "to": "guide.main:result.in"
+    },
+    {
+      "from": "memory.log.main:memory.out",
+      "to": "interface.main:response.in"
+    },
+    {
+      "from": "memory.log.main:memory.out",
+      "to": "interface.telegram:response.in"
+    },
+    {
+      "from": "supervisor.main:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "supervisor.main:event.out",
+      "to": "ui.state.main:event.in"
+    },
+    {
+      "from": "supervisor.main:event.out",
+      "to": "guide.main:context.in"
+    },
+    {
+      "from": "interface.main:command.out",
+      "to": "ai.intent.main:command.in"
+    },
+    {
+      "from": "interface.telegram:command.out",
+      "to": "ai.intent.main:command.in"
+    },
+    {
+      "from": "ai.intent.main:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "agent.main:audit.request.out",
+      "to": "project.audit.main:audit.in"
+    },
+    {
+      "from": "project.audit.main:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "project.audit.main:response.out",
+      "to": "interface.main:response.in"
+    },
+    {
+      "from": "project.audit.main:response.out",
+      "to": "interface.telegram:response.in"
+    },
+    {
+      "from": "interface.telegram:callback.out",
+      "to": "telegram.menu.main:callback.in"
+    },
+    {
+      "from": "interface.telegram:callback.out",
+      "to": "system.menu.main:callback.in"
+    },
+    {
+      "from": "interface.telegram:callback.out",
+      "to": "memory.menu.main:callback.in"
+    },
+    {
+      "from": "interface.telegram:callback.out",
+      "to": "apps.menu.main:callback.in"
+    },
+    {
+      "from": "interface.telegram:callback.out",
+      "to": "ui.state.main:callback.in"
+    },
+    {
+      "from": "telegram.menu.main:ui.response.out",
+      "to": "interface.telegram:ui.response.in"
+    },
+    {
+      "from": "telegram.menu.main:command.out",
+      "to": "agent.main:command.in"
+    },
+    {
+      "from": "telegram.menu.main:command.out",
+      "to": "memory.log.main:command.in"
+    },
+    {
+      "from": "telegram.menu.main:approval.request.out",
+      "to": "approval.main:request.in"
+    },
+    {
+      "from": "telegram.menu.main:approval.callback.out",
+      "to": "approval.main:callback.in"
+    },
+    {
+      "from": "system.menu.main:ui.response.out",
+      "to": "interface.telegram:ui.response.in"
+    },
+    {
+      "from": "system.menu.main:command.out",
+      "to": "agent.main:command.in"
+    },
+    {
+      "from": "system.menu.main:command.out",
+      "to": "memory.log.main:command.in"
+    },
+    {
+      "from": "memory.menu.main:ui.response.out",
+      "to": "interface.telegram:ui.response.in"
+    },
+    {
+      "from": "memory.menu.main:memory.query.out",
+      "to": "memory.log.main:query.in"
+    },
+    {
+      "from": "apps.menu.main:ui.response.out",
+      "to": "interface.telegram:ui.response.in"
+    },
+    {
+      "from": "apps.menu.main:command.out",
+      "to": "agent.main:command.in"
+    },
+    {
+      "from": "apps.menu.main:command.out",
+      "to": "memory.log.main:command.in"
+    },
+    {
+      "from": "ui.state.main:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "ui.state.main:event.out",
+      "to": "interface.telegram:event.in"
+    },
+    {
+      "from": "ui.state.main:ui.state.out",
+      "to": "telegram.hud.main:ui.state.in"
+    },
+    {
+      "from": "ui.state.main:ui.render.request.out",
+      "to": "telegram.hud.main:render.request.in"
+    },
+    {
+      "from": "ui.state.main:event.out",
+      "to": "guide.main:context.in"
+    },
+    {
+      "from": "telegram.hud.main:ui.response.out",
+      "to": "interface.telegram:ui.response.in"
+    },
+    {
+      "from": "apps.session.main:app.context.out",
+      "to": "ui.state.main:app.context.in"
+    },
+    {
+      "from": "apps.session.main:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "apps.session.main:event.out",
+      "to": "interface.telegram:event.in"
+    },
+    {
+      "from": "apps.session.main:memory.sync.out",
+      "to": "memory.log.main:app.session.in"
+    },
+    {
+      "from": "apps.session.main:memory.sync.out",
+      "to": "interface.telegram:app.session.in"
+    },
+    {
+      "from": "apps.session.main:event.out",
+      "to": "guide.main:context.in"
+    },
+    {
+      "from": "ai.learning.engine.main:result.out",
+      "to": "memory.log.main:result.in"
+    },
+    {
+      "from": "ai.learning.engine.main:result.out",
+      "to": "agent.main:result.in"
+    },
+    {
+      "from": "ai.memory.semantic.main:result.out",
+      "to": "memory.log.main:result.in"
+    },
+    {
+      "from": "ai.self.audit.main:result.out",
+      "to": "memory.log.main:result.in"
+    },
+    {
+      "from": "gamification.main:result.out",
+      "to": "memory.log.main:result.in"
+    },
+    {
+      "from": "gamification.main:event.out",
+      "to": "memory.log.main:event.in"
+    },
+    {
+      "from": "planner.main:plan.out",
+      "to": "supervisor.main:plan.in"
+    },
+    {
+      "from": "planner.main:plan.out",
+      "to": "safety.guard.main:plan.in"
+    }
+  ]
+}

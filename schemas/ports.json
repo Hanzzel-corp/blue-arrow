@@ -1,0 +1,235 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Port Schemas",
+  "description": "Schemas for specific port payloads in the blueprint system",
+  "definitions": {
+    "command": {
+      "type": "object",
+      "required": ["command_id", "text", "source"],
+      "properties": {
+        "command_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "enum": ["cli", "telegram"]
+        },
+        "chat_id": {
+          "type": ["integer", "null"]
+        },
+        "meta": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "plan": {
+      "type": "object",
+      "required": ["plan_id", "kind", "original_command", "steps"],
+      "properties": {
+        "plan_id": {
+          "type": "string",
+          "pattern": "^plan_[0-9]+$"
+        },
+        "kind": {
+          "type": "string",
+          "enum": ["single_step", "multi_step"]
+        },
+        "original_command": {
+          "type": "string"
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/step"
+          },
+          "minItems": 1
+        },
+        "meta": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "step": {
+      "type": "object",
+      "required": ["action"],
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "open_application",
+            "echo_text",
+            "terminal.write_command",
+            "terminal.show_command",
+            "search_file",
+            "monitor_resources",
+            "open_url",
+            "search_google",
+            "fill_form",
+            "click_web"
+          ]
+        },
+        "params": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "step_id": {
+          "type": "string"
+        }
+      }
+    },
+    "result": {
+      "type": "object",
+      "required": ["task_id", "status", "result"],
+      "properties": {
+        "task_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["success", "error", "timeout"]
+        },
+        "result": {
+          "type": ["object", "string", "array", "null"]
+        },
+        "error": {
+          "type": "string"
+        },
+        "execution_time": {
+          "type": "number",
+          "minimum": 0
+        },
+        "meta": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "event": {
+      "type": "object",
+      "required": ["event_type", "source"],
+      "properties": {
+        "event_type": {
+          "type": "string",
+          "enum": [
+            "plan_created",
+            "plan_approved",
+            "plan_rejected",
+            "plan_started",
+            "plan_completed",
+            "plan_failed",
+            "task_started",
+            "task_completed",
+            "task_failed",
+            "module_started",
+            "module_error",
+            "safety_block",
+            "approval_required"
+          ]
+        },
+        "source": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "memory_query": {
+      "type": "object",
+      "required": ["query_type"],
+      "properties": {
+        "query_type": {
+          "type": "string",
+          "enum": [
+            "last_command",
+            "last_result",
+            "last_app_opened",
+            "last_file_search",
+            "system_status",
+            "session_info"
+          ]
+        },
+        "filters": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        }
+      }
+    },
+    "memory_data": {
+      "type": "object",
+      "required": ["query_type", "data"],
+      "properties": {
+        "query_type": {
+          "type": "string"
+        },
+        "data": {
+          "type": ["object", "array", "string", "null"]
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "approval_request": {
+      "type": "object",
+      "required": ["request_id", "plan", "reason"],
+      "properties": {
+        "request_id": {
+          "type": "string",
+          "pattern": "^req_[0-9]+$"
+        },
+        "plan": {
+          "$ref": "#/definitions/plan"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "timeout": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "source": {
+          "type": "string"
+        }
+      }
+    },
+    "approval_response": {
+      "type": "object",
+      "required": ["request_id", "decision"],
+      "properties": {
+        "request_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": ["approved", "rejected", "timeout"]
+        },
+        "reason": {
+          "type": "string"
+        },
+        "approved_by": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "id": "safety.guard.main",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": ["plan.in"],
+  "outputs": ["approved.plan.out", "blocked.plan.out", "event.out", "signal.out"]
+}

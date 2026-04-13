@@ -1,0 +1,18 @@
+{
+  "id": "interface.telegram",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": [
+    "app.context.in",
+    "app.session.in",
+    "event.in",
+    "ui.response.in",
+    "response.in"
+  ],
+  "outputs": [
+    "command.out",
+    "callback.out",
+    "event.out",
+    "action.out"
+  ]
+}

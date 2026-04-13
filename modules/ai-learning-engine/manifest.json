@@ -1,0 +1,30 @@
+{
+  "id": "ai.learning.engine.main",
+  "name": "AI Learning Engine",
+  "version": "1.0.0",
+  "description": "Motor de aprendizaje continuo que mejora con cada interacción y se adapta al usuario",
+  "language": "python",
+  "entry": "main.py",
+  "ports": {
+    "action.in": {
+      "description": "Acciones: learn.interaction, learn.correction, learn.preference, learn.predict, learn.suggestions, learn.stats, learn.shortcuts"
+    },
+    "result.out": {
+      "description": "Resultados de aprendizaje"
+    },
+    "query.in": {
+      "description": "Queries de estado de aprendizaje"
+    },
+    "event.out": {
+      "description": "Eventos de aprendizaje"
+    }
+  },
+  "config": {
+    "max_patterns": 500,
+    "max_corrections": 100,
+    "shortcut_threshold": 5,
+    "similarity_threshold": 0.3
+  },
+  "inputs": ["action.in", "query.in"],
+  "outputs": ["result.out", "event.out"]
+}

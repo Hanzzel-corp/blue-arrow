@@ -1,0 +1,19 @@
+{
+  "id": "router.main",
+  "tier": "core",
+  "priority": "critical",
+  "restart_policy": "immediate",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": ["plan.in"],
+  "outputs": [
+    "desktop.action.out",
+    "terminal.action.out",
+    "system.action.out",
+    "browser.action.out",
+    "native.action.out",
+    "ai.action.out",
+    "event.out",
+    "office.action.out"
+  ]
+}

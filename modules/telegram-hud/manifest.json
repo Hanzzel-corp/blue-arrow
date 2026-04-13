@@ -1,0 +1,7 @@
+{
+  "id": "telegram.hud.main",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": ["ui.state.in", "render.request.in"],
+  "outputs": ["ui.response.out"]
+}

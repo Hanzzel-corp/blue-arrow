@@ -1,0 +1,1653 @@
+{
+  "timestamp": "2026-04-09T20:05:20.066292",
+  "summary": {
+    "total_entities": 29,
+    "avg_coherence": 20.3,
+    "grade": "F",
+    "status": "CR\u00cdTICO",
+    "high_coherence": 0,
+    "medium_coherence": 1,
+    "low_coherence": 28,
+    "physical_orphans": 29,
+    "logical_orphans": 21,
+    "issues": {
+      "physical": 28,
+      "logical": 36,
+      "operational": 6,
+      "cross_plane": 6
+    }
+  },
+  "entities": [
+    {
+      "canonical_id": "agent.main",
+      "coherence_score": 0,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/agent-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: agent-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 12,
+          "used_inputs": [
+            "command.in"
+          ],
+          "used_outputs": [
+            "signal.out",
+            "event.out",
+            "approval.command.out",
+            "audit.request.out",
+            "memory.query.out",
+            "plan.out"
+          ],
+          "unused_inputs": [
+            "memory.in",
+            "intent.in"
+          ],
+          "unused_outputs": [
+            "memory.out",
+            "command.out"
+          ]
+        },
+        "issues": [
+          "Unused outputs: {'memory.out', 'command.out'}",
+          "Unused inputs: {'memory.in', 'intent.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "degraded",
+        "details": {
+          "process_running": true,
+          "health_check": "missing",
+          "response_time_ms": null
+        },
+        "issues": [
+          "Health check failed: No manifest"
+        ]
+      },
+      "cross_plane_issues": [
+        "Core entity not operational (critical)"
+      ]
+    },
+    {
+      "canonical_id": "ai-assistant.main",
+      "coherence_score": 20,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/ai-assistant-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: ai-assistant-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ai-intent.main",
+      "coherence_score": 20,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/ai-intent-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: ai-intent-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ai-learning-engine.main",
+      "coherence_score": 20,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/ai-learning-engine-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: ai-learning-engine-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ai-memory-semantic.main",
+      "coherence_score": 20,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/ai-memory-semantic-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: ai-memory-semantic-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ai-self-audit.main",
+      "coherence_score": 20,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/ai-self-audit-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: ai-self-audit-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "approval.main",
+      "coherence_score": 0,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/approval-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: approval-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 13,
+          "used_inputs": [
+            "callback.in",
+            "command.in",
+            "request.in",
+            "blocked.plan.in"
+          ],
+          "used_outputs": [
+            "signal.out",
+            "response.out",
+            "event.out",
+            "ui.response.out",
+            "rejected.result.out",
+            "approved.plan.out"
+          ],
+          "unused_inputs": [
+            "signal.in",
+            "ui.response.in"
+          ],
+          "unused_outputs": [
+            "ui.request.out"
+          ]
+        },
+        "issues": [
+          "Unused outputs: {'ui.request.out'}",
+          "Unused inputs: {'signal.in', 'ui.response.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "degraded",
+        "details": {
+          "process_running": true,
+          "health_check": "missing",
+          "response_time_ms": null
+        },
+        "issues": [
+          "Health check failed: No manifest"
+        ]
+      },
+      "cross_plane_issues": [
+        "Core entity not operational (critical)"
+      ]
+    },
+    {
+      "canonical_id": "apps-menu.main",
+      "coherence_score": 20,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/apps-menu-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: apps-menu-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "apps-session.main",
+      "coherence_score": 20,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/apps-session-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: apps-session-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "chaos.tester",
+      "coherence_score": 20,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/chaos-tester",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: chaos-tester"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "diagnostic.main",
+      "coherence_score": 20,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/diagnostic-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: diagnostic-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "gamification.main",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/gamification-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: gamification-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "event.out",
+            "result.out"
+          ],
+          "unused_inputs": [
+            "event.in",
+            "achievement.in"
+          ],
+          "unused_outputs": [
+            "badge.out",
+            "reward.out"
+          ]
+        },
+        "issues": [
+          "Unused outputs: {'badge.out', 'reward.out'}",
+          "Unused inputs: {'event.in', 'achievement.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "guide.main",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/guide-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: guide-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 16,
+          "used_inputs": [
+            "command.in",
+            "context.in"
+          ],
+          "used_outputs": [
+            "response.out",
+            "event.out",
+            "command.out"
+          ],
+          "unused_inputs": [
+            "query.in"
+          ],
+          "unused_outputs": [
+            "ui.request.out"
+          ]
+        },
+        "issues": [
+          "Unused outputs: {'ui.request.out'}",
+          "Unused inputs: {'query.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "interface.main",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/interface-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: interface-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 10,
+          "used_inputs": [
+            "response.in"
+          ],
+          "used_outputs": [
+            "command.out"
+          ],
+          "unused_inputs": [
+            "input.in"
+          ],
+          "unused_outputs": [
+            "output.out"
+          ]
+        },
+        "issues": [
+          "Unused outputs: {'output.out'}",
+          "Unused inputs: {'input.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "memory-menu.main",
+      "coherence_score": 20,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/memory-menu-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: memory-menu-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "planner.main",
+      "coherence_score": 0,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/planner-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: planner-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 8,
+          "used_inputs": [
+            "signal.in",
+            "command.in"
+          ],
+          "used_outputs": [
+            "signal.out",
+            "event.out",
+            "plan.out",
+            "command.out"
+          ],
+          "unused_inputs": [
+            "context.in",
+            "intent.in"
+          ],
+          "unused_outputs": []
+        },
+        "issues": [
+          "Unused inputs: {'context.in', 'intent.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "degraded",
+        "details": {
+          "process_running": true,
+          "health_check": "missing",
+          "response_time_ms": null
+        },
+        "issues": [
+          "Health check failed: No manifest"
+        ]
+      },
+      "cross_plane_issues": [
+        "Core entity not operational (critical)"
+      ]
+    },
+    {
+      "canonical_id": "project-audit.main",
+      "coherence_score": 20,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/project-audit-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: project-audit-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "router.main",
+      "coherence_score": 0,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/router-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: router-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 12,
+          "used_inputs": [
+            "plan.in"
+          ],
+          "used_outputs": [
+            "browser.action.out",
+            "native.action.out",
+            "event.out",
+            "terminal.action.out",
+            "system.action.out",
+            "desktop.action.out",
+            "ai.action.out"
+          ],
+          "unused_inputs": [
+            "command.in",
+            "event.in",
+            "result.in"
+          ],
+          "unused_outputs": [
+            "command.out",
+            "result.out",
+            "plan.out"
+          ]
+        },
+        "issues": [
+          "Unused outputs: {'command.out', 'result.out', 'plan.out'}",
+          "Unused inputs: {'command.in', 'event.in', 'result.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "degraded",
+        "details": {
+          "process_running": true,
+          "health_check": "missing",
+          "response_time_ms": null
+        },
+        "issues": [
+          "Health check failed: No manifest"
+        ]
+      },
+      "cross_plane_issues": [
+        "Core entity not operational (critical)"
+      ]
+    },
+    {
+      "canonical_id": "safety-guard.main",
+      "coherence_score": 0,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/safety-guard-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: safety-guard-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "core"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "degraded",
+        "details": {
+          "process_running": true,
+          "health_check": "missing",
+          "response_time_ms": null
+        },
+        "issues": [
+          "Health check failed: No manifest"
+        ]
+      },
+      "cross_plane_issues": [
+        "Core entity not operational (critical)"
+      ]
+    },
+    {
+      "canonical_id": "supervisor.main",
+      "coherence_score": 0,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/supervisor-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: supervisor-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 18,
+          "used_inputs": [
+            "plan.in",
+            "event.in",
+            "result.in"
+          ],
+          "used_outputs": [
+            "event.out",
+            "result.out"
+          ],
+          "unused_inputs": [
+            "approval.in"
+          ],
+          "unused_outputs": [
+            "status.out",
+            "command.out"
+          ]
+        },
+        "issues": [
+          "Unused outputs: {'status.out', 'command.out'}",
+          "Unused inputs: {'approval.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "degraded",
+        "details": {
+          "process_running": true,
+          "health_check": "missing",
+          "response_time_ms": null
+        },
+        "issues": [
+          "Health check failed: No manifest"
+        ]
+      },
+      "cross_plane_issues": [
+        "Core entity not operational (critical)"
+      ]
+    },
+    {
+      "canonical_id": "system-menu.main",
+      "coherence_score": 20,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/system-menu-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: system-menu-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "telegram-hud.main",
+      "coherence_score": 20,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/telegram-hud-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: telegram-hud-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "telegram-menu.main",
+      "coherence_score": 20,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/telegram-menu-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: telegram-menu-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "telegram.main",
+      "coherence_score": 20,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/telegram-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: telegram-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "verifier.main",
+      "coherence_score": 20,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/verifier-main",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: verifier-main"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "worker.browser",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/worker-browser",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'worker.python.browser', ontology says 'worker.browser'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "worker.desktop",
+      "coherence_score": 20,
+      "physical": {
+        "plane": "physical",
+        "status": "absent",
+        "details": {
+          "expected_directory": "/modules/worker-desktop",
+          "directory_exists": false,
+          "manifest_exists": false
+        },
+        "issues": [
+          "Directory not found: worker-desktop"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "worker.python.terminal",
+      "coherence_score": 75,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/worker.python.terminal",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "mismatch",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 5,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "event.out",
+            "result.out"
+          ],
+          "unused_inputs": [
+            "command.in"
+          ],
+          "unused_outputs": []
+        },
+        "issues": [
+          "Unused inputs: {'command.in'}"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "worker.system",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/worker-system",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'worker.python.system', ontology says 'worker.system'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "process_running": true,
+          "health_check": "unknown",
+          "response_time_ms": null
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    }
+  ],
+  "orphans": {
+    "physical": [
+      {
+        "directory": "worker-python",
+        "possible_id": "worker.python",
+        "manifest_id": "worker.python.desktop",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "ai-memory-semantic",
+        "possible_id": "ai.memory.semantic",
+        "manifest_id": "ai.memory.semantic.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "planner",
+        "possible_id": "planner",
+        "manifest_id": "planner.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "apps-session",
+        "possible_id": "apps.session",
+        "manifest_id": "apps.session.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "telegram-menu",
+        "possible_id": "telegram.menu",
+        "manifest_id": "telegram.menu.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "supervisor",
+        "possible_id": "supervisor",
+        "manifest_id": "supervisor.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "coherence.analyzer",
+        "possible_id": "coherence.analyzer",
+        "manifest_id": "coherence.analyzer",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "project-audit",
+        "possible_id": "project.audit",
+        "manifest_id": "project.audit.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "system-menu",
+        "possible_id": "system.menu",
+        "manifest_id": "system.menu.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "telegram-interface",
+        "possible_id": "telegram.interface",
+        "manifest_id": "interface.telegram",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "safety-guard",
+        "possible_id": "safety.guard",
+        "manifest_id": "safety.guard.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "memory-menu",
+        "possible_id": "memory.menu",
+        "manifest_id": "memory.menu.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "ui-state",
+        "possible_id": "ui.state",
+        "manifest_id": "ui.state.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "approval",
+        "possible_id": "approval",
+        "manifest_id": "approval.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "ai-learning-engine",
+        "possible_id": "ai.learning.engine",
+        "manifest_id": "ai.learning.engine.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "plan-runner",
+        "possible_id": "plan.runner",
+        "manifest_id": "plan.runner.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "interface",
+        "possible_id": "interface",
+        "manifest_id": "interface.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "ai-intent",
+        "possible_id": "ai.intent",
+        "manifest_id": "ai.intent.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "gamification",
+        "possible_id": "gamification",
+        "manifest_id": "gamification.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "guide",
+        "possible_id": "guide",
+        "manifest_id": "guide.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "verifier-engine",
+        "possible_id": "verifier.engine",
+        "manifest_id": "verifier.engine.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "agent",
+        "possible_id": "agent",
+        "manifest_id": "agent.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "ai-assistant",
+        "possible_id": "ai.assistant",
+        "manifest_id": "ai.assistant.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "apps-menu",
+        "possible_id": "apps.menu",
+        "manifest_id": "apps.menu.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "memory-log",
+        "possible_id": "memory.log",
+        "manifest_id": "memory.log.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "telegram-hud",
+        "possible_id": "telegram.hud",
+        "manifest_id": "telegram.hud.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "phase-engine",
+        "possible_id": "phase.engine",
+        "manifest_id": "phase.engine.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "router",
+        "possible_id": "router",
+        "manifest_id": "router.main",
+        "issue": "Directory exists but not in ontology"
+      },
+      {
+        "directory": "ai-self-audit",
+        "possible_id": "ai.self.audit",
+        "manifest_id": "ai.self.audit.main",
+        "issue": "Directory exists but not in ontology"
+      }
+    ],
+    "logical": [
+      {
+        "module_id": "worker.python.desktop",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "memory.log.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "interface.telegram",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "worker.python.system",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "worker.python.browser",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "ai.intent.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "safety.guard.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "project.audit.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "telegram.menu.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "system.menu.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "memory.menu.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "apps.menu.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "ui.state.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "telegram.hud.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "apps.session.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "ai.assistant.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "ai.memory.semantic.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "ai.self.audit.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "ai.learning.engine.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "verifier.engine.main",
+        "issue": "In blueprint but not in ontology"
+      },
+      {
+        "module_id": "phase.engine.main",
+        "issue": "In blueprint but not in ontology"
+      }
+    ]
+  }
+}

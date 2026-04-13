@@ -1,0 +1,10 @@
+{
+  "id": "project.audit.main",
+  "name": "Project Audit",
+  "version": "1.0.0",
+  "description": "Audita el blueprint, módulos, manifests, conexiones y contratos del proyecto",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": ["audit.in"],
+  "outputs": ["response.out", "event.out"]
+}

@@ -1,0 +1,7 @@
+{
+  "id": "memory.menu.main",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": ["callback.in"],
+  "outputs": ["ui.response.out", "memory.query.out"]
+}

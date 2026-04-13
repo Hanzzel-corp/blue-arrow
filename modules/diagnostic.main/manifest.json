@@ -1,0 +1,24 @@
+{
+  "id": "diagnostic.main",
+  "name": "System Diagnostic Module",
+  "description": "Analiza conexiones, detecta problemas, hace benchmark en tiempo real",
+  "version": "1.0.0",
+  "language": "python",
+  "entry": "main.py",
+  "tier": "satellite",
+  "priority": "low",
+  "inputs": [
+    "event.in",
+    "command.in",
+    "result.in",
+    "signal.in"
+  ],
+  "outputs": [
+    "event.out",
+    "result.out"
+  ],
+  "config": {
+    "duration_minutes": 50,
+    "report_interval_seconds": 300
+  }
+}

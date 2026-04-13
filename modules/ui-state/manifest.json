@@ -1,0 +1,7 @@
+{
+  "id": "ui.state.main",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": ["callback.in", "event.in", "result.in", "app.context.in", "state.in"],
+  "outputs": ["ui.state.out", "ui.render.request.out", "event.out"]
+}

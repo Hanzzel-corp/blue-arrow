@@ -1,0 +1,28 @@
+{
+  "id": "ai.self.audit.main",
+  "name": "AI Self-Audit",
+  "version": "1.0.0",
+  "description": "Sistema de auto-análisis que revisa código, arquitectura y sugiere mejoras automáticamente",
+  "language": "python",
+  "entry": "main.py",
+  "ports": {
+    "action.in": {
+      "description": "Acciones: audit.run, audit.quick, audit.code, audit.architecture, audit.health"
+    },
+    "result.out": {
+      "description": "Resultados de auditoría"
+    },
+    "query.in": {
+      "description": "Queries de estado de auditoría"
+    },
+    "event.out": {
+      "description": "Eventos de auditoría"
+    }
+  },
+  "config": {
+    "auto_audit_interval": 3600,
+    "max_issues_reported": 50
+  },
+  "inputs": ["action.in", "query.in"],
+  "outputs": ["result.out", "event.out"]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "telegram.menu.main",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": ["callback.in"],
+  "outputs": [
+    "ui.response.out",
+    "command.out",
+    "approval.request.out",
+    "approval.callback.out"
+  ]
+}

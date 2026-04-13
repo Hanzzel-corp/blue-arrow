@@ -1,0 +1,155 @@
+{"timestamp": "2026-04-09T21:08:49.299197Z", "level": "INFO", "module": "active.diagnostic", "message": "{\"timestamp\": \"2026-04-09T21:08:49.299142Z\", \"level\": \"INFO\", \"module\": \"active.diagnostic\", \"message\": \"\\ud83d\\udd2c DIAGN\\u00d3STICO ACTIVO - 50 minutos\"}", "logger": "root", "taskName": null}
+
+================================================================================
+🔬 ACTIVE SYSTEM DIAGNOSTIC - CHAOS ENGINEERING MODE
+================================================================================
+
+📋 FASE 1: ANÁLISIS ESTÁTICO DE CÓDIGO
+----------------------------------------
+{"timestamp": "2026-04-09T21:08:49.299290Z", "level": "INFO", "module": "active.diagnostic", "message": "{\"timestamp\": \"2026-04-09T21:08:49.299266Z\", \"level\": \"INFO\", \"module\": \"active.diagnostic\", \"message\": \"Analizando c\\u00f3digo fuente...\"}", "logger": "root", "taskName": null}
+✅ Archivos analizados: 1393
+   JS: 351, Python: 1042
+   Bloques duplicados: 15969
+   Funciones stub: 163
+   Errores de sintaxis: 0
+
+⚠️  FUNCIONES STUB/VACÍAS:
+   ⚠️  /lib/system_diagnostic.py:32 - debug (empty_pass)
+   ⚠️  /lib/active_diagnostic.py:41 - debug (empty_pass)
+   ⚠️  /.venv/lib/python3.12/site-packages/typing_extensions.py:887 - __int__ (empty_pass)
+   ⚠️  /.venv/lib/python3.12/site-packages/typing_extensions.py:896 - __float__ (empty_pass)
+   ⚠️  /.venv/lib/python3.12/site-packages/typing_extensions.py:905 - __complex__ (empty_pass)
+
+📋 CÓDIGO DUPLICADO:
+   📄 3 ocurrencias: /runtime/schema_validator.js
+      Sample: return {
+      valid: errors.length === 0,
+      errors
+    ...
+   📄 3 ocurrencias: /runtime/schema_validator.js
+      Sample: valid: errors.length === 0,
+      errors
+    };
+  }...
+   📄 2 ocurrencias: /runtime/registry.js
+      Sample: const CORE_MODULES = new Set([
+  "supervisor.main",
+  "route...
+
+📋 FASE 2: SONdeo ACTIVO DE MÓDULOS
+----------------------------------------
+📦 Módulos en blueprint: 30
+📦 Módulos disponibles: 33
+
+❌ Módulos en blueprint pero NO en disco:
+   • router.main
+   • guide.main
+   • ai.learning.engine.main
+   • gamification.main
+   • agent.main
+   • planner.main
+   • worker.python.desktop
+   • apps.session.main
+   • memory.log.main
+   • worker.python.browser
+   • ai.self.audit.main
+   • interface.telegram
+   • approval.main
+   • ui.state.main
+   • safety.guard.main
+   • telegram.hud.main
+   • system.menu.main
+   • ai.memory.semantic.main
+   • telegram.menu.main
+   • phase.engine.main
+   • ai.assistant.main
+   • project.audit.main
+   • interface.main
+   • ai.intent.main
+   • memory.menu.main
+   • supervisor.main
+   • worker.python.system
+   • verifier.engine.main
+   • apps.menu.main
+
+⚠️  Módulos en disco pero NO en blueprint (potencialmente huérfanos):
+   • telegram.hud
+   • worker.system
+   • phase.engine
+   • planner
+   • telegram.menu
+
+🔍 Sondeando 10 módulos de prueba...
+{"timestamp": "2026-04-09T21:08:58.374810Z", "level": "INFO", "module": "active.diagnostic", "message": "{\"timestamp\": \"2026-04-09T21:08:58.374764Z\", \"level\": \"INFO\", \"module\": \"active.diagnostic\", \"message\": \"Sondeando 10 m\\u00f3dulos...\"}", "logger": "root", "taskName": null}
+{"timestamp": "2026-04-09T21:08:58.374882Z", "level": "INFO", "module": "active.diagnostic", "message": "{\"timestamp\": \"2026-04-09T21:08:58.374867Z\", \"level\": \"INFO\", \"module\": \"active.diagnostic\", \"message\": \"  Probando worker.python...\"}", "logger": "root", "taskName": null}
+{"timestamp": "2026-04-09T21:08:58.427256Z", "level": "INFO", "module": "active.diagnostic", "message": "{\"timestamp\": \"2026-04-09T21:08:58.427207Z\", \"level\": \"INFO\", \"module\": \"active.diagnostic\", \"message\": \"  Probando ai.memory.semantic...\"}", "logger": "root", "taskName": null}
+{"timestamp": "2026-04-09T21:08:58.449424Z", "level": "INFO", "module": "active.diagnostic", "message": "{\"timestamp\": \"2026-04-09T21:08:58.449377Z\", \"level\": \"INFO\", \"module\": \"active.diagnostic\", \"message\": \"  Probando planner...\"}", "logger": "root", "taskName": null}
+{"timestamp": "2026-04-09T21:08:58.473827Z", "level": "INFO", "module": "active.diagnostic", "message": "{\"timestamp\": \"2026-04-09T21:08:58.473769Z\", \"level\": \"INFO\", \"module\": \"active.diagnostic\", \"message\": \"  Probando apps.session...\"}", "logger": "root", "taskName": null}
+{"timestamp": "2026-04-09T21:08:58.500587Z", "level": "INFO", "module": "active.diagnostic", "message": "{\"timestamp\": \"2026-04-09T21:08:58.500532Z\", \"level\": \"INFO\", \"module\": \"active.diagnostic\", \"message\": \"  Probando telegram.menu...\"}", "logger": "root", "taskName": null}
+{"timestamp": "2026-04-09T21:09:03.507096Z", "level": "INFO", "module": "active.diagnostic", "message": "{\"timestamp\": \"2026-04-09T21:09:03.506778Z\", \"level\": \"INFO\", \"module\": \"active.diagnostic\", \"message\": \"  Probando diagnostic.main...\"}", "logger": "root", "taskName": null}
+{"timestamp": "2026-04-09T21:09:03.507649Z", "level": "INFO", "module": "active.diagnostic", "message": "{\"timestamp\": \"2026-04-09T21:09:03.507544Z\", \"level\": \"INFO\", \"module\": \"active.diagnostic\", \"message\": \"  Probando supervisor...\"}", "logger": "root", "taskName": null}
+{"timestamp": "2026-04-09T21:09:03.533560Z", "level": "INFO", "module": "active.diagnostic", "message": "{\"timestamp\": \"2026-04-09T21:09:03.533503Z\", \"level\": \"INFO\", \"module\": \"active.diagnostic\", \"message\": \"  Probando worker.python.terminal...\"}", "logger": "root", "taskName": null}
+{"timestamp": "2026-04-09T21:09:03.533677Z", "level": "INFO", "module": "active.diagnostic", "message": "{\"timestamp\": \"2026-04-09T21:09:03.533652Z\", \"level\": \"INFO\", \"module\": \"active.diagnostic\", \"message\": \"  Probando chaos.tester...\"}", "logger": "root", "taskName": null}
+{"timestamp": "2026-04-09T21:09:03.533742Z", "level": "INFO", "module": "active.diagnostic", "message": "{\"timestamp\": \"2026-04-09T21:09:03.533723Z\", \"level\": \"INFO\", \"module\": \"active.diagnostic\", \"message\": \"  Probando worker.browser...\"}", "logger": "root", "taskName": null}
+   ✅ Responsive: 1
+   ❌ Rotos: 4
+   ⚠️  No responden: 5
+
+🚨 MÓDULOS ROTOS:
+   ❌ telegram.menu: timeout - N/A
+   ❌ diagnostic.main: not_found - Manifest no encontrado
+   ❌ worker.python.terminal: not_found - Manifest no encontrado
+   ❌ chaos.tester: not_found - Manifest no encontrado
+
+📋 FASE 3: BENCHMARK DE FUNCIONES
+----------------------------------------
+   ✅ get_config: 0.0ms avg (errors: 0/100)
+   ✅ get_logger: 0.002ms avg (errors: 0/100)
+
+📋 FASE 4: MONITOREO CONTINUO (50 min)
+----------------------------------------
+
+⏱️  Tiempo transcurrido: 0:05:14
+   Mensajes procesados: (monitoreando...)
+
+⏱️  Tiempo transcurrido: 0:10:14
+   Mensajes procesados: (monitoreando...)
+
+⏱️  Tiempo transcurrido: 0:15:14
+   Mensajes procesados: (monitoreando...)
+
+⏱️  Tiempo transcurrido: 0:20:14
+   Mensajes procesados: (monitoreando...)
+
+⏱️  Tiempo transcurrido: 0:25:14
+   Mensajes procesados: (monitoreando...)
+
+⏱️  Tiempo transcurrido: 0:30:14
+   Mensajes procesados: (monitoreando...)
+
+⏱️  Tiempo transcurrido: 0:35:14
+   Mensajes procesados: (monitoreando...)
+
+⏱️  Tiempo transcurrido: 0:40:14
+   Mensajes procesados: (monitoreando...)
+
+⏱️  Tiempo transcurrido: 0:45:14
+   Mensajes procesados: (monitoreando...)
+
+================================================================================
+🏁 REPORTE FINAL
+================================================================================
+
+🏆 SCORE GENERAL: 0/100 (Grade: D)
+
+📊 RESUMEN:
+   • Errores de sintaxis: 0
+   • Funciones stub: 163
+   • Código duplicado: 15969 bloques
+   • Módulos rotos: 4
+   • Módulos no responden: 5
+   • Módulos en blueprint sin disco: 29
+
+💾 Reporte guardado: /home/jarvis0001/blueprint-v0/logs/active_diagnostic_20260409_185850.json
+================================================================================
+

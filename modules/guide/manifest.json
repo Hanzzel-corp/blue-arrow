@@ -1,0 +1,17 @@
+{
+  "id": "guide.main",
+  "name": "guide.main",
+  "version": "2.0.0",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": [
+    "command.in",
+    "context.in",
+    "result.in"
+  ],
+  "outputs": [
+    "command.out",
+    "response.out",
+    "event.out"
+  ]
+}

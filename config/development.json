@@ -1,0 +1,55 @@
+{
+  "runtime": {
+    "debug": true,
+    "message_validation": true,
+    "startup_timeout": 60000
+  },
+  "logging": {
+    "level": "debug",
+    "console": true,
+    "file": false,
+    "structured": false
+  },
+  "safety": {
+    "auto_approve_safe_actions": true,
+    "timeout": 60
+  },
+  "approval": {
+    "timeout": 60,
+    "notification_channels": ["cli"]
+  },
+  "workers": {
+    "desktop": {
+      "timeout": 10000,
+      "retry_attempts": 1
+    },
+    "browser": {
+      "headless": false,
+      "timeout": 20000
+    }
+  },
+  "memory": {
+    "persist_to_disk": false,
+    "retention_days": 1
+  },
+  "supervisor": {
+    "health_check_interval": 5000,
+    "auto_restart_failed": false
+  },
+  "ui": {
+    "telegram_hud": {
+      "enabled": false
+    },
+    "cli": {
+      "color_output": true,
+      "show_timestamps": true
+    }
+  },
+  "development": {
+    "hot_reload": true,
+    "debug_mode": true,
+    "verbose_logging": true,
+    "mock_workers": true,
+    "test_mode": true
+  }
+}

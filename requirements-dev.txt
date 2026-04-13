@@ -1,0 +1,3 @@
+-r requirements.txt
+# Opcional: pytest puede correr los mismos tests (unittest.TestCase)
+pytest>=8.0

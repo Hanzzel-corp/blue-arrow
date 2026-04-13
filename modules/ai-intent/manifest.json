@@ -1,0 +1,7 @@
+{
+  "id": "ai.intent.main",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": ["command.in"],
+  "outputs": ["analysis.out", "event.out"]
+}

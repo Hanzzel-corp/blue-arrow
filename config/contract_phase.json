@@ -1,0 +1,10 @@
+{
+  "phase": "B",
+  "description": {
+    "A": "Warning solamente - modo compatibilidad",
+    "B": "Warning + métricas - transparencia",
+    "C": "Rechazo estricto para core - gobernanza (pendiente: actualizar módulos core)"
+  },
+  "updated_at": "2026-04-09T05:45:00Z",
+  "note": "Fase B activada temporalmente: los módulos core aún no envían trace_id/meta en todos sus mensajes internos"
+}

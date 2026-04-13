@@ -1,0 +1,34 @@
+{
+  "id": "phase.engine.main",
+  "name": "Phase Engine",
+  "version": "1.0.0",
+  "description": "Motor de estados que orquesta el flujo del sistema mediante señales y transiciones de fase",
+  "language": "node",
+  "entry": "main.js",
+  "ports": {
+    "signal.in": {
+      "description": "Señales de entrada desde cualquier módulo"
+    },
+    "signal.out": {
+      "description": "Señales de salida hacia otros módulos"
+    },
+    "command.out": {
+      "description": "Comandos a workers y otros módulos"
+    },
+    "state.out": {
+      "description": "Updates de estado para UI y memoria"
+    },
+    "event.out": {
+      "description": "Eventos de lifecycle del phase engine"
+    }
+  },
+  "config": {
+    "default_phase": "idle",
+    "transition_timeout_ms": 30000,
+    "max_history_size": 100
+  },
+  "inputs": ["signal.in"],
+  "outputs": ["signal.out", "command.out", "state.out", "event.out"],
+  "dependencies": [],
+  "requires": []
+}

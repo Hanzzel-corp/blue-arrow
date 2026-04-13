@@ -1,0 +1,7 @@
+{
+  "id": "memory.log.main",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": ["command.in", "result.in", "event.in", "query.in", "app.session.in"],
+  "outputs": ["memory.out"]
+}

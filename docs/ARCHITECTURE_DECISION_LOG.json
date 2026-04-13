@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.0",
+  "description": "Registro de Decisiones Arquitectónicas (ADR) para blueprint-v0",
+  "last_updated": "2026-04-09",
+  "decisions": [
+    {
+      "id": "ADR-001",
+      "title": "Loop planner <-> phase.engine aceptado por diseño",
+      "rule_affected": "loop",
+      "exception": "planner.main:event.out <-> phase.engine.main:signal.in",
+      "status": "permanent",
+      "decision_date": "2026-04-09",
+      "context": "El phase.engine necesita señalar al planner cuando hay cambios de fase",
+      "motivation": "Bidireccionalidad necesaria para control de fases. El planner inicia planes, phase.engine notifica transiciones",
+      "impact": "Loop controlado - los mensajes tienen semántica clara y no hay acumulación",
+      "alternatives_considered": [
+        "Usar solo eventos unidireccionales - rechazado: requiere polling",
+        "Mergear módulos - rechazado: rompe separación de responsabilidades"
+      ],
+      "review_date": null,
+      "reviewed_by": "system"
+    },
+    {
+      "id": "ADR-002",
+      "title": "Broadcast de plan.out a supervisor + safety.guard",
+      "rule_affected": "execution_broadcast",
+      "exception": "agent.main:plan.out -> supervisor.main:plan.in + safety.guard.main:plan.in",
+      "status": "permanent",
+      "decision_date": "2026-04-09",
+      "context": "Plan debe ser auditado Y coordinado en paralelo por seguridad y ciclo de vida",
+      "motivation": "Separación de concerns: safety verifica/valida, supervisor coordina cierre. No pueden ser secuenciales porque safety no debe bloquear",
+      "impact": "Aceptable - ambos son core y tienen responsabilidades complementarias",
+      "alternatives_considered": [
+        "Chain: agent -> safety -> supervisor - rechazado: safety no debe ser gatekeeper",
+        "Duplicar plan.out con tags - rechazado: complejidad innecesaria"
+      ],
+      "review_date": null,
+      "reviewed_by": "system"
+    },
+    {
+      "id": "ADR-003",
+      "title": "Interface broadcast de command.out a múltiples destinos",
+      "rule_affected": "execution_broadcast",
+      "exception": "interface.*:command.out -> planner + memory + ai.intent",
+      "status": "tech_debt",
+      "decision_date": "2026-04-09",
+      "context": "Interface necesita enviar comandos al planner principal, loguear en memory, y opcionalmente a AI",
+      "motivation": "Facilita debugging y extensibilidad de AI. Memory necesita conocer comandos para contexto",
+      "impact": "Deuda técnica aceptada - planner es el único ejecutor, memory y ai son observadores pasivos",
+      "mitigation": "Considerar en v2: mover memory e ai.intent a escuchar desde event.out del planner",
+      "review_date": "2026-07-09",
+      "reviewed_by": null
+    },
+    {
+      "id": "ADR-004",
+      "title": "supervisor.event.out dispara acciones en satellites (ai.learning, gamification)",
+      "rule_affected": "observation_to_execution",
+      "exception": "supervisor.main:event.out -> ai.learning + gamification:action.in",
+      "status": "permanent",
+      "decision_date": "2026-04-09",
+      "context": "Satellites necesitan reaccionar a cierre de tareas para learning y XP",
+      "motivation": "Acciones derivadas: gamification suma XP cuando supervisor cierra tarea exitosa. AI learning observa patrones",
+      "impact": "Aceptable - satellites son opcionales y no afectan core. supervisor sigue siendo el único closer",
+      "alternatives_considered": [
+        "Usar polling desde satellites - rechazado: ineficiente y lento",
+        "Mergear gamification con supervisor - rechazado: viola core/satellite separation"
+      ],
+      "review_date": null,
+      "reviewed_by": "system"
+    },
+    {
+      "id": "ADR-005",
+      "title": "Loops en menús de Telegram (interface.telegram <-> *.menu.main)",
+      "rule_affected": "loop",
+      "exception": "interface.telegram <-> telegram.menu.main + system.menu.main + apps.menu.main",
+      "status": "permanent",
+      "decision_date": "2026-04-09",
+      "context": "Patrón de navegación de menús requiere bidireccionalidad",
+      "motivation": "Callback va al menú, menú responde con UI update. Es un patrón request-response, no un loop acumulativo",
+      "impact": "Aceptable - los callbacks tienen IDs únicos y no hay re-entrada",
+      "alternatives_considered": [
+        "Unificar en un solo módulo - rechazado: menús son extensibles por separado"
+      ],
+      "review_date": null,
+      "reviewed_by": "system"
+    },
+    {
+      "id": "ADR-006",
+      "title": "Guide y UI.state se actualizan mutuamente",
+      "rule_affected": "loop",
+      "exception": "guide.main <-> ui.state.main",
+      "status": "temporal",
+      "decision_date": "2026-04-09",
+      "context": "Ambos mantienen contexto de UI y necesitan sincronizarse",
+      "motivation": "Guide da contexto, UI.state da estado actual. Temporal hasta que se unifiquen",
+      "impact": "Deuda técnica - considerar mergear o definir claramente quién es source of truth",
+      "mitigation": "Plan: evaluar unificación en Q3 2026",
+      "review_date": "2026-07-09",
+      "reviewed_by": null
+    },
+    {
+      "id": "ADR-007",
+      "title": "Memory.log recibe de múltiples interfaces",
+      "rule_affected": "execution_broadcast",
+      "exception": "*.main:command.out + *.main:result.out -> memory.log.main",
+      "status": "permanent",
+      "decision_date": "2026-04-09",
+      "context": "Memory.log es el repositorio de historial central",
+      "motivation": "Persistencia requiere observar todos los puntos relevantes. Es intencionalmente un 'sink'",
+      "impact": "Aceptable - memory.log no re-emite (no es broadcaster), solo consume y almacena",
+      "alternatives_considered": [
+        "Event bus centralizado - rechazado: overkill para este escenario"
+      ],
+      "review_date": null,
+      "reviewed_by": "system"
+    },
+    {
+      "id": "ADR-008",
+      "title": "Worker result.out solo a supervisor/verifier",
+      "rule_affected": "execution_broadcast",
+      "exception": "worker.*:result.out -> supervisor.main:result.in (+ verifier opcional)",
+      "status": "permanent",
+      "decision_date": "2026-04-09",
+      "context": "Implementación de cierre único de tareas",
+      "motivation": "Solo supervisor puede cerrar tarea. Verifier enriquece pero no cierra. Ningún otro módulo debe recibir result.out directamente",
+      "impact": "Fundamental - garantiza Regla #9: Un solo resultado final por tarea",
+      "alternatives_considered": [
+        "Broadcast a todos - rechazado: viola gobierno de cierre",
+        "Verificador distribuido - rechazado: complejidad sin beneficio"
+      ],
+      "review_date": null,
+      "reviewed_by": "system"
+    },
+    {
+      "id": "ADR-009",
+      "title": "Menús emiten comandos a agent y memory simultáneamente",
+      "rule_affected": "execution_broadcast",
+      "exception": "*.menu.main:command.out -> agent.main:command.in + memory.log.main:command.in",
+      "status": "tech_debt",
+      "decision_date": "2026-04-09",
+      "context": "Menús necesitan loguear comandos en memory para contexto",
+      "motivation": "Memory necesita conocer comandos para queries de 'último comando' y contexto de gamification",
+      "impact": "Deuda técnica - memory es observador, agent es ejecutor. Podría moverse a event.out",
+      "mitigation": "Considerar: agent emitir event.out después de recibir comando, memory escuchar eso",
+      "review_date": "2026-07-09",
+      "reviewed_by": null
+    }
+  ],
+  "metadata": {
+    "total_decisions": 9,
+    "permanent": 6,
+    "tech_debt": 3,
+    "pending_review": 3,
+    "next_review_date": "2026-07-09"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "ai.memory.semantic.main",
+  "name": "Semantic Memory",
+  "version": "1.0.0",
+  "description": "Sistema de memoria semántica con embeddings para recuperación contextual de información",
+  "language": "python",
+  "entry": "main.py",
+  "ports": {
+    "action.in": {
+      "description": "Acciones: memory.store, memory.search, memory.context, memory.recent, memory.forget, memory.stats, memory.clear"
+    },
+    "result.out": {
+      "description": "Resultados de operaciones de memoria"
+    },
+    "query.in": {
+      "description": "Queries de estado de memoria"
+    },
+    "event.out": {
+      "description": "Eventos de memoria"
+    }
+  },
+  "config": {
+    "embedding_dim": 128,
+    "max_memories": 1000,
+    "similarity_threshold": 0.3
+  },
+  "inputs": ["action.in", "query.in"],
+  "outputs": ["result.out", "event.out"]
+}

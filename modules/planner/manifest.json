@@ -1,0 +1,7 @@
+{
+  "id": "planner.main",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": ["command.in"],
+  "outputs": ["command.out", "plan.out", "event.out", "signal.out"]
+}

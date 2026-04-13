@@ -1,0 +1,7 @@
+{
+  "id": "interface.main",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": ["command.in", "response.in", "ui.response.in"],
+  "outputs": ["command.out"]
+}

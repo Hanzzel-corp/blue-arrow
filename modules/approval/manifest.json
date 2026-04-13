@@ -1,0 +1,14 @@
+{
+  "id": "approval.main",
+  "language": "node",
+  "entry": "main.js",
+  "inputs": ["blocked.plan.in", "command.in", "request.in", "callback.in"],
+  "outputs": [
+    "response.out",
+    "event.out",
+    "approved.plan.out",
+    "rejected.result.out",
+    "ui.response.out",
+    "signal.out"
+  ]
+}

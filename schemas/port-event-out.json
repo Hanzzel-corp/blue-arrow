@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Port Schema: event.out",
+  "description": "Schema para puertos de eventos de observación (ej: *:event.out)",
+  "type": "object",
+  "required": ["event_type", "timestamp", "meta"],
+  "properties": {
+    "event_type": {
+      "type": "string",
+      "description": "Tipo de evento",
+      "enum": ["started", "completed", "error", "timeout", "info", "warning"]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "task_id": {
+      "type": "string",
+      "description": "ID de tarea asociada (si aplica)"
+    },
+    "data": {
+      "type": "object",
+      "description": "Datos adicionales del evento",
+      "additionalProperties": true
+    },
+    "meta": {
+      "type": "object",
+      "description": "Metadatos de contexto",
+      "required": ["source", "trace_id"],
+      "properties": {
+        "source": { "type": "string" },
+        "trace_id": { "type": "string" },
+        "chat_id": { "type": ["string", "number"] },
+        "module_origin": { "type": "string", "description": "Módulo que emitió el evento" }
+      }
+    }
+  },
+  "additionalProperties": false
+}

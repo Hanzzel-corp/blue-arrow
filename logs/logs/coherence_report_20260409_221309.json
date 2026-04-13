@@ -1,0 +1,4944 @@
+{
+  "timestamp": "2026-04-09T22:13:09.180686",
+  "summary": {
+    "blueprint_entities": 30,
+    "extra_entities": 7,
+    "total_entities": 37,
+    "avg_coherence": 100.0,
+    "grade": "A",
+    "status": "EXCELENTE",
+    "high_coherence": 30,
+    "medium_coherence": 0,
+    "low_coherence": 0,
+    "physical_orphans": 0,
+    "logical_orphans": 0,
+    "issues": {
+      "physical": 1,
+      "logical": 7,
+      "operational": 0,
+      "cross_plane": 6
+    }
+  },
+  "blueprint_entities": [
+    {
+      "canonical_id": "agent.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/agent",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "agent.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 12,
+          "used_inputs": [
+            "command.in"
+          ],
+          "used_outputs": [
+            "approval.command.out",
+            "signal.out",
+            "audit.request.out",
+            "memory.query.out",
+            "plan.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "memory.in",
+            "intent.in"
+          ],
+          "unused_outputs": [
+            "command.out",
+            "memory.out"
+          ],
+          "reserved_inputs": [
+            "memory.in",
+            "intent.in"
+          ],
+          "reserved_outputs": [
+            "command.out",
+            "memory.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "healthy"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ai-assistant.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/ai-assistant",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "ai.assistant.main",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 6,
+          "used_inputs": [
+            "ai.action.in"
+          ],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "context.in",
+            "prompt.in"
+          ],
+          "unused_outputs": [
+            "response.out"
+          ],
+          "reserved_inputs": [
+            "context.in",
+            "prompt.in"
+          ],
+          "reserved_outputs": [
+            "response.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ai-intent.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/ai-intent",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "ai.intent.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 4,
+          "used_inputs": [
+            "command.in"
+          ],
+          "used_outputs": [
+            "analysis.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "context.in",
+            "text.in"
+          ],
+          "unused_outputs": [
+            "confidence.out",
+            "intent.out"
+          ],
+          "reserved_inputs": [
+            "context.in",
+            "text.in"
+          ],
+          "reserved_outputs": [
+            "confidence.out",
+            "intent.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ai-learning-engine.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/ai-learning-engine",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "ai.learning.engine.main",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "event.in",
+            "feedback.in",
+            "result.in"
+          ],
+          "unused_outputs": [
+            "pattern.out",
+            "model.out"
+          ],
+          "reserved_inputs": [
+            "event.in",
+            "feedback.in",
+            "result.in"
+          ],
+          "reserved_outputs": [
+            "pattern.out",
+            "model.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ai-memory-semantic.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/ai-memory-semantic",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "ai.memory.semantic.main",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 2,
+          "used_inputs": [],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "context.in",
+            "query.in",
+            "store.in"
+          ],
+          "unused_outputs": [
+            "recall.out",
+            "similar.out"
+          ],
+          "reserved_inputs": [
+            "context.in",
+            "query.in",
+            "store.in"
+          ],
+          "reserved_outputs": [
+            "recall.out",
+            "similar.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ai-self-audit.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/ai-self-audit",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "ai.self.audit.main",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 2,
+          "used_inputs": [],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "event.in",
+            "log.in"
+          ],
+          "unused_outputs": [
+            "insight.out",
+            "alert.out"
+          ],
+          "reserved_inputs": [
+            "event.in",
+            "log.in"
+          ],
+          "reserved_outputs": [
+            "insight.out",
+            "alert.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "approval.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/approval",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "approval.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 13,
+          "used_inputs": [
+            "command.in",
+            "callback.in",
+            "blocked.plan.in",
+            "request.in"
+          ],
+          "used_outputs": [
+            "signal.out",
+            "approved.plan.out",
+            "rejected.result.out",
+            "response.out",
+            "ui.response.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "signal.in",
+            "ui.response.in"
+          ],
+          "unused_outputs": [
+            "ui.request.out"
+          ],
+          "reserved_inputs": [
+            "signal.in",
+            "ui.response.in"
+          ],
+          "reserved_outputs": [
+            "ui.request.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "healthy"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "apps-menu.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/apps-menu",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "apps.menu.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 4,
+          "used_inputs": [
+            "callback.in"
+          ],
+          "used_outputs": [
+            "command.out",
+            "ui.response.out"
+          ],
+          "unused_inputs": [
+            "ui.response.in",
+            "app.in"
+          ],
+          "unused_outputs": [
+            "app.out",
+            "ui.request.out"
+          ],
+          "reserved_inputs": [
+            "ui.response.in",
+            "app.in"
+          ],
+          "reserved_outputs": [
+            "app.out",
+            "ui.request.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "apps-session.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/apps-session",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "apps.session.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 7,
+          "used_inputs": [
+            "event.in"
+          ],
+          "used_outputs": [
+            "memory.sync.out",
+            "app.context.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "command.in",
+            "app.in"
+          ],
+          "unused_outputs": [
+            "app.out"
+          ],
+          "reserved_inputs": [
+            "command.in",
+            "app.in"
+          ],
+          "reserved_outputs": [
+            "app.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "gamification.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/gamification",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "gamification.main",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "event.in",
+            "achievement.in"
+          ],
+          "unused_outputs": [
+            "badge.out",
+            "reward.out"
+          ],
+          "reserved_inputs": [
+            "event.in",
+            "achievement.in"
+          ],
+          "reserved_outputs": [
+            "badge.out",
+            "reward.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "guide.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/guide",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "guide.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 16,
+          "used_inputs": [
+            "command.in",
+            "context.in"
+          ],
+          "used_outputs": [
+            "command.out",
+            "response.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "query.in"
+          ],
+          "unused_outputs": [
+            "ui.request.out"
+          ],
+          "reserved_inputs": [
+            "query.in"
+          ],
+          "reserved_outputs": [
+            "ui.request.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "interface.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/interface",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "interface.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 10,
+          "used_inputs": [
+            "response.in"
+          ],
+          "used_outputs": [
+            "command.out"
+          ],
+          "unused_inputs": [
+            "command.in",
+            "ui.response.in"
+          ],
+          "unused_outputs": [],
+          "reserved_inputs": [
+            "command.in",
+            "ui.response.in"
+          ],
+          "reserved_outputs": [],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "interface.telegram",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/telegram-interface",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "interface.telegram",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 29,
+          "used_inputs": [
+            "event.in",
+            "app.session.in",
+            "response.in",
+            "ui.response.in"
+          ],
+          "used_outputs": [
+            "action.out",
+            "command.out",
+            "callback.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "command.in"
+          ],
+          "unused_outputs": [
+            "ui.request.out",
+            "intent.out"
+          ],
+          "reserved_inputs": [
+            "command.in"
+          ],
+          "reserved_outputs": [
+            "ui.request.out",
+            "intent.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "memory-menu.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/memory-menu",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "memory.menu.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "callback.in"
+          ],
+          "used_outputs": [
+            "ui.response.out",
+            "memory.query.out"
+          ],
+          "unused_inputs": [
+            "memory.in",
+            "ui.response.in"
+          ],
+          "unused_outputs": [
+            "ui.request.out",
+            "memory.out"
+          ],
+          "reserved_inputs": [
+            "memory.in",
+            "ui.response.in"
+          ],
+          "reserved_outputs": [
+            "ui.request.out",
+            "memory.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "memory.log.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/memory-log",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "memory.log.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 41,
+          "used_inputs": [
+            "command.in",
+            "event.in",
+            "query.in",
+            "app.session.in"
+          ],
+          "used_outputs": [
+            "memory.out"
+          ],
+          "unused_inputs": [
+            "log.in"
+          ],
+          "unused_outputs": [
+            "log.out",
+            "event.out"
+          ],
+          "reserved_inputs": [
+            "log.in"
+          ],
+          "reserved_outputs": [
+            "log.out",
+            "event.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "phase.engine.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/phase-engine",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "phase.engine.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 8,
+          "used_inputs": [
+            "signal.in"
+          ],
+          "used_outputs": [
+            "event.out",
+            "command.out",
+            "state.out",
+            "signal.out"
+          ],
+          "unused_inputs": [],
+          "unused_outputs": [
+            "plan.in"
+          ],
+          "reserved_inputs": [],
+          "reserved_outputs": [
+            "plan.in"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "planner.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/planner",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "planner.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 8,
+          "used_inputs": [
+            "command.in",
+            "signal.in"
+          ],
+          "used_outputs": [
+            "command.out",
+            "event.out",
+            "signal.out",
+            "plan.out"
+          ],
+          "unused_inputs": [
+            "context.in",
+            "intent.in"
+          ],
+          "unused_outputs": [],
+          "reserved_inputs": [
+            "context.in",
+            "intent.in"
+          ],
+          "reserved_outputs": [],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "healthy"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "project-audit.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/project-audit",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "project.audit.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 4,
+          "used_inputs": [
+            "audit.in"
+          ],
+          "used_outputs": [
+            "response.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "command.in",
+            "project.in"
+          ],
+          "unused_outputs": [
+            "report.out"
+          ],
+          "reserved_inputs": [
+            "command.in",
+            "project.in"
+          ],
+          "reserved_outputs": [
+            "report.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "router.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/router",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "router.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 12,
+          "used_inputs": [
+            "plan.in"
+          ],
+          "used_outputs": [
+            "browser.action.out",
+            "native.action.out",
+            "ai.action.out",
+            "terminal.action.out",
+            "system.action.out",
+            "desktop.action.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "event.in",
+            "result.in",
+            "command.in"
+          ],
+          "unused_outputs": [
+            "command.out",
+            "result.out",
+            "plan.out"
+          ],
+          "reserved_inputs": [
+            "event.in",
+            "result.in",
+            "command.in"
+          ],
+          "reserved_outputs": [
+            "command.out",
+            "result.out",
+            "plan.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "healthy"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "safety-guard.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/safety-guard",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "safety.guard.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 7,
+          "used_inputs": [
+            "plan.in"
+          ],
+          "used_outputs": [
+            "blocked.plan.out",
+            "approved.plan.out",
+            "event.out",
+            "signal.out"
+          ],
+          "unused_inputs": [
+            "command.in"
+          ],
+          "unused_outputs": [],
+          "reserved_inputs": [
+            "command.in"
+          ],
+          "reserved_outputs": [],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "healthy"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "supervisor.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/supervisor",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "supervisor.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 18,
+          "used_inputs": [
+            "event.in",
+            "plan.in",
+            "result.in"
+          ],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "approval.in"
+          ],
+          "unused_outputs": [
+            "command.out",
+            "status.out"
+          ],
+          "reserved_inputs": [
+            "approval.in"
+          ],
+          "reserved_outputs": [
+            "command.out",
+            "status.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "healthy"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "system-menu.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/system-menu",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "system.menu.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 4,
+          "used_inputs": [
+            "callback.in"
+          ],
+          "used_outputs": [
+            "command.out",
+            "ui.response.out"
+          ],
+          "unused_inputs": [
+            "ui.response.in",
+            "system.in"
+          ],
+          "unused_outputs": [
+            "ui.request.out",
+            "system.out"
+          ],
+          "reserved_inputs": [
+            "ui.response.in",
+            "system.in"
+          ],
+          "reserved_outputs": [
+            "ui.request.out",
+            "system.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "telegram-hud.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/telegram-hud",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "telegram.hud.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "render.request.in",
+            "ui.state.in"
+          ],
+          "used_outputs": [
+            "ui.response.out"
+          ],
+          "unused_inputs": [
+            "event.in",
+            "status.in"
+          ],
+          "unused_outputs": [
+            "display.out"
+          ],
+          "reserved_inputs": [
+            "event.in",
+            "status.in"
+          ],
+          "reserved_outputs": [
+            "display.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "telegram-menu.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/telegram-menu",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "telegram.menu.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 6,
+          "used_inputs": [
+            "callback.in"
+          ],
+          "used_outputs": [
+            "approval.callback.out",
+            "command.out",
+            "ui.response.out",
+            "approval.request.out"
+          ],
+          "unused_inputs": [
+            "command.in",
+            "ui.response.in"
+          ],
+          "unused_outputs": [
+            "ui.request.out",
+            "event.out"
+          ],
+          "reserved_inputs": [
+            "command.in",
+            "ui.response.in"
+          ],
+          "reserved_outputs": [
+            "ui.request.out",
+            "event.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ui.state.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/ui-state",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "ui.state.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 13,
+          "used_inputs": [
+            "callback.in",
+            "app.context.in",
+            "state.in",
+            "event.in",
+            "context.in"
+          ],
+          "used_outputs": [
+            "ui.render.request.out",
+            "ui.state.out",
+            "event.out"
+          ],
+          "unused_inputs": [],
+          "unused_outputs": [
+            "context.out"
+          ],
+          "reserved_inputs": [],
+          "reserved_outputs": [
+            "context.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "verifier.engine.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/verifier-engine",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "verifier.engine.main",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 8,
+          "used_inputs": [
+            "result.in"
+          ],
+          "used_outputs": [
+            "result.out",
+            "event.out",
+            "verification.out"
+          ],
+          "unused_inputs": [
+            "event.in"
+          ],
+          "unused_outputs": [],
+          "reserved_inputs": [
+            "event.in"
+          ],
+          "reserved_outputs": [],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "worker.python.browser",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/worker-browser",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "worker.python.browser",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "command.in"
+          ],
+          "unused_outputs": [],
+          "reserved_inputs": [
+            "command.in"
+          ],
+          "reserved_outputs": [],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "worker.python.desktop",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/worker-python",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "worker.python.desktop",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "command.in"
+          ],
+          "unused_outputs": [],
+          "reserved_inputs": [
+            "command.in"
+          ],
+          "reserved_outputs": [],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "worker.python.system",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/worker-system",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "worker.python.system",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "command.in"
+          ],
+          "unused_outputs": [],
+          "reserved_inputs": [
+            "command.in"
+          ],
+          "reserved_outputs": [],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "worker.python.terminal",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/worker.python.terminal",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "worker.python.terminal",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 5,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "command.in"
+          ],
+          "unused_outputs": [],
+          "reserved_inputs": [
+            "command.in"
+          ],
+          "reserved_outputs": [],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    }
+  ],
+  "extra_entities": [
+    {
+      "canonical_id": "chaos.tester",
+      "coherence_score": 40,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/chaos.tester",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "chaos.tester",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": [
+        "Entity exists physically but not in blueprint (orphan)"
+      ]
+    },
+    {
+      "canonical_id": "coherence.analyzer",
+      "coherence_score": 40,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/coherence.analyzer",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "coherence.analyzer",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": [
+        "Entity exists physically but not in blueprint (orphan)"
+      ]
+    },
+    {
+      "canonical_id": "diagnostic.main",
+      "coherence_score": 40,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/diagnostic.main",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "diagnostic.main",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": [
+        "Entity exists physically but not in blueprint (orphan)"
+      ]
+    },
+    {
+      "canonical_id": "plan.runner.main",
+      "coherence_score": 40,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/plan-runner",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "plan.runner.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "core"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "healthy"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": [
+        "Entity exists physically but not in blueprint (orphan)"
+      ]
+    },
+    {
+      "canonical_id": "planner",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/planner",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "planner.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'planner.main', ontology says 'planner'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "core"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "healthy"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "telegram.main",
+      "coherence_score": 40,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/telegram-interface",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "interface.telegram",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": [
+        "Entity exists physically but not in blueprint (orphan)"
+      ]
+    },
+    {
+      "canonical_id": "verifier.main",
+      "coherence_score": 40,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/verifier-engine",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "verifier.engine.main",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": [
+        "Entity exists physically but not in blueprint (orphan)"
+      ]
+    }
+  ],
+  "entities": [
+    {
+      "canonical_id": "agent.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/agent",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "agent.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 12,
+          "used_inputs": [
+            "command.in"
+          ],
+          "used_outputs": [
+            "approval.command.out",
+            "signal.out",
+            "audit.request.out",
+            "memory.query.out",
+            "plan.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "memory.in",
+            "intent.in"
+          ],
+          "unused_outputs": [
+            "command.out",
+            "memory.out"
+          ],
+          "reserved_inputs": [
+            "memory.in",
+            "intent.in"
+          ],
+          "reserved_outputs": [
+            "command.out",
+            "memory.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "healthy"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ai-assistant.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/ai-assistant",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "ai.assistant.main",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 6,
+          "used_inputs": [
+            "ai.action.in"
+          ],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "context.in",
+            "prompt.in"
+          ],
+          "unused_outputs": [
+            "response.out"
+          ],
+          "reserved_inputs": [
+            "context.in",
+            "prompt.in"
+          ],
+          "reserved_outputs": [
+            "response.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ai-intent.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/ai-intent",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "ai.intent.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 4,
+          "used_inputs": [
+            "command.in"
+          ],
+          "used_outputs": [
+            "analysis.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "context.in",
+            "text.in"
+          ],
+          "unused_outputs": [
+            "confidence.out",
+            "intent.out"
+          ],
+          "reserved_inputs": [
+            "context.in",
+            "text.in"
+          ],
+          "reserved_outputs": [
+            "confidence.out",
+            "intent.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ai-learning-engine.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/ai-learning-engine",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "ai.learning.engine.main",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "event.in",
+            "feedback.in",
+            "result.in"
+          ],
+          "unused_outputs": [
+            "pattern.out",
+            "model.out"
+          ],
+          "reserved_inputs": [
+            "event.in",
+            "feedback.in",
+            "result.in"
+          ],
+          "reserved_outputs": [
+            "pattern.out",
+            "model.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ai-memory-semantic.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/ai-memory-semantic",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "ai.memory.semantic.main",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 2,
+          "used_inputs": [],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "context.in",
+            "query.in",
+            "store.in"
+          ],
+          "unused_outputs": [
+            "recall.out",
+            "similar.out"
+          ],
+          "reserved_inputs": [
+            "context.in",
+            "query.in",
+            "store.in"
+          ],
+          "reserved_outputs": [
+            "recall.out",
+            "similar.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "ai-self-audit.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/ai-self-audit",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "ai.self.audit.main",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 2,
+          "used_inputs": [],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "event.in",
+            "log.in"
+          ],
+          "unused_outputs": [
+            "insight.out",
+            "alert.out"
+          ],
+          "reserved_inputs": [
+            "event.in",
+            "log.in"
+          ],
+          "reserved_outputs": [
+            "insight.out",
+            "alert.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "approval.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/approval",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "approval.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 13,
+          "used_inputs": [
+            "command.in",
+            "callback.in",
+            "blocked.plan.in",
+            "request.in"
+          ],
+          "used_outputs": [
+            "signal.out",
+            "approved.plan.out",
+            "rejected.result.out",
+            "response.out",
+            "ui.response.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "signal.in",
+            "ui.response.in"
+          ],
+          "unused_outputs": [
+            "ui.request.out"
+          ],
+          "reserved_inputs": [
+            "signal.in",
+            "ui.response.in"
+          ],
+          "reserved_outputs": [
+            "ui.request.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "healthy"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "apps-menu.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/apps-menu",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "apps.menu.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 4,
+          "used_inputs": [
+            "callback.in"
+          ],
+          "used_outputs": [
+            "command.out",
+            "ui.response.out"
+          ],
+          "unused_inputs": [
+            "ui.response.in",
+            "app.in"
+          ],
+          "unused_outputs": [
+            "app.out",
+            "ui.request.out"
+          ],
+          "reserved_inputs": [
+            "ui.response.in",
+            "app.in"
+          ],
+          "reserved_outputs": [
+            "app.out",
+            "ui.request.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "apps-session.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/apps-session",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "apps.session.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 7,
+          "used_inputs": [
+            "event.in"
+          ],
+          "used_outputs": [
+            "memory.sync.out",
+            "app.context.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "command.in",
+            "app.in"
+          ],
+          "unused_outputs": [
+            "app.out"
+          ],
+          "reserved_inputs": [
+            "command.in",
+            "app.in"
+          ],
+          "reserved_outputs": [
+            "app.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "chaos.tester",
+      "coherence_score": 40,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/chaos.tester",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "chaos.tester",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": [
+        "Entity exists physically but not in blueprint (orphan)"
+      ]
+    },
+    {
+      "canonical_id": "coherence.analyzer",
+      "coherence_score": 40,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/coherence.analyzer",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "coherence.analyzer",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": [
+        "Entity exists physically but not in blueprint (orphan)"
+      ]
+    },
+    {
+      "canonical_id": "diagnostic.main",
+      "coherence_score": 40,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/diagnostic.main",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "diagnostic.main",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": [
+        "Entity exists physically but not in blueprint (orphan)"
+      ]
+    },
+    {
+      "canonical_id": "gamification.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/gamification",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "gamification.main",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "event.in",
+            "achievement.in"
+          ],
+          "unused_outputs": [
+            "badge.out",
+            "reward.out"
+          ],
+          "reserved_inputs": [
+            "event.in",
+            "achievement.in"
+          ],
+          "reserved_outputs": [
+            "badge.out",
+            "reward.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "guide.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/guide",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "guide.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 16,
+          "used_inputs": [
+            "command.in",
+            "context.in"
+          ],
+          "used_outputs": [
+            "command.out",
+            "response.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "query.in"
+          ],
+          "unused_outputs": [
+            "ui.request.out"
+          ],
+          "reserved_inputs": [
+            "query.in"
+          ],
+          "reserved_outputs": [
+            "ui.request.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "interface.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/interface",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "interface.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 10,
+          "used_inputs": [
+            "response.in"
+          ],
+          "used_outputs": [
+            "command.out"
+          ],
+          "unused_inputs": [
+            "command.in",
+            "ui.response.in"
+          ],
+          "unused_outputs": [],
+          "reserved_inputs": [
+            "command.in",
+            "ui.response.in"
+          ],
+          "reserved_outputs": [],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "interface.telegram",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/telegram-interface",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "interface.telegram",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 29,
+          "used_inputs": [
+            "event.in",
+            "app.session.in",
+            "response.in",
+            "ui.response.in"
+          ],
+          "used_outputs": [
+            "action.out",
+            "command.out",
+            "callback.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "command.in"
+          ],
+          "unused_outputs": [
+            "ui.request.out",
+            "intent.out"
+          ],
+          "reserved_inputs": [
+            "command.in"
+          ],
+          "reserved_outputs": [
+            "ui.request.out",
+            "intent.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "memory-menu.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/memory-menu",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "memory.menu.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "callback.in"
+          ],
+          "used_outputs": [
+            "ui.response.out",
+            "memory.query.out"
+          ],
+          "unused_inputs": [
+            "memory.in",
+            "ui.response.in"
+          ],
+          "unused_outputs": [
+            "ui.request.out",
+            "memory.out"
+          ],
+          "reserved_inputs": [
+            "memory.in",
+            "ui.response.in"
+          ],
+          "reserved_outputs": [
+            "ui.request.out",
+            "memory.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "memory.log.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/memory-log",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "memory.log.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 41,
+          "used_inputs": [
+            "command.in",
+            "event.in",
+            "query.in",
+            "app.session.in"
+          ],
+          "used_outputs": [
+            "memory.out"
+          ],
+          "unused_inputs": [
+            "log.in"
+          ],
+          "unused_outputs": [
+            "log.out",
+            "event.out"
+          ],
+          "reserved_inputs": [
+            "log.in"
+          ],
+          "reserved_outputs": [
+            "log.out",
+            "event.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "phase.engine.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/phase-engine",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "phase.engine.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 8,
+          "used_inputs": [
+            "signal.in"
+          ],
+          "used_outputs": [
+            "event.out",
+            "command.out",
+            "state.out",
+            "signal.out"
+          ],
+          "unused_inputs": [],
+          "unused_outputs": [
+            "plan.in"
+          ],
+          "reserved_inputs": [],
+          "reserved_outputs": [
+            "plan.in"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "plan.runner.main",
+      "coherence_score": 40,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/plan-runner",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "plan.runner.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "core"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "healthy"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": [
+        "Entity exists physically but not in blueprint (orphan)"
+      ]
+    },
+    {
+      "canonical_id": "planner",
+      "coherence_score": 35,
+      "physical": {
+        "plane": "physical",
+        "status": "mismatch",
+        "details": {
+          "expected_directory": "/modules/planner",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "planner.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": [
+          "ID mismatch: manifest says 'planner.main', ontology says 'planner'"
+        ]
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "core"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "healthy"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "planner.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/planner",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "planner.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 8,
+          "used_inputs": [
+            "command.in",
+            "signal.in"
+          ],
+          "used_outputs": [
+            "command.out",
+            "event.out",
+            "signal.out",
+            "plan.out"
+          ],
+          "unused_inputs": [
+            "context.in",
+            "intent.in"
+          ],
+          "unused_outputs": [],
+          "reserved_inputs": [
+            "context.in",
+            "intent.in"
+          ],
+          "reserved_outputs": [],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "healthy"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "project-audit.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/project-audit",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "project.audit.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 4,
+          "used_inputs": [
+            "audit.in"
+          ],
+          "used_outputs": [
+            "response.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "command.in",
+            "project.in"
+          ],
+          "unused_outputs": [
+            "report.out"
+          ],
+          "reserved_inputs": [
+            "command.in",
+            "project.in"
+          ],
+          "reserved_outputs": [
+            "report.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "router.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/router",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "router.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 12,
+          "used_inputs": [
+            "plan.in"
+          ],
+          "used_outputs": [
+            "browser.action.out",
+            "native.action.out",
+            "ai.action.out",
+            "terminal.action.out",
+            "system.action.out",
+            "desktop.action.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "event.in",
+            "result.in",
+            "command.in"
+          ],
+          "unused_outputs": [
+            "command.out",
+            "result.out",
+            "plan.out"
+          ],
+          "reserved_inputs": [
+            "event.in",
+            "result.in",
+            "command.in"
+          ],
+          "reserved_outputs": [
+            "command.out",
+            "result.out",
+            "plan.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "healthy"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "safety-guard.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/safety-guard",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "safety.guard.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 7,
+          "used_inputs": [
+            "plan.in"
+          ],
+          "used_outputs": [
+            "blocked.plan.out",
+            "approved.plan.out",
+            "event.out",
+            "signal.out"
+          ],
+          "unused_inputs": [
+            "command.in"
+          ],
+          "unused_outputs": [],
+          "reserved_inputs": [
+            "command.in"
+          ],
+          "reserved_outputs": [],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "healthy"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "supervisor.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/supervisor",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "supervisor.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "core",
+          "connection_count": 18,
+          "used_inputs": [
+            "event.in",
+            "plan.in",
+            "result.in"
+          ],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "approval.in"
+          ],
+          "unused_outputs": [
+            "command.out",
+            "status.out"
+          ],
+          "reserved_inputs": [
+            "approval.in"
+          ],
+          "reserved_outputs": [
+            "command.out",
+            "status.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "healthy"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "system-menu.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/system-menu",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "system.menu.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 4,
+          "used_inputs": [
+            "callback.in"
+          ],
+          "used_outputs": [
+            "command.out",
+            "ui.response.out"
+          ],
+          "unused_inputs": [
+            "ui.response.in",
+            "system.in"
+          ],
+          "unused_outputs": [
+            "ui.request.out",
+            "system.out"
+          ],
+          "reserved_inputs": [
+            "ui.response.in",
+            "system.in"
+          ],
+          "reserved_outputs": [
+            "ui.request.out",
+            "system.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "telegram-hud.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/telegram-hud",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "telegram.hud.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "render.request.in",
+            "ui.state.in"
+          ],
+          "used_outputs": [
+            "ui.response.out"
+          ],
+          "unused_inputs": [
+            "event.in",
+            "status.in"
+          ],
+          "unused_outputs": [
+            "display.out"
+          ],
+          "reserved_inputs": [
+            "event.in",
+            "status.in"
+          ],
+          "reserved_outputs": [
+            "display.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "telegram-menu.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/telegram-menu",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "telegram.menu.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 6,
+          "used_inputs": [
+            "callback.in"
+          ],
+          "used_outputs": [
+            "approval.callback.out",
+            "command.out",
+            "ui.response.out",
+            "approval.request.out"
+          ],
+          "unused_inputs": [
+            "command.in",
+            "ui.response.in"
+          ],
+          "unused_outputs": [
+            "ui.request.out",
+            "event.out"
+          ],
+          "reserved_inputs": [
+            "command.in",
+            "ui.response.in"
+          ],
+          "reserved_outputs": [
+            "ui.request.out",
+            "event.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "telegram.main",
+      "coherence_score": 40,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/telegram-interface",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "interface.telegram",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": [
+        "Entity exists physically but not in blueprint (orphan)"
+      ]
+    },
+    {
+      "canonical_id": "ui.state.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/ui-state",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "ui.state.main",
+          "entry_file": "main.js",
+          "entry_exists": true,
+          "language": "node",
+          "files": [
+            "main.js",
+            "manifest.json"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 13,
+          "used_inputs": [
+            "callback.in",
+            "app.context.in",
+            "state.in",
+            "event.in",
+            "context.in"
+          ],
+          "used_outputs": [
+            "ui.render.request.out",
+            "ui.state.out",
+            "event.out"
+          ],
+          "unused_inputs": [],
+          "unused_outputs": [
+            "context.out"
+          ],
+          "reserved_inputs": [],
+          "reserved_outputs": [
+            "context.out"
+          ],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "verifier.engine.main",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/verifier-engine",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "verifier.engine.main",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 8,
+          "used_inputs": [
+            "result.in"
+          ],
+          "used_outputs": [
+            "result.out",
+            "event.out",
+            "verification.out"
+          ],
+          "unused_inputs": [
+            "event.in"
+          ],
+          "unused_outputs": [],
+          "reserved_inputs": [
+            "event.in"
+          ],
+          "reserved_outputs": [],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "verifier.main",
+      "coherence_score": 40,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/verifier-engine",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "verifier.engine.main",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "absent",
+        "details": {
+          "in_blueprint": false,
+          "has_connections": false,
+          "role_defined": true,
+          "tier": "satellite"
+        },
+        "issues": [
+          "Entity not in blueprint"
+        ]
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": [
+        "Entity exists physically but not in blueprint (orphan)"
+      ]
+    },
+    {
+      "canonical_id": "worker.python.browser",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/worker-browser",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "worker.python.browser",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "command.in"
+          ],
+          "unused_outputs": [],
+          "reserved_inputs": [
+            "command.in"
+          ],
+          "reserved_outputs": [],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "worker.python.desktop",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/worker-python",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "worker.python.desktop",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "command.in"
+          ],
+          "unused_outputs": [],
+          "reserved_inputs": [
+            "command.in"
+          ],
+          "reserved_outputs": [],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "worker.python.system",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/worker-system",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "worker.python.system",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "__pycache__",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 3,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "command.in"
+          ],
+          "unused_outputs": [],
+          "reserved_inputs": [
+            "command.in"
+          ],
+          "reserved_outputs": [],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    },
+    {
+      "canonical_id": "worker.python.terminal",
+      "coherence_score": 100,
+      "physical": {
+        "plane": "physical",
+        "status": "present",
+        "details": {
+          "expected_directory": "/modules/worker.python.terminal",
+          "directory_exists": true,
+          "manifest_exists": true,
+          "manifest_id": "worker.python.terminal",
+          "entry_file": "main.py",
+          "entry_exists": true,
+          "language": "python",
+          "files": [
+            "manifest.json",
+            "main.py"
+          ]
+        },
+        "issues": []
+      },
+      "logical": {
+        "plane": "logical",
+        "status": "present",
+        "details": {
+          "in_blueprint": true,
+          "has_connections": true,
+          "role_defined": true,
+          "tier": "satellite",
+          "connection_count": 5,
+          "used_inputs": [
+            "action.in"
+          ],
+          "used_outputs": [
+            "result.out",
+            "event.out"
+          ],
+          "unused_inputs": [
+            "command.in"
+          ],
+          "unused_outputs": [],
+          "reserved_inputs": [
+            "command.in"
+          ],
+          "reserved_outputs": [],
+          "obsolete_inputs": [],
+          "obsolete_outputs": [],
+          "misdefined_inputs": [],
+          "misdefined_outputs": []
+        },
+        "issues": []
+      },
+      "operational": {
+        "plane": "operational",
+        "status": "present",
+        "details": {
+          "syntax_valid": true,
+          "can_execute": true,
+          "health_check": "unknown"
+        },
+        "issues": []
+      },
+      "cross_plane_issues": []
+    }
+  ],
+  "orphans": {
+    "physical": [],
+    "logical": []
+  }
+}

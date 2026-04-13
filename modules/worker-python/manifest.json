@@ -1,0 +1,7 @@
+{
+  "id": "worker.python.desktop",
+  "language": "python",
+  "entry": "main.py",
+  "inputs": ["action.in"],
+  "outputs": ["result.out", "event.out"]
+}

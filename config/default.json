@@ -1,0 +1,135 @@
+{
+  "runtime": {
+    "blueprint_file": "blueprints/system.v0.json",
+    "modules_dir": "modules",
+    "logs_dir": "logs",
+    "schemas_dir": "schemas",
+    "startup_timeout": 30000,
+    "message_validation": true,
+    "debug": false
+  },
+  "logging": {
+    "level": "info",
+    "format": "json",
+    "console": true,
+    "file": true,
+    "max_file_size": "10MB",
+    "max_files": 5,
+    "structured": true
+  },
+  "telegram": {
+    "enabled": false,
+    "bot_token": null,
+    "webhook_url": null,
+    "timeout": 30000,
+    "retry_attempts": 3,
+    "rate_limit": {
+      "messages_per_minute": 30,
+      "burst_limit": 5
+    }
+  },
+  "safety": {
+    "enabled": true,
+    "auto_approve_safe_actions": true,
+    "require_approval_for": [
+      "delete_file",
+      "format_disk",
+      "system_update"
+    ],
+    "timeout": 300,
+    "max_plan_steps": 10
+  },
+  "approval": {
+    "enabled": true,
+    "timeout": 300,
+    "auto_reject_timeout": true,
+    "notification_channels": ["cli"]
+  },
+  "workers": {
+    "desktop": {
+      "enabled": true,
+      "timeout": 30000,
+      "retry_attempts": 2,
+      "app_cache_ttl": 3600,
+      "terminal_command_timeout": 10000
+    },
+    "system": {
+      "enabled": true,
+      "timeout": 15000,
+      "retry_attempts": 1,
+      "max_search_results": 100,
+      "monitor_interval": 5000
+    },
+    "browser": {
+      "enabled": true,
+      "timeout": 45000,
+      "retry_attempts": 2,
+      "headless": true,
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "user_agent": "blueprint-v0/1.0",
+      "page_timeout": 30000,
+      "navigation_timeout": 15000
+    }
+  },
+  "memory": {
+    "enabled": true,
+    "max_memory_entries": 1000,
+    "cleanup_interval": 3600,
+    "persist_to_disk": true,
+    "compression": true,
+    "retention_days": 30
+  },
+  "supervisor": {
+    "enabled": true,
+    "health_check_interval": 10000,
+    "task_timeout": 300000,
+    "max_concurrent_tasks": 5,
+    "auto_restart_failed": true,
+    "max_restarts": 3
+  },
+  "ui": {
+    "enabled": true,
+    "telegram_hud": {
+      "enabled": false,
+      "update_interval": 5000,
+      "max_message_length": 4000
+    },
+    "cli": {
+      "enabled": true,
+      "show_timestamps": true,
+      "show_module_names": true,
+      "color_output": true
+    }
+  },
+  "monitoring": {
+    "enabled": false,
+    "host": "0.0.0.0",
+    "port": 9090,
+    "prometheus": {
+      "enabled": false,
+      "endpoint": "/metrics"
+    }
+  },
+  "security": {
+    "allowed_origins": ["localhost", "127.0.0.1"],
+    "max_message_size": "1MB",
+    "rate_limiting": {
+      "enabled": true,
+      "requests_per_minute": 100
+    },
+    "encryption": {
+      "enabled": false,
+      "algorithm": "aes-256-gcm"
+    }
+  },
+  "development": {
+    "hot_reload": false,
+    "debug_mode": false,
+    "verbose_logging": false,
+    "mock_workers": false,
+    "test_mode": false
+  }
+}

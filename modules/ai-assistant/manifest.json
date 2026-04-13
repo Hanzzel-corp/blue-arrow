@@ -1,0 +1,34 @@
+{
+  "id": "ai.assistant.main",
+  "name": "AI Assistant",
+  "version": "1.0.0",
+  "description": "Módulo de asistencia inteligente con LLaMA local para análisis, aprendizaje y generación",
+  "tier": "satellite",
+  "priority": "medium",
+  "restart_policy": "lazy",
+  "language": "python",
+  "entry": "main.py",
+  "ports": {
+    "ai.action.in": {
+      "description": "Acciones de IA: ai.query, ai.analyze_intent, ai.generate_code, ai.explain_error, ai.analyze_project, ai.learn, ai.predict, ai.get_preferences, ai.clear_history"
+    },
+    "query.in": {
+      "description": "Queries de estado y capacidades"
+    },
+    "result.out": {
+      "description": "Resultados estandarizados"
+    },
+    "event.out": {
+      "description": "Eventos de ciclo de vida y estado"
+    }
+  },
+  "config": {
+    "model": "llama3.2",
+    "ollama_url": "http://localhost:11434",
+    "max_history": 20
+  },
+  "inputs": ["ai.action.in", "query.in"],
+  "outputs": ["result.out", "event.out"],
+  "dependencies": [],
+  "requires": ["ollama"]
+}
