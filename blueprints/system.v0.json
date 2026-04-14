@@ -110,14 +110,6 @@
       "to": "phase.engine.main:signal.in"
     },
     {
-      "from": "phase.engine.main:signal.out",
-      "to": "planner.main:command.in"
-    },
-    {
-      "from": "phase.engine.main:command.out",
-      "to": "router.main:plan.in"
-    },
-    {
       "from": "phase.engine.main:state.out",
       "to": "ui.state.main:state.in"
     },

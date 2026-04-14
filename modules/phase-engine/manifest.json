@@ -9,12 +9,6 @@
     "signal.in": {
       "description": "Señales de entrada desde cualquier módulo"
     },
-    "signal.out": {
-      "description": "Señales de salida hacia otros módulos"
-    },
-    "command.out": {
-      "description": "Comandos a workers y otros módulos"
-    },
     "state.out": {
       "description": "Updates de estado para UI y memoria"
     },
@@ -28,7 +22,7 @@
     "max_history_size": 100
   },
   "inputs": ["signal.in"],
-  "outputs": ["signal.out", "command.out", "state.out", "event.out"],
+  "outputs": ["state.out", "event.out"],
   "dependencies": [],
   "requires": []
 }

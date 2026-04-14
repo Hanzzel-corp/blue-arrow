@@ -300,7 +300,7 @@ class TestRuntimeIntegration(unittest.TestCase):
         # without actually starting all processes
         
         test_script = '''
-import { discoverModules } from "./registry.js";
+import { discoverModules } from "./runtime/registry.js";
 import fs from "fs";
 import path from "path";
 
