@@ -18,7 +18,7 @@ from unittest.mock import patch, MagicMock
 def assert_js_key(testcase, source: str, key: str, msg: str):
     testcase.assertRegex(
         source,
-        rf'(?:"{re.escape(key)}"\s*:|\b{re.escape(key)}\b\s*:|\b{re.escape(key)}\b\s*[,}])',
+        rf'(?:"{re.escape(key)}"\s*:|\b{re.escape(key)}\b\s*:|\b{re.escape(key)}\b\s*[,}}])',
         msg,
     )
 

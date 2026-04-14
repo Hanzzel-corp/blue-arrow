@@ -450,10 +450,6 @@
       "to": "interface.telegram:response.in"
     },
     {
-      "from": "supervisor.main:event.out",
-      "to": "apps.session.main:event.in"
-    },
-    {
       "from": "supervisor.main:result.out",
       "to": "interface.telegram:response.in"
     },
