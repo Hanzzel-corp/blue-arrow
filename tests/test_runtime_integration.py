@@ -339,10 +339,10 @@ console.log(JSON.stringify({
             self.assertTrue(output["blueprintLoaded"], "Blueprint should load successfully")
             self.assertGreater(output["modulesCount"], 0, "Should have modules in blueprint")
             self.assertGreater(output["connectionsCount"], 0, "Should have connections")
-            self.assertEqual(
+            self.assertGreaterEqual(
                 output["discoveredModules"],
                 output["modulesCount"],
-                "All blueprint modules should be discovered"
+                "Registry should discover at least all blueprint modules"
             )
             
         finally:

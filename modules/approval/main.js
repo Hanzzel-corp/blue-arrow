@@ -298,6 +298,15 @@ function emitRejected(item, traceId = null, meta = {}) {
     meta: finalMeta
   });
 
+  emit("rejected.result.out", {
+    task_id: item.task_id,
+    plan_id: item.plan_id,
+    status: "error",
+    error: "Plan rechazado por el usuario",
+    trace_id: finalTraceId,
+    meta: finalMeta
+  });
+
   emit("response.out", {
     task_id: item.task_id,
     plan_id: item.plan_id,
