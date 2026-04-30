@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/Architecture-Modular-purple?style=flat-square" />
   <img src="https://img.shields.io/badge/AI-LLaMA_Integration-orange?style=flat-square" />
   <img src="https://img.shields.io/badge/Gamification-RPG_Style-gold?style=flat-square" />
-  [![CI](https://github.com/Hanzzel-corp/blue-arrow/actions/workflows/ci.yml/badge.svg)](https://github.com/Hanzzel-corp/blue-arrow/actions/workflows/ci.yml)
+  <a href="https://github.com/Hanzzel-corp/blue-arrow/actions/workflows/ci.yml"><img src="https://github.com/Hanzzel-corp/blue-arrow/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
 </p>
 
 ## English Summary
