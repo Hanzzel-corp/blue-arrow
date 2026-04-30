@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/Architecture-Modular-purple?style=flat-square" />
   <img src="https://img.shields.io/badge/AI-LLaMA_Integration-orange?style=flat-square" />
   <img src="https://img.shields.io/badge/Gamification-RPG_Style-gold?style=flat-square" />
-  <img src="https://github.com/Hanzzel-corp/blue-arrow/workflows/CI/badge.svg" alt="CI" />
+  [![CI](https://github.com/Hanzzel-corp/blue-arrow/actions/workflows/ci.yml/badge.svg)](https://github.com/Hanzzel-corp/blue-arrow/actions/workflows/ci.yml)
 </p>
 
 ## English Summary
@@ -257,7 +257,7 @@ Transforma la interfaz de Telegram en una experiencia tipo videojuego:
 > **Nota:** El árbol muestra **nombres de carpetas físicas** (algunas con wildcards `*`) y sus IDs lógicos aproximados. Los nombres canónicos reales de módulos están en los documentos de contratos (`PORT_CONTRACTS.md`).
 
 ```
-blueprint-v0/
+blue-arrow/
 ├── 📁 blueprints/
 │   └── system.v0.json          # Topología: 30 módulos, 100+ conexiones
 │
