@@ -1,6 +1,6 @@
 > **⚠️ DOCUMENTO DE VISIÓN / TARGET ARCHITECTURE**
 >
-> Este documento describe la **arquitectura objetivo** de blueprint-v0 con `Execution Verifier` + `Phase Engine`.
+> Este documento describe la **arquitectura objetivo** de blue-arrow con `Execution Verifier` + `Phase Engine`.
 > - NO debe leerse como fuente única del **estado operativo actual**
 > - Puede incluir componentes, relaciones y niveles de integración más avanzados que los actualmente activos en runtime
 > - Para el estado actual y la transición en curso, ver:
@@ -9,7 +9,7 @@
 >   - `PORT_CONTRACTS.md` 
 >   - `TASK_CLOSURE_GOVERNANCE.md` 
 
-# blueprint-v0 - Documentación del Proyecto
+# blue-arrow - Documentación del Proyecto
 
 **Versión:** 2.0  
 **Última actualización:** Abril 2026  
@@ -32,7 +32,7 @@
 
 ## 🎯 Visión General
 
-**blueprint-v0** es un orquestador modular para automatización de PC que combina:
+**blue-arrow** es un orquestador modular para automatización de PC que combina:
 
 - **Execution Verifier Engine:** Verificación post-ejecución con confidence scoring
 - **Phase Engine:** Máquina de estados que reemplaza tokenización tradicional
@@ -480,7 +480,7 @@ idle → intent_detected → planning → plan_ready
 ## 📁 Estructura de Archivos
 
 ```
-blueprint-v0/
+blue-arrow/
 ├── blueprints/
 │   └── system.v0.json          # Wiring del sistema (actualizado Fases 2-3)
 ├── docs/
@@ -633,4 +633,4 @@ python3 -m py_compile modules/verifier-engine/main.py
 **Fin de Documentación**
 
 *Generado: Abril 2026*
-*Sistema: blueprint-v0 con Execution Verifier + Phase Engine*
+*Sistema: blue-arrow con Execution Verifier + Phase Engine*

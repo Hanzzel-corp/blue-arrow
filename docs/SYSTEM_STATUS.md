@@ -1,4 +1,4 @@
-# Estado Actual del Sistema - blueprint-v0
+# Estado Actual del Sistema - blue-arrow
 
 **Fecha de auditoría**: 2026-04-07  
 **Versión**: 1.0.0 + AI Extension  

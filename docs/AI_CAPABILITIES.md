@@ -1,4 +1,4 @@
-# AI Capabilities Documentation - Blueprint v0
+# AI Capabilities Documentation - Blue Arrow
 
 ## 🧠 Capacidades de Inteligencia Artificial
 

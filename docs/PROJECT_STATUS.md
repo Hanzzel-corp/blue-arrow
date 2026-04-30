@@ -2,7 +2,7 @@
 
 ## Estado actual
 
-`blueprint-v0` es una base funcional de agente modular para control de PC.
+`blue-arrow` es una base funcional de agente modular para control de PC.
 
 ### Principios arquitectonicos
 

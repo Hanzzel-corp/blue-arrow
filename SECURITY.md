@@ -26,7 +26,7 @@ Si descubrís una vulnerabilidad de seguridad en `blue-arrow`, por favor reporta
 3. **Esperar respuesta** - Intentaremos responder dentro de 5 días hábiles.
 
 4. **Si no recibís respuesta en ese plazo**, podés reenviar el reporte al mismo correo con el asunto:
-   `FOLLOW-UP SECURITY REPORT - blueprint-v0` 
+   `FOLLOW-UP SECURITY REPORT - blue-arrow` 
 
 5. **Divulgación coordinada** - Una vez solucionado, publicaremos un advisory con crédito al reportero (si así lo desea).
 

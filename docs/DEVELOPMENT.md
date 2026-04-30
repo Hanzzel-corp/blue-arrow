@@ -1,5 +1,7 @@
 # Desarrollo
 
+> 🌐 [English version → DEVELOPMENT_EN.md](DEVELOPMENT_EN.md)
+
 > **Notas importantes:**
 > - Para contratos canónicos, ver `PORT_CONTRACTS.md`, `CONTRACTS_GUIDE.md` y `TASK_CLOSURE_GOVERNANCE.md`
 > - Para usar módulos IA locales, seguí también `OLLAMA_SETUP.md` (opcional)

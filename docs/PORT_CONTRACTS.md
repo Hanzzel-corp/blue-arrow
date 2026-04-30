@@ -1,8 +1,8 @@
-# Contratos de Puertos - Blueprint v0
+# Contratos de Puertos - Blue Arrow
 
 ## Resumen
 
-Este documento define los contratos de comunicación entre módulos en el sistema blueprint-v0. Cada puerto tiene un schema JSON definido en `schemas/ports.json` y sigue un formato estandarizado.
+Este documento define los contratos de comunicación entre módulos en el sistema blue-arrow. Cada puerto tiene un schema JSON definido en `schemas/ports.json` y sigue un formato estandarizado.
 
 ## Formato de Mensajes
 

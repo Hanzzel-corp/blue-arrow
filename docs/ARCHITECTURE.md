@@ -1,5 +1,7 @@
 # Arquitectura
 
+> 🌐 [English version → ARCHITECTURE_EN.md](ARCHITECTURE_EN.md)
+
 ## Resumen
 
 El sistema sigue una arquitectura modular por procesos:

@@ -43,6 +43,3 @@ jobs:
 
       - run: npm install
       - run: npm run check:node
-
-      - run: npm install
-      - run: npm run check:node

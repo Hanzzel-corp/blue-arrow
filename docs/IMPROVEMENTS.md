@@ -5,11 +5,11 @@
 > - Para la arquitectura objetivo y estado de transición, ver `PHASE_ENGINE_SUMMARY.md`
 > - Algunos números y referencias pueden estar desactualizados respecto al canon actual
 
-# Mejoras Implementadas - Blueprint v0
+# Mejoras Implementadas - Blue Arrow
 
 ## Resumen de Mejoras (Snapshot Histórico)
 
-Este documento resume mejoras implementadas en una etapa específica del proyecto blueprint-v0.
+Este documento resume mejoras implementadas en una etapa específica del proyecto blue-arrow.
 
 ---
 

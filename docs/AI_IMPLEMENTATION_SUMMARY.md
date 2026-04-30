@@ -5,11 +5,11 @@
 > - Algunas capacidades marcadas como ✅ están operativas; otras como 🔄 están en evolución
 > - El sistema IA sigue expandiéndose según roadmap
 
-# Resumen de Evolución - Blueprint v0 con IA
+# Resumen de Evolución - Blue Arrow con IA
 
 ## 🔄 Integración Base Operativa + Expansión en Curso
 
-El proyecto **blueprint-v0** ha incorporado capacidades base de Inteligencia Artificial, con expansión continua hacia arquitecturas más avanzadas.
+El proyecto **blue-arrow** ha incorporado capacidades base de Inteligencia Artificial, con expansión continua hacia arquitecturas más avanzadas.
 
 ---
 

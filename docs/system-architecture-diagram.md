@@ -1,4 +1,4 @@
-# Diagrama de Arquitectura - Blueprint v0
+# Diagrama de Arquitectura - Blue Arrow
 
 ## Diagrama de Flujo Completo de Conexiones
 

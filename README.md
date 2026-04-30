@@ -1,4 +1,4 @@
-# Blueprint v0 - Sistema de Orquestación Modular Inteligente
+# Blue Arrow
 
 <p align="center">
   <img src="https://img.shields.io/badge/Node.js-20+-green?style=flat-square&logo=node.js" />
@@ -6,17 +6,33 @@
   <img src="https://img.shields.io/badge/Architecture-Modular-purple?style=flat-square" />
   <img src="https://img.shields.io/badge/AI-LLaMA_Integration-orange?style=flat-square" />
   <img src="https://img.shields.io/badge/Gamification-RPG_Style-gold?style=flat-square" />
+  <img src="https://github.com/Hanzzel-corp/blue-arrow/workflows/CI/badge.svg" alt="CI" />
 </p>
 
-<p align="center">
-  <b>Sistema de orquestación y automatización modular con migración state-driven, verificación de ejecución e integración de IA local</b>
-</p>
+## English Summary
+
+Blue Arrow is an open-source local orchestration framework that lets users control desktop, terminal, browser, system and document actions through Telegram.
+
+It is built around a human-in-the-loop execution model: AI can assist, interpret and plan, but real actions are routed through safety checks, approval flows, workers and execution verification.
+
+### Why it matters
+
+Most automation agents move toward uncontrolled autonomy. Blue Arrow takes the opposite path: the human remains the final decision-maker, while the system provides structured execution, local-first AI integration and verifiable action results.
+
+**Key features:**
+- Local-first automation (Ollama/LLaMA)
+- Telegram interface with human approval
+- Safety guards and execution verification
+- Modular event-driven architecture
+- RPG-style gamification system
+
+📖 **[Full English Documentation → README_EN.md](README_EN.md)**
 
 ---
 
-## 🎯 Visión General
+## Resumen en Español
 
-**Blueprint v0** es un sistema de orquestación modular que automatiza acciones en PC mediante una arquitectura basada en **blueprint** + **runtime** + **modules**. El sistema evoluciona desde un modelo token-based hacia una plataforma state-driven con verificación de ejecución, IA integrada y experiencia de usuario tipo videojuego RPG.
+**Blue Arrow** es un sistema de orquestación modular que automatiza acciones en PC mediante una arquitectura basada en **blueprint** + **runtime** + **modules**. El sistema evoluciona desde un modelo token-based hacia una plataforma state-driven con verificación de ejecución, IA integrada y experiencia de usuario tipo videojuego RPG.
 
 ### Dirección Arquitectónica: Migración hacia State-Driven
 
@@ -611,6 +627,6 @@ MIT License - ver [LICENSE](LICENSE) para detalles.
 ---
 
 <p align="center">
-  <b>Blueprint v0</b> - Orquestación modular con migración state-driven en curso<br>
+  <b>Blue Arrow</b> - Orquestación modular con migración state-driven en curso<br>
   <sub>Construido con ❤️ usando Node.js, Python y mucha cafeína</sub>
 </p>
