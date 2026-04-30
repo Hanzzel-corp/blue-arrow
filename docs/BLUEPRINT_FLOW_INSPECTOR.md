@@ -57,7 +57,7 @@ No requiere instalación adicional. Solo dependencias del sistema base:
 ### Ubicación
 
 ```
-blueprint-v0/
+blue-arrow/
 ├── blueprint_flow_inspector.py  # ← Este archivo
 ├── docs/
 │   └── system-architecture-diagram.md  # Diagrama a analizar

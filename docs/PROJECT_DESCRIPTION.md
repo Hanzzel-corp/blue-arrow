@@ -25,7 +25,7 @@ Ejecutar módulos desacoplados (Node.js y Python) conectados por puertos, donde 
 ## 2. Estructura del Proyecto
 
 ```text
-blueprint-v0/
+blue-arrow/
 ├── blueprints/              # Topología de módulos y conexiones
 │   └── system.v0.json       # Blueprint principal (conteo y wiring operativos en el blueprint vigente)
 ├── runtime/                 # Proceso orquestador (Node.js)
