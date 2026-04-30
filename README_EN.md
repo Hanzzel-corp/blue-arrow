@@ -45,3 +45,4 @@ The AI acts as an assistant and interpreter. The human remains the final authori
 ## License
 
 MIT License.
+
