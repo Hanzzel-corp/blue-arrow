@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata from this file."
+title: "Blue Arrow: Local Human-in-the-Loop AI Orchestration Framework"
+type: software
+
+authors:
+  - family-names: "Zamora"
+    given-names: "Jose"
+    orcid: "https://orcid.org/0009-0005-3584-1779"
+
+abstract: "Blue Arrow is a modular local orchestration framework for controlled automation, human approval, safety guards, verification, Telegram-based interaction and event-driven execution."
+
+keywords:
+  - local AI orchestration
+  - human-in-the-loop automation
+  - modular automation
+  - Telegram automation
+  - safety guards
+  - event-driven execution
+  - local-first AI
+  - AI-assisted tooling
+
+repository-code: "https://github.com/Hanzzel-corp/blue-arrow"
+url: "https://hanzzel-corp.github.io/"
+license: "MIT"
+
+version: "0.1.0"
+date-released: "2026-05-05"
