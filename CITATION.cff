@@ -2,6 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it using the metadata from this file."
 title: "Blue Arrow: Local Human-in-the-Loop AI Orchestration Framework"
 type: software
+doi: "10.5281/zenodo.20045432"
 
 authors:
   - family-names: "Zamora"
