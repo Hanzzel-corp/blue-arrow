@@ -1,5 +1,7 @@
 # Blue Arrow
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20045432.svg)](https://doi.org/10.5281/zenodo.20045432)
+
 <p align="center">
   <img src="https://img.shields.io/badge/Node.js-20+-green?style=flat-square&logo=node.js" />
   <img src="https://img.shields.io/badge/Python-3.11+-blue?style=flat-square&logo=python" />
