@@ -632,3 +632,11 @@ MIT License - ver [LICENSE](LICENSE) para detalles.
   <b>Blue Arrow</b> - Orquestación modular con migración state-driven en curso<br>
   <sub>Construido con ❤️ usando Node.js, Python y mucha cafeína</sub>
 </p>
+
+---
+
+## Dirección de investigación y autoría
+
+**José Zamora — Investigador principal independiente (Independent Principal Investigator), Hanzzel Corp.**
+
+Este repositorio es un proyecto individual del ecosistema Hanzzel Corp. Su pertenencia al ecosistema no implica integración técnica con NCT ni validación de resultados más allá de la evidencia documentada aquí.
