@@ -1,5 +1,7 @@
 # Blue Arrow
 
+**Hanzzel Corp · documentación del proyecto:** [Ficha técnica de Blue Arrow en Hanzzel Corp](https://hanzzel-corp.github.io/research/blue-arrow/)
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20045432.svg)](https://doi.org/10.5281/zenodo.20045432)
 
 <p align="center">
